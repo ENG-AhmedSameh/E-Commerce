@@ -7,7 +7,7 @@
 
     <servlet>
         <servlet-name>Hello</servlet-name>
-        <servlet-class>com.example.ecommerce.HelloServlet</servlet-class>
+        <servlet-class>com.example.ecommerce.web.HelloServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Hello</servlet-name>

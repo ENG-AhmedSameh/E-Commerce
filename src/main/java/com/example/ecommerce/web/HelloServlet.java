@@ -1,4 +1,4 @@
-package com.example.ecommerce;
+package com.example.ecommerce.web;
 
 import java.io.*;
 
@@ -21,6 +21,7 @@ public class HelloServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
+
     }
 
     public void destroy() {
