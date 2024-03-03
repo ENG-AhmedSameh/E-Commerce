@@ -15,8 +15,8 @@ public class HikariCPDataSource {
     private static HikariCPDataSource instance;
     private final HikariDataSource dataSource;
 
-    private static final int MIN_POOL_SIZE = 100;
-    private static final int MAX_POOL_SIZE = 20;
+    private static final int MIN_POOL_SIZE = 20;
+    private static final int MAX_POOL_SIZE = 100;
     private static final int MAX_IDLE_TIME = 3000;
 
     private HikariCPDataSource() {

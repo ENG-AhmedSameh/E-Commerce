@@ -1,27 +1,47 @@
 package com.example.ecommerce.model.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name = "credit_card")
+@Table(name = "credit_card", schema = "e_commerce")
 public class CreditCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id", nullable = false)
+    private long id;
 
-    @Column(name = "card_number")
+    @Size(max = 45)
+    @NotNull
+    @Column(name = "card_number", nullable = false, length = 45)
     private String cardNumber;
-    @Column(name = "expire_date")
-    private LocalDateTime expireDate;
+
+    @NotNull
+    @Column(name = "expire_Date", nullable = false)
+    private LocalDate expireDate;
+
+    @NotNull
+    @Column(name = "balance", nullable = false, precision = 12, scale = 2)
     private BigDecimal balance;
-    private Short cvv;
 
+    @NotNull
+    @Column(name = "cvv", nullable = false)
+    private Byte cvv;
 
+    @ManyToMany
+    @JoinTable(name = "user_creditcard",
+            joinColumns = @JoinColumn(name = "credit_card_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> users = new LinkedHashSet<>();
 
 }
-

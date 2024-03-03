@@ -1,26 +1,37 @@
 package com.example.ecommerce.model.entities;
 
+import com.example.ecommerce.model.entities.entitesIDs.OrderItemId;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name = "order_item")
+@Table(name = "order_item", schema = "e_commerce", indexes = {
+        @Index(name = "fk_order_item_all_order1_idx", columnList = "order_id"),
+        @Index(name = "fk_order_items_product1_idx", columnList = "product_id")
+})
 public class OrderItem {
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "order_id")
+    @EmbeddedId
+    private OrderItemId id;
+
+    @MapsId("orderId")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = false)
     private AllOrder order;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "product_id")
+    @MapsId("productId")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
-    private short quantity;
+
+    @Column(name = "quantity")
+    private Short quantity;
 
 }
-
