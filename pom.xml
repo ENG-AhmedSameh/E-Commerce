@@ -81,7 +81,7 @@
                     <artifactId>exec-maven-plugin</artifactId>
                     <version>3.2.0</version>
                     <configuration>
-                        <mainClass>com.example.Main</mainClass>
+                        <mainClass>com.example.ecommerce.Main</mainClass>
                     </configuration>
                 </plugin>
                 <plugin>

@@ -49,11 +49,13 @@ public class CustomPersistenceUnitInfo implements PersistenceUnitInfo {
                 "com.example.ecommerce.model.entities.Category",
                 "com.example.ecommerce.model.entities.Product",
                 "com.example.ecommerce.model.entities.CreditCard",
+                "com.example.ecommerce.model.entities.UserCreditCard",
                 "com.example.ecommerce.model.entities.User",
                 "com.example.ecommerce.model.entities.Cart",
                 "com.example.ecommerce.model.entities.CartItem",
                 "com.example.ecommerce.model.entities.AllOrder",
-                "com.example.ecommerce.model.entities.OrderItem"
+                "com.example.ecommerce.model.entities.OrderItem",
+                "com.example.ecommerce.model.entities.UserInterest"
                 );
     }
 

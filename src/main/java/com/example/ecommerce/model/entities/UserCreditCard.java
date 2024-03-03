@@ -12,7 +12,7 @@ import lombok.Setter;
         @Index(name = "fk_user_creditcard_user1_idx", columnList = "user_id"),
         @Index(name = "fk_user_creditcard_credit_card1_idx", columnList = "credit_card_id")
 })
-public class UserCreditcard {
+public class UserCreditCard {
     @EmbeddedId
     private UserCreditcardId id;
 
