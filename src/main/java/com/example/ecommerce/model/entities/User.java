@@ -1,5 +1,6 @@
 package com.example.ecommerce.model.entities;
 
+import com.example.ecommerce.model.enums.Gender;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -64,7 +65,7 @@ public class User {
     @NotNull
     @Lob
     @Column(name = "Gender", nullable = false)
-    private String gender;
+    private Gender gender;
 
     @OneToMany(mappedBy = "user")
     private Set<AllOrder> allOrders = new LinkedHashSet<>();
