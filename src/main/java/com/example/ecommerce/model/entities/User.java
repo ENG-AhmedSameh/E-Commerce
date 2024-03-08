@@ -31,6 +31,17 @@ public class User {
     @Column(name = "user_name", nullable = false, length = 45)
     private String userName;
 
+    @Size(max = 32)
+    @NotNull
+    @Column(name = "password", nullable = false, length = 32)
+    private String password;
+
+    @Size(max = 16)
+    @NotNull
+    @Column(name = "Salt", nullable = false, length = 16)
+    private byte [] salt;
+
+
     @Size(max = 45)
     @NotNull
     @Column(name = "first_name", nullable = false, length = 45)
@@ -40,9 +51,9 @@ public class User {
     @Column(name = "last_name", length = 45)
     private String lastName;
 
-    @Size(max = 55)
+    @Size(max = 15)
     @NotNull
-    @Column(name = "phone_number", nullable = false, length = 55)
+    @Column(name = "phone_number", nullable = false, length = 15)
     private String phoneNumber;
 
     @Size(max = 255)
@@ -58,7 +69,7 @@ public class User {
     @Column(name = "job")
     private String job;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.PERSIST )
     @JoinColumn(name = "Address_id")
     private Address address;
 
@@ -70,13 +81,17 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<AllOrder> allOrders = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user" , cascade = { CascadeType.REMOVE , CascadeType.PERSIST} )
     private Set<Cart> carts = new LinkedHashSet<>();
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "users" , cascade = CascadeType.PERSIST)
     private Set<CreditCard> creditCards = new LinkedHashSet<>();
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "users" , cascade = {CascadeType.PERSIST , CascadeType.REMOVE})
     private Set<Category> categories = new LinkedHashSet<>();
+
+//    public  void  setPassword (String password){
+//        this.password = password;
+//    }
 
 }

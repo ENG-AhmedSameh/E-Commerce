@@ -41,7 +41,7 @@ public class AllOrder {
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order" , cascade = {CascadeType.PERSIST , CascadeType.REMOVE})
     private Set<OrderItem> orderItems = new LinkedHashSet<>();
 
 }
