@@ -1,4 +1,4 @@
-package com.example.ecommerce.controller.util;
+package com.example.ecommerce.presentation.controller.util;
 
 public class ServletFactory {
 

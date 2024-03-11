@@ -84,8 +84,6 @@ public class User {
     @OneToMany(mappedBy = "user" , cascade = { CascadeType.REMOVE , CascadeType.PERSIST} )
     private Set<Cart> carts = new LinkedHashSet<>();
 
-    @ManyToMany(mappedBy = "users" , cascade = CascadeType.PERSIST)
-    private Set<CreditCard> creditCards = new LinkedHashSet<>();
 
     @ManyToMany(mappedBy = "users" , cascade = {CascadeType.PERSIST , CascadeType.REMOVE})
     private Set<Category> categories = new LinkedHashSet<>();

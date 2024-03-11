@@ -1,8 +1,8 @@
-package com.example.ecommerce.controller;
+package com.example.ecommerce.presentation.controller;
 
-import com.example.ecommerce.controller.util.ServletFactory;
-import com.example.ecommerce.controller.util.ServletResolverInt;
-import com.example.ecommerce.controller.util.ViewResolver;
+import com.example.ecommerce.presentation.controller.util.ServletFactory;
+import com.example.ecommerce.presentation.controller.util.ServletResolverInt;
+import com.example.ecommerce.presentation.controller.util.ViewResolver;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

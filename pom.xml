@@ -30,6 +30,11 @@
             <artifactId>hibernate-core</artifactId>
             <version>6.4.4.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-hikaricp</artifactId>
+            <version>6.1.7.Final</version>
+        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
@@ -44,11 +49,11 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>jakarta.servlet.jsp.jstl</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-            <version>3.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>jakarta.servlet.jsp.jstl</groupId>-->
+<!--            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -58,11 +63,11 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-            <version>3.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.glassfish.web</groupId>-->
+<!--            <artifactId>jakarta.servlet.jsp.jstl</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -74,7 +79,7 @@
     </dependencies>
 
     <build>
-        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+        <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>

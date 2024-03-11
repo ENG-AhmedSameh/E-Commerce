@@ -1,6 +1,6 @@
 package com.example.ecommerce.model.DAO;
 
-import com.example.ecommerce.model.persistence.CustomPersistenceUnitInfo;
+//import com.example.ecommerce.model.persistence.CustomPersistenceUnitInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -21,8 +21,8 @@ public class PersistenceManager {
         props.put("hibernate.show_sql", "true");
         props.put("hibernate.format_sql", "true");
 
-         entityManagerFactory = new HibernatePersistenceProvider()
-                .createContainerEntityManagerFactory(new CustomPersistenceUnitInfo(puName), props);
+//         entityManagerFactory = new HibernatePersistenceProvider()
+//                .createContainerEntityManagerFactory(new CustomPersistenceUnitInfo(puName), props);
 
     }
 

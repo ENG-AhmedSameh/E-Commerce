@@ -1,4 +1,4 @@
-package com.example.ecommerce.controller.util;
+package com.example.ecommerce.presentation.controller.util;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
