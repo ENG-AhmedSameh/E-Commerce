@@ -6,8 +6,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @Entity
 @Table(name = "address", schema = "e_commerce")
 public class Address {
@@ -32,4 +32,43 @@ public class Address {
     @Column(name = "floor_number")
     private Byte floorNumber;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getBuildingNumber() {
+        return buildingNumber;
+    }
+
+    public void setBuildingNumber(String buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+
+    public Byte getFloorNumber() {
+        return floorNumber;
+    }
+
+    public void setFloorNumber(Byte floorNumber) {
+        this.floorNumber = floorNumber;
+    }
 }
