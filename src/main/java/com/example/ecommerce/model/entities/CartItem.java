@@ -1,6 +1,6 @@
 package com.example.ecommerce.model.entities;
 
-import com.example.ecommerce.model.entities.entitesIDs.CartItemId;
+import com.example.ecommerce.model.entities.entitiesID.CartItemId;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,10 +16,8 @@ public class CartItem {
     @EmbeddedId
     private CartItemId id;
 
-    @MapsId("cartId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "Cart_id", nullable = false, referencedColumnName = "id")
-    private Cart cart;
+    @ManyToOne
+    Cart cart;
 
     @MapsId("productId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

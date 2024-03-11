@@ -1,6 +1,6 @@
 package com.example.ecommerce.model.entities;
 
-import com.example.ecommerce.model.entities.entitesIDs.OrderItemId;
+import com.example.ecommerce.model.entities.entitiesID.OrderItemId;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,11 +17,6 @@ import java.math.BigDecimal;
 public class OrderItem {
     @EmbeddedId
     private OrderItemId id;
-
-    @MapsId("orderId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "order_id", nullable = false)
-    private AllOrder order;
 
     @MapsId("productId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

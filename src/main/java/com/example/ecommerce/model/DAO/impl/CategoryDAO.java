@@ -1,63 +1,31 @@
 package com.example.ecommerce.model.DAO.impl;
 
 import com.example.ecommerce.model.DAO.Interface.CategoryDAOInt;
-import com.example.ecommerce.model.DAO.PersistenceManager;
 import com.example.ecommerce.model.entities.Category;
+import com.example.ecommerce.model.entities.Product;
 import jakarta.persistence.EntityManager;
+
+import java.util.Optional;
 
 public class CategoryDAO implements CategoryDAOInt {
 
-    public static EntityManager entityManager = PersistenceManager.getEntityManager();
     @Override
-    public boolean insert(Category category) {
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.persist(category);
-            entityManager.getTransaction().commit();
-            return true;
-        }catch (Exception e ){
-            e.printStackTrace();
-            return false;
-        }
+    public void save(Category category, EntityManager em) {
+        em.persist(category);
     }
 
     @Override
-    public Category get(long id) {
-      try {
-          entityManager.getTransaction().begin();
-          Category category = entityManager.find(Category.class , id);
-          entityManager.getTransaction().commit();
-          return category;
-      }catch (Exception e){
-          e.printStackTrace();
-          return null;
-      }
+    public Optional<Category> get(long id, EntityManager em) {
+        return Optional.ofNullable(em.find(Category.class, id));
     }
 
     @Override
-    public boolean update(Category category) {
-       try {
-           entityManager.getTransaction().begin();
-           entityManager.merge(category);
-           entityManager.getTransaction().commit();
-           return true;
-       }catch (Exception e){
-           e.printStackTrace();
-           return false;
-       }
+    public void update(Category category, EntityManager em) {
+        em.persist(category);
     }
 
     @Override
-    public boolean delete(Category category) {
-       try {
-           entityManager.getTransaction().begin();
-           entityManager.remove(category);
-           entityManager.getTransaction().commit();
-
-           return true;
-       }catch (Exception e){
-           e.printStackTrace();
-           return false;
-       }
+    public void delete(Category category, EntityManager em) {
+        em.remove(category);
     }
 }

@@ -14,14 +14,13 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "all_order", schema = "e_commerce", indexes = {
-        @Index(name = "fk_all_order_user1_idx", columnList = "user_id"),
-        @Index(name = "fk_all_order_address1_idx", columnList = "address_id")
+        @Index(name = "fk_all_order_user1_idx", columnList = "user_id")
 })
-public class AllOrder {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Integer id;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -36,12 +35,7 @@ public class AllOrder {
     @Column(name = "price", nullable = false, precision = 11, scale = 2)
     private BigDecimal price;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "address_id", nullable = false)
-    private Address address;
-
-    @OneToMany(mappedBy = "order" , cascade = {CascadeType.PERSIST , CascadeType.REMOVE})
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.REMOVE})
     private Set<OrderItem> orderItems = new LinkedHashSet<>();
 
 }

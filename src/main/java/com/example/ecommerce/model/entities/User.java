@@ -1,6 +1,5 @@
 package com.example.ecommerce.model.entities;
 
-import com.example.ecommerce.model.enums.Gender;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,13 +17,13 @@ import java.util.Set;
         @Index(name = "user_name_UNIQUE", columnList = "user_name", unique = true),
         @Index(name = "phone_number_UNIQUE", columnList = "phone_number", unique = true),
         @Index(name = "email_UNIQUE", columnList = "email", unique = true),
-        @Index(name = "fk_users_Addresses_idx", columnList = "Address_id")
+        @Index(name = "fk_user_address1_idx", columnList = "address_id")
 })
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Integer id;
 
     @Size(max = 45)
     @NotNull
@@ -33,14 +32,8 @@ public class User {
 
     @Size(max = 32)
     @NotNull
-    @Column(name = "password", nullable = false, length = 32)
+    @Column(name = "Password", nullable = false, length = 32)
     private String password;
-
-    @Size(max = 16)
-    @NotNull
-    @Column(name = "Salt", nullable = false, length = 16)
-    private byte [] salt;
-
 
     @Size(max = 45)
     @NotNull
@@ -51,9 +44,9 @@ public class User {
     @Column(name = "last_name", length = 45)
     private String lastName;
 
-    @Size(max = 15)
+    @Size(max = 55)
     @NotNull
-    @Column(name = "phone_number", nullable = false, length = 15)
+    @Column(name = "phone_number", nullable = false, length = 55)
     private String phoneNumber;
 
     @Size(max = 255)
@@ -69,27 +62,28 @@ public class User {
     @Column(name = "job")
     private String job;
 
-    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.PERSIST )
-    @JoinColumn(name = "Address_id")
-    private Address address;
-
     @NotNull
     @Lob
     @Column(name = "Gender", nullable = false)
-    private Gender gender;
+    private String gender;
 
-    @OneToMany(mappedBy = "user")
-    private Set<AllOrder> allOrders = new LinkedHashSet<>();
+    @Size(max = 16)
+    @NotNull
+    @Column(name = "Salt", nullable = false, length = 16)
+    private String salt;
 
-    @OneToMany(mappedBy = "user" , cascade = { CascadeType.REMOVE , CascadeType.PERSIST} )
-    private Set<Cart> carts = new LinkedHashSet<>();
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
 
+    @OneToMany
+    private Set<Order> orders = new LinkedHashSet<>();
 
-    @ManyToMany(mappedBy = "users" , cascade = {CascadeType.PERSIST , CascadeType.REMOVE})
+    @OneToOne(cascade = CascadeType.ALL)
+    private Cart cart;
+
+    @ManyToMany
     private Set<Category> categories = new LinkedHashSet<>();
-
-//    public  void  setPassword (String password){
-//        this.password = password;
-//    }
 
 }

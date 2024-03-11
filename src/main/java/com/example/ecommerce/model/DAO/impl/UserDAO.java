@@ -2,90 +2,41 @@ package com.example.ecommerce.model.DAO.impl;
 
 
 import com.example.ecommerce.model.DAO.Interface.UserDAOInt;
-import com.example.ecommerce.model.DAO.PersistenceManager;
 import com.example.ecommerce.model.entities.User;
 import jakarta.persistence.EntityManager;
 
+import java.util.Optional;
 
-public class UserDAO  implements UserDAOInt  {
 
-    public static EntityManager entityManager = PersistenceManager.getEntityManager();
+public class UserDAO implements UserDAOInt  {
 
-    public UserDAO() {
-    }
-
-    public boolean insert(User t) {
-      try {
-            entityManager.getTransaction().begin();
-            entityManager.persist(t);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-          e.printStackTrace();
-          return false;
-
-      }
-        return true;
-    }
-
-    public User get(long id) {
-        try {
-            return entityManager.find(User.class, id);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-
-    }
-
-    public boolean update(User t) {
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.merge(t);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    public boolean delete(User t) {
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.remove(t);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+    @Override
+    public void save(User user,EntityManager em) {
+        em.persist(user);
     }
 
     @Override
-    public boolean updatePassword(long id, String password) {
-       try {
-           entityManager.getTransaction().begin();
-           User user = entityManager.find(User.class, id);
-           user.setPassword(password);
-           entityManager.getTransaction().commit();
-       } catch (Exception e) {
-           e.printStackTrace();
-           return false;
-       }
-       return true;
+    public Optional<User> get(long id,EntityManager em) {
+        return Optional.ofNullable(em.find(User.class,id));
     }
 
     @Override
-    public boolean updatePhoneNumber(long id, String phoneNumber) {
-        try {
-            entityManager.getTransaction().begin();
-            User user = entityManager.find(User.class, id);
-            user.setPhoneNumber(phoneNumber);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
+    public void update(User user,EntityManager em) {
+        em.persist(user);
     }
+
+    @Override
+    public void delete(User user,EntityManager em) {
+        em.remove(user);
+    }
+
+//    @Override
+//    public boolean updatePassword(long id, String password,EntityManager em) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean updatePhoneNumber(long id, String phoneNumber,EntityManager em) {
+//        return false;
+//    }
 }

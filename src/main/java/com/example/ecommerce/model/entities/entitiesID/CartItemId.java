@@ -1,4 +1,4 @@
-package com.example.ecommerce.model.entities.entitesIDs;
+package com.example.ecommerce.model.entities.entitiesID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -13,28 +13,28 @@ import java.util.Objects;
 @Getter
 @Setter
 @Embeddable
-public class OrderItemId implements Serializable {
-    private static final long serialVersionUID = 3814697339503014257L;
+public class CartItemId implements Serializable {
+    private static final long serialVersionUID = -3983091436996416078L;
     @NotNull
-    @Column(name = "order_id", nullable = false)
-    private Long orderId;
+    @Column(name = "Cart_id", nullable = false)
+    private Integer cartId;
 
     @NotNull
     @Column(name = "product_id", nullable = false)
-    private Long productId;
+    private Integer productId;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        OrderItemId entity = (OrderItemId) o;
+        CartItemId entity = (CartItemId) o;
         return Objects.equals(this.productId, entity.productId) &&
-                Objects.equals(this.orderId, entity.orderId);
+                Objects.equals(this.cartId, entity.cartId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, orderId);
+        return Objects.hash(productId, cartId);
     }
 
 }

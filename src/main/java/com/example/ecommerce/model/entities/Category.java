@@ -17,7 +17,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Integer id;
 
     @Size(max = 45)
     @NotNull
@@ -26,10 +26,5 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     private Set<Product> products = new LinkedHashSet<>();
-
-    @ManyToMany
-    @JoinTable(name = "user_interest",
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> users = new LinkedHashSet<>();
 
 }

@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -20,7 +18,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Integer id;
 
     @Size(max = 255)
     @Column(name = "name")
@@ -37,8 +35,8 @@ public class Product {
     @Column(name = "Discount_percentage")
     private Byte discountPercentage;
 
-    @Column(name = "Aviliable_quantity")
-    private long aviliableQuantity;
+    @Column(name = "quantity")
+    private Integer availableQuantity;
 
     @Size(max = 255)
     @Column(name = "description")
@@ -47,11 +45,5 @@ public class Product {
     @Size(max = 45)
     @Column(name = "main_image_url", length = 45)
     private String mainImageUrl;
-
-    @OneToMany(mappedBy = "product")
-    private Set<CartItem> cartItems = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "product")
-    private Set<OrderItem> orderItems = new LinkedHashSet<>();
 
 }
