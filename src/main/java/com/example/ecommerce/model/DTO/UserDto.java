@@ -2,6 +2,8 @@ package com.example.ecommerce.model.DTO;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.Value;
 
 import java.io.Serializable;
@@ -39,7 +41,7 @@ public class UserDto implements Serializable {
     String gender;
     @NotNull
     @Size(max = 16)
-    String salt;
+    byte[] salt;
     @NotNull
     AddressDto address;
     Set<OrderDto> orders;

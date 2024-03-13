@@ -3,9 +3,11 @@ package com.example.ecommerce.model.mappers;
 import com.example.ecommerce.model.DTO.CategoryDto;
 import com.example.ecommerce.model.entities.Category;
 import org.mapstruct.*;
+import org.mapstruct.factory.Mappers;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.CDI)
 public interface CategoryMapper {
+    CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
     Category toEntity(CategoryDto categoryDto);
 
     CategoryDto toDto(Category category);

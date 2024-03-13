@@ -70,7 +70,7 @@ public class User {
     @Size(max = 16)
     @NotNull
     @Column(name = "Salt", nullable = false, length = 16)
-    private String salt;
+    private byte[] salt;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -85,5 +85,7 @@ public class User {
 
     @ManyToMany
     private Set<Category> categories = new LinkedHashSet<>();
+
+
 
 }

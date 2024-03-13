@@ -1,5 +1,7 @@
 package com.example.ecommerce.presentation.listeners;
 
+import com.example.ecommerce.model.entities.Cart;
+import com.example.ecommerce.model.entities.User;
 import jakarta.servlet.annotation.WebListener;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.HttpSessionEvent;
@@ -11,6 +13,12 @@ public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated( HttpSessionEvent sessionEvent ) {
         System.out.println( "Session created with id " + sessionEvent.getSession().getId() );
+        Cart cart = new Cart();
+        User user  = new User();
+        user.getCart().getCartItems().addAll(cart.getCartItems());
+        sessionEvent.getSession().setAttribute("cart", user.getCart() );
+        cart = null;
+        sessionEvent.getSession().setAttribute("cart", cart );
     }
 
     @Override
