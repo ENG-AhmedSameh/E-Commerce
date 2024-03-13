@@ -1,0 +1,100 @@
+ /* Style for login-register area */
+.login-register-area {
+            padding-top: 100px;
+}
+
+        /* Style for login-register wrapper */
+        .login-register-wrapper {
+            text-align: center;
+        }
+
+        /* Style for login-register tab list */
+        .login-register-tab-list {
+            margin-bottom: 30px;
+        }
+
+        /* Style for login-register tab list items */
+        .login-register-tab-list a {
+            display: inline-block;
+            margin-right: 20px;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Style for active tab */
+        .login-register-tab-list a.active h4 {
+            color: #ff5722;
+        }
+
+        /* Style for tab content */
+        .tab-content {
+            background-color: #f7f7f7;
+            padding: 30px;
+        }
+
+        /* Style for form container */
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        /* Style for form input fields */
+        .form-container input[type="text"],
+        .form-container input[type="password"],
+        .form-container input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Style for button box */
+        .button-box {
+            text-align: left;
+        }
+
+        /* Style for button */
+        .button-box button {
+            background-color: #ff5722;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style for button hover effect */
+        .button-box button:hover {
+            background-color: #e64a19;
+        }
+
+        /* Style for link within button box */
+        .button-box a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        /* Style for link within button box on hover */
+        .button-box a:hover {
+            color: #ff5722;
+        }
+
+        /* Style for horizontal separator */
+        .separator {
+            margin: 0 10px;
+            color: #333;
+        }
+        #lg2 {
+            display: none;
+        }
+        .center-content {
+    text-align: center;
+}
+

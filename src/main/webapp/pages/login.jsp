@@ -83,101 +83,64 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="../assets/css/util.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/login-registration.css" />
     <!--===============================================================================================-->
     <title>User Registration</title>
 </head>
 <body>
 <jsp:include page="header.jsp" />
-<section class="bg0 p-t-104 p-b-116">
+<!-- Content page -->
+<div class="login-register-area ptb-100">
     <div class="container">
-        <div class="flex-w flex-tr">
-            <div
-                    class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"
-            >
-                <form method="post" action="?controller=LoginController">
-                    <h4 class="mtext-105 cl2 txt-center p-b-30">Login!</h4>
-
-                    <div class="bor8 m-b-20 how-pos4-parent">
-                        <input
-                                class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
-                                type="text"
-                                name="email"
-                                placeholder="Your Email Address"
-                        />
-                        <img
-                                class="how-pos4 pointer-none"
-                                src="../assets/images/icons/icon-email.png"
-                                alt="ICON"
-                        />
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <a class="active" data-toggle="tab" href="#lg1" onclick="showLogin()" id="loginTab">
+                            <h4> Login </h4>
+                        </a>
+                        <span class="separator"> / </span>
+                        <a data-toggle="tab" href="#lg2" onclick="showRegister()" id="registerTab">
+                            <h4> Register </h4>
+                        </a>
                     </div>
-                    <div class="bor8 m-b-20 how-pos4-parent">
-                        <input
-                                class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
-                                type="password"
-                                name="password"
-                                placeholder="Your Password"
-                        />
-                        <img
-                                class="how-pos4 pointer-none"
-                                src="../assets/images/icons/icon-email.png"
-                                alt="ICON"
-                        />
-                    </div>
-                    <div id="error" class="mtext-105 cl2 txt-center p-b-30"></div>
-
-                    <button
-                            class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
-                    >
-                        LOGIN
-                    </button>
-                </form>
-            </div>
-
-            <div
-                    class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md"
-            >
-                <div class="flex-w w-full p-b-42">
-              <span class="fs-18 cl5 txt-center size-211">
-                <span class="lnr lnr-map-marker"></span>
-              </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2"> Address </span>
-
-                        <p class="stext-115 cl6 size-213 p-t-18">
-                            Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018
-                            US
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex-w w-full p-b-42">
-              <span class="fs-18 cl5 txt-center size-211">
-                <span class="lnr lnr-phone-handset"></span>
-              </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2"> Lets Talk </span>
-
-                        <p class="stext-115 cl1 size-213 p-t-18">+1 800 1236879</p>
-                    </div>
-                </div>
-
-                <div class="flex-w w-full">
-              <span class="fs-18 cl5 txt-center size-211">
-                <span class="lnr lnr-envelope"></span>
-              </span>
-
-                    <div class="size-212 p-t-2">
-                        <span class="mtext-110 cl2"> Sale Support </span>
-
-                        <p class="stext-115 cl1 size-213 p-t-18">contact@example.com</p>
+                    <div class="tab-content">
+                        <div id="lg1" class="tab-pane active">
+                            <div class="form-container">
+                                <form action="#" method="post">
+                                    <input type="text" name="user-name" placeholder="Username">
+                                    <input type="password" name="user-password" placeholder="Password">
+                                    <div class="button-box">
+                                        <div class="login-toggle-btn">
+                                            <input type="checkbox"> <label>Remember me</label>
+                                            <label class="login-toggle-btn center-content" >
+                                                <a href="#">Forgot Password?</a>
+                                            </label>
+                                        </div>
+                                        <button type="submit"><span>Login</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="lg2" class="tab-pane">
+                            <div class="form-container">
+                                <form action="#" method="post">
+                                    <input type="text" name="user-name" placeholder="Username">
+                                    <input type="password" name="user-password" placeholder="Password">
+                                    <input name="user-email" placeholder="Email" type="email">
+                                    <div class="button-box">
+                                        <button type="submit"><span>Register</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+
 <jsp:include page="footer.jsp" />
 </body>
 
@@ -190,6 +153,8 @@
 <script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 <script src="../assets/vendor/select2/select2.min.js"></script>
+
+
 <script>
     $(".js-select2").each(function () {
         $(this).select2({
@@ -225,4 +190,5 @@
 <script src="../assets/js/map-custom.js"></script>
 <!--===============================================================================================-->
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/login-registration.js"></script>
 </html>
