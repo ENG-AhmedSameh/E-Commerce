@@ -49,4 +49,9 @@ public class UserServices {
         UserDAO userDAO = new UserDAO();
         return Database.doInTransaction(em -> userDAO.getUserByEmail(email, em)) == null;
     }
+
+    public static void updateUser(User user) {
+        UserDAO userDAO = new UserDAO();
+        Database.doInTransactionWithoutResult(em -> userDAO.update(user, em));
+    }
 }
