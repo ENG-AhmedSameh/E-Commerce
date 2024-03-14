@@ -124,10 +124,24 @@
                         </div>
                         <div id="lg2" class="tab-pane">
                             <div class="form-container">
-                                <form action="#" method="post">
-                                    <input type="text" name="user-name" placeholder="Username">
-                                    <input type="password" name="user-password" placeholder="Password">
-                                    <input name="user-email" placeholder="Email" type="email">
+                                <form id="registrationForm" action="#" method="post">
+                                    <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+                                    <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+                                    <input type="text" id="user_name" name="user_name" placeholder="Username" required>
+                                    <input type="date" id="birthday" name="birthday" placeholder="Birthday" required>
+                                    <input type="password" id="Password" name="Password" placeholder="Password" required>
+                                    <input type="text" id="job" name="job" placeholder="Job" required>
+                                    <input type="email" id="email" name="email" placeholder="Email" required>
+                                    <input type="tel" id="phone_number" name="phone_number" placeholder="Phone Number" required>
+                                    <input type="text" id="creditLimit" name="creditLimit" placeholder="Credit Limit" required maxlength="16">
+                                    <input type="text" id="address" name="address" placeholder="Address" required>
+                                    <input type="text" id="interests" name="interests" placeholder="Interests" required>
+                                    <div class="gender-container">
+                                        <input type="radio" id="female" name="gender" value="female" required>
+                                        <label for="female">Female</label><br>
+                                        <input type="radio" id="male" name="gender" value="male" required>
+                                        <label for="male">Male</label>
+                                    </div>
                                     <div class="button-box">
                                         <button type="submit"><span>Register</span></button>
                                     </div>
