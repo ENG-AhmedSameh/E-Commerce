@@ -13,12 +13,7 @@ public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated( HttpSessionEvent sessionEvent ) {
         System.out.println( "Session created with id " + sessionEvent.getSession().getId() );
-        Cart cart = new Cart();
-        User user  = new User();
-        user.getCart().getCartItems().addAll(cart.getCartItems());
-        sessionEvent.getSession().setAttribute("cart", user.getCart() );
-        cart = null;
-        sessionEvent.getSession().setAttribute("cart", cart );
+
     }
 
     @Override

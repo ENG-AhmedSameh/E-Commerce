@@ -4,6 +4,8 @@ package com.example.ecommerce.model.DAO.impl;
 import com.example.ecommerce.model.DAO.Interface.UserDAOInt;
 import com.example.ecommerce.model.entities.User;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 
 import java.util.Optional;
 
@@ -30,13 +32,24 @@ public class UserDAO implements UserDAOInt  {
         em.remove(user);
     }
 
-//    @Override
-//    public boolean updatePassword(long id, String password,EntityManager em) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean updatePhoneNumber(long id, String phoneNumber,EntityManager em) {
-//        return false;
-//    }
+    @Override
+    public User getUserByEmail(String email, EntityManager em) {
+        try {
+            Query query = em.createQuery("select u from User u where u.email=:email");
+            query.setParameter("email", email);
+            return (User) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public User getUserByUsername(String username, EntityManager em) {
+        try {
+            Query query = em.createQuery("select u from User u where u.userName=:username");
+            query.setParameter("username", username);
+            return (User) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 }
