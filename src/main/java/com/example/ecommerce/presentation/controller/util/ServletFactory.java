@@ -1,22 +1,28 @@
 package com.example.ecommerce.presentation.controller.util;
 
+import com.example.ecommerce.presentation.controller.LoginRegisterController;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class ServletFactory {
+    // class contents.. list of all controllers
 
-    public ServletFactory() {
+        private static final Map<String, ServletResolverInt> controllers = new HashMap<>();
 
-    }
+        static {
+            // Initialize the controllers map here
+             controllers.put("Login&register", new LoginRegisterController());
 
-    public ServletResolverInt getController(final String controllerName) {
-
-        switch (controllerName) {
-//            case "news":
-//                return new NewsController();
-//            case "about":
-//                return new AboutController();
-//            case "blog":
-//                return new BlogController();
-//            default:
         }
-        return null;
-    }
+
+    // private constructor to prevent instantiation
+        private ServletFactory() {
+        }
+
+        // method to get the controller
+        public static ServletResolverInt getController(final String controllerName) {
+            return controllers.get(controllerName);
+        }
 }
+
