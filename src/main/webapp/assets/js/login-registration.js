@@ -11,3 +11,4 @@ function showRegister() {
             document.getElementById('loginTab').classList.remove('active');
             document.getElementById('registerTab').classList.add('active');
  }
+

@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class FrontController extends HttpServlet {
 
-    private static final String CONTROLLER_NAME = "controller";
+    private static final String CONTROLLER_NAME = "Page";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,8 +31,8 @@ public class FrontController extends HttpServlet {
         String controllerName = request.getParameter(CONTROLLER_NAME);
         System.out.println(" Controller is: " + controllerName);
 
-        ServletFactory servletFactory = new ServletFactory();
-        ServletResolverInt servletResolverInt = servletFactory.getController(controllerName);
+
+        ServletResolverInt servletResolverInt = ServletFactory.getController(controllerName);
         ViewResolver resolver = servletResolverInt.resolve(request, response);
         dispatch(request, response, resolver);
     }
