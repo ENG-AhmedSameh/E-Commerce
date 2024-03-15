@@ -1,3 +1,12 @@
+
+<% if (session.getAttribute("user") != null) { %>
+    <script>
+        var loginPageElement = document.getElementById("loginPage");
+        loginPageElement.style.pointerEvents = "none";
+        loginPageElement.style.userSelect = "none";
+    </script>
+<% } %>
+
 <header class="header-v4">
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
@@ -33,7 +42,7 @@
 
 					<!-- Logo desktop -->
 					<a href="#" class="logo">
-						<img src="../assets/images/icons/logo-01.png" alt="IMG-LOGO">
+						<img src="assets/images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
@@ -41,11 +50,7 @@
 						<ul class="main-menu">
 							<li>
 								<a href="../index.html">Home</a>
-								<ul class="sub-menu">
-									<li><a href="../index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
-								</ul>
+
 							</li>
 
 							<li class="active-menu">
@@ -67,8 +72,8 @@
 							<li>
 								<a href="Front?Page=">Contact</a>
 							</li>
-							<li>
-                            	<a href="front?page=login">Login/register</a>
+							<li id = "loginPage">
+                            	<a href="front?page=login">Login/Register</a>
                             </li>
 						</ul>
 					</div>
@@ -155,35 +160,34 @@
 			<ul class="main-menu-m">
 				<li>
 					<a href="../index.html">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="../index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
-					</ul>
+
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
 				</li>
 
 				<li>
-					<a href="product.html">Shop</a>
+					<a href="Front?Page=">Shop</a>
 				</li>
 
 				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="Front?Page=" class="label1 rs1" data-label1="hot">Features</a>
 				</li>
 
 				<li>
-					<a href="blog.html">Blog</a>
+					<a href="Front?Page=">Blog</a>
 				</li>
 
 				<li>
-					<a href="about.html">About</a>
+					<a href="Front?Page=">About</a>
 				</li>
 
 				<li>
-					<a href="contact.html">Contact</a>
+					<a href="Front?Page=">Contact</a>
 				</li>
+				<li id="loginPage">
+                	<a href="front?page=login">Login/Register</a>
+                </li>
 			</ul>
 		</div>
 
