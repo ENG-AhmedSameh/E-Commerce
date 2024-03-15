@@ -1,5 +1,6 @@
 package com.example.ecommerce.presentation.controller;
 
+import com.example.ecommerce.model.DTO.LoggedInUserDto;
 import com.example.ecommerce.model.DTO.UserDto;
 import com.example.ecommerce.model.services.UserServices;
 import com.example.ecommerce.presentation.controller.util.PAGES;
@@ -39,10 +40,10 @@ public class LoginController implements ServletResolverInt {
         String password = req.getParameter("password");
         System.out.println("username: " + username + " password: " + password);
         ViewResolver viewResolver = new ViewResolver();
-        UserDto userDto = UserServices.loginUser(username, password);
-        if (userDto != null) {
+        LoggedInUserDto loggedInUserDto = UserServices.loginUser(username, password);
+        if (loggedInUserDto != null) {
             HttpSession session = req.getSession(true);
-            session.setAttribute("currentUser", userDto);
+            session.setAttribute("currentUser", loggedInUserDto);
             viewResolver.redirect(PAGES.HOME.getValue());
         } else {
             viewResolver.forward(PAGES.LOGIN.getValue());

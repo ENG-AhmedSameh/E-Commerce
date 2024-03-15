@@ -30,7 +30,6 @@ public class FrontController extends HttpServlet {
         String controllerName = request.getParameter(CONTROLLER_NAME);
         System.out.println(" Controller is: " + controllerName);
 
-
         ServletResolverInt servletResolverInt = ServletFactory.getController(controllerName);
         ViewResolver resolver = servletResolverInt.resolve(request, response);
         dispatch(request, response, resolver);
@@ -45,9 +44,11 @@ public class FrontController extends HttpServlet {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(view);
                 dispatcher.forward(request, response);
                 break;
+
             case REDIRECT:
                 response.sendRedirect(view);
                 break;
+
             default:
                 break;
         }

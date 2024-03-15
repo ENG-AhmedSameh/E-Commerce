@@ -1,7 +1,9 @@
 package com.example.ecommerce.presentation.controller;
 
 import com.example.ecommerce.model.DTO.CartDto;
+import com.example.ecommerce.model.DTO.LoggedInUserDto;
 import com.example.ecommerce.model.DTO.UserDto;
+import com.example.ecommerce.model.mappers.LoggedInUserMapper;
 import com.example.ecommerce.model.services.UserServices;
 import com.example.ecommerce.presentation.controller.util.PAGES;
 import com.example.ecommerce.presentation.controller.util.ServletResolverInt;
@@ -22,8 +24,7 @@ public class SignUpController implements ServletResolverInt {
     }
 
 
-
-    protected ViewResolver doPost(HttpServletRequest req, HttpServletResponse resp)  {
+    protected ViewResolver doPost(HttpServletRequest req, HttpServletResponse resp) {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String firstname = req.getParameter("firstname");
@@ -36,14 +37,14 @@ public class SignUpController implements ServletResolverInt {
         String city = req.getParameter("city");
         String street = req.getParameter("street");
 
-        UserDto userDto = new UserDto(null,username,password,firstname,lastname,phone,email,creditLimit,job,gender, city,street ,null,null/*,null,null*/);
+        UserDto userDto = new UserDto(null,username,password,firstname,lastname,phone,email,creditLimit,job,gender, city,street ,null,null,null,null);
 
         System.out.println("username: " + username );
-        userDto = UserServices.registerNewUser(userDto);
+        LoggedInUserDto loggedInUser = UserServices.registerNewUser(userDto);
         ViewResolver viewResolver = new ViewResolver();
-        if (userDto != null) {
+        if (loggedInUser != null) {
             HttpSession session = req.getSession(true);
-            session.setAttribute("currentUser", userDto);
+            session.setAttribute("currentUser", loggedInUser);
            viewResolver.redirect(PAGES.HOME.getValue());
         } else {
             viewResolver.redirect(PAGES.LOGIN.getValue());

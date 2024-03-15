@@ -38,4 +38,7 @@ public class ViewResolver {
         setView(view);
         resolveAction = ResolveAction.REDIRECT;
     }
+    public void sendOnlyResponse() {
+        resolveAction = ResolveAction.ONLY_RESPONSE;
+    }
 }

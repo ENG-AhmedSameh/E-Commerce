@@ -1,5 +1,6 @@
 package com.example.ecommerce.presentation.controller.util;
 
+import com.example.ecommerce.presentation.controller.CheckUserNameAvailabilityController;
 import com.example.ecommerce.presentation.controller.LoginController;
 import com.example.ecommerce.presentation.controller.SignUpController;
 
@@ -15,6 +16,7 @@ public class ServletFactory {
             // Initialize the controllers map here
              controllers.put("login", new LoginController());
              controllers.put("registration", new SignUpController());
+             controllers.put("checkUserName",new CheckUserNameAvailabilityController());
         }
 
         // private constructor to prevent instantiation

@@ -85,9 +85,14 @@ public class User {
     @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL)
     private Cart cart;
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-    //    private Set<Category> categories = new LinkedHashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_interest",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categories = new LinkedHashSet<>();
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private Set<Order> orders = new LinkedHashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Order> orders = new LinkedHashSet<>();
 }

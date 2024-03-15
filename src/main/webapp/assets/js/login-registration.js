@@ -57,7 +57,7 @@ function postData(event) {
             if (response === "valid") {
                 label.textContent = ""; // clear the warning message
             } else {
-                label.textContent = "Username already exists. Please choose another one.";
+                label.textContent = "Username already exists!!";
             }
         }
     };
