@@ -17,10 +17,10 @@ public class SignUpController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false);
-        if (session != null && session.getAttribute("currentUser") != null)
-            resp.sendRedirect("index.html");
-        //resp.sendRedirect("register.html");
+//        HttpSession session = req.getSession(false);
+//        if (session != null && session.getAttribute("currentUser") != null)
+//            resp.sendRedirect("index.html");
+//        //resp.sendRedirect("register.html");
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

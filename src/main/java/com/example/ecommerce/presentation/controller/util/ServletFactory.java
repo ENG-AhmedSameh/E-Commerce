@@ -1,6 +1,6 @@
 package com.example.ecommerce.presentation.controller.util;
 
-import com.example.ecommerce.presentation.controller.LoginRegisterController;
+import com.example.ecommerce.presentation.controller.LoginServlet;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,11 +12,10 @@ public class ServletFactory {
 
         static {
             // Initialize the controllers map here
-             controllers.put("Login&register", new LoginRegisterController());
-
+             controllers.put("Login", new LoginServlet());
         }
 
-    // private constructor to prevent instantiation
+        // private constructor to prevent instantiation
         private ServletFactory() {
         }
 
