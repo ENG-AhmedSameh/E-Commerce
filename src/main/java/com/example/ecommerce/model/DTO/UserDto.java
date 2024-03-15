@@ -39,11 +39,15 @@ public class UserDto implements Serializable {
     String job;
     @NotNull
     String gender;
+
+    @NotNull
+    String city;
+    @NotNull
+    String street;
+
     @NotNull
     @Size(max = 16)
     byte[] salt;
-    @NotNull
-    AddressDto address;
     Set<OrderDto> orders;
     CartDto cart;
     Set<CategoryDto> categories;

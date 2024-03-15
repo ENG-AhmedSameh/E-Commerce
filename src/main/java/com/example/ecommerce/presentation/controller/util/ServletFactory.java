@@ -1,6 +1,7 @@
 package com.example.ecommerce.presentation.controller.util;
 
 import com.example.ecommerce.presentation.controller.LoginController;
+import com.example.ecommerce.presentation.controller.SignUpController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ public class ServletFactory {
         static {
             // Initialize the controllers map here
              controllers.put("login", new LoginController());
+             controllers.put("registration", new SignUpController());
         }
 
         // private constructor to prevent instantiation

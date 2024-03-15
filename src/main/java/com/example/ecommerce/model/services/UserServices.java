@@ -15,8 +15,8 @@ public class UserServices {
         User user = UserMapper.INSTANCE.toEntity(userDto);
         user.setPassword(hashedPassword);
         user.setSalt(salt);
-        Cart cart = new Cart();
-        user.setCart(cart);
+//        Cart cart = new Cart();
+//        user.setCart(cart);
         UserDAO userDAO = new UserDAO();
         Database.doInTransactionWithoutResult(em ->
                 userDAO.save(user, em)

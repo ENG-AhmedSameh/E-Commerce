@@ -87,7 +87,7 @@
         }
 
         /* Style for horizontal separator */
-        .separator {
+        .separator-line {
             margin: 0 10px;
             color: #333;
         }
@@ -98,3 +98,8 @@
     text-align: center;
 }
 
+  .separator {
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }

@@ -99,7 +99,7 @@
                         <a class="active" data-toggle="tab" href="#lg1" onclick="showLogin()" id="loginTab">
                             <h4> Login </h4>
                         </a>
-                        <span class="separator"> / </span>
+                        <span class="separator-line"> / </span>
                         <a data-toggle="tab" href="#lg2" onclick="showRegister()" id="registerTab">
                             <h4> Register </h4>
                         </a>
@@ -124,24 +124,38 @@
                         </div>
                         <div id="lg2" class="tab-pane">
                             <div class="form-container">
-                                <form id="registrationForm" action="#" method="post">
-                                    <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
-                                    <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
-                                    <input type="text" id="user_name" name="user_name" placeholder="Username" required>
-                                    <input type="date" id="birthday" name="birthday" placeholder="Birthday" required>
-                                    <input type="password" id="Password" name="Password" placeholder="Password" required>
-                                    <input type="text" id="job" name="job" placeholder="Job" required>
+                                <form id="registrationForm" action="front?page=registration" method="post">
+                                    <input type="text" id="first_name" name="firstname" placeholder="First Name" required>
+                                    <input type="text" id="last_name" name="lastname" placeholder="Last Name" required>
+                                    <input type="text" id="user_name" name="username" placeholder="Username" required>
+
+                                    <input type="password" id="Password" name="password" placeholder="Password" required>
+                                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+
+                                    <input type="text" id="job" name="job" placeholder="Job" >
                                     <input type="email" id="email" name="email" placeholder="Email" required>
-                                    <input type="tel" id="phone_number" name="phone_number" placeholder="Phone Number" required>
-                                    <input type="text" id="creditLimit" name="creditLimit" placeholder="Credit Limit" required maxlength="16">
-                                    <input type="text" id="address" name="address" placeholder="Address" required>
-                                    <input type="text" id="interests" name="interests" placeholder="Interests" required>
-                                    <div class="gender-container">
-                                        <input type="radio" id="female" name="gender" value="female" required>
-                                        <label for="female">Female</label><br>
-                                        <input type="radio" id="male" name="gender" value="male" required>
-                                        <label for="male">Male</label>
-                                    </div>
+                                    <input type="tel" id="phone_number" name="phoneNumber" placeholder="Phone Number" required>
+                                    <input type="text" id="creditLimit" name="creditLimit" placeholder="Credit Limit" required maxlength="7">
+                                    <input type="text" id="City" name="city" placeholder="City" required>
+                                    <input type="text" id="Street" name="street" placeholder="Street" required>
+
+                                         <div class="separator">
+                                                   <input type="checkbox" id="thing1" name="selectedThing" value="Phones">
+                                                   <label for="thing1">Phones</label>
+                                                   <input type="checkbox" id="thing2" name="selectedThing" value="Laptops">
+                                                   <label for="thing2">Laptops</label>
+                                                   <input type="checkbox" id="thing3" name="selectedThing" value="Tablets">
+                                                   <label for="thing3">Tablets</label>
+                                               </div>
+
+                                              <span class="separator"></span>
+                                               <div class="separator">
+                                                   <input type="radio" id="female" name="gender" value="F" required>
+                                                   <label for="female">Female</label><br>
+                                                   <input type="radio" id="male" name="gender" value="M" required>
+                                                   <label for="male">Male</label>
+                                               </div>
+
                                     <div class="button-box">
                                         <button type="submit"><span>Register</span></button>
                                     </div>

@@ -67,20 +67,26 @@ public class User {
     @Column(name = "Gender", nullable = false)
     private String gender;
 
+    @Column(name = "City", nullable = false, length = 45)
+    @NotNull
+    private String City;
+
+    @Column(name = "Street", nullable = false, length = 255)
+    @NotNull
+    private String Street;
+
+
     @Size(max = 16)
     @NotNull
     @Column(name = "Salt", nullable = false, length = 16)
     private byte[] salt;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "address_id", nullable = false)
-    private Address address;
 
     @OneToMany
     private Set<Order> orders = new LinkedHashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
+//    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Cart cart;
 
     @ManyToMany
