@@ -15,8 +15,9 @@ public class UserServices {
         User user = UserMapper.INSTANCE.toEntity(userDto);
         user.setPassword(hashedPassword);
         user.setSalt(salt);
-//        Cart cart = new Cart();
-//        user.setCart(cart);
+        Cart cart = new Cart();
+        user.setCart(cart);
+        cart.setOwner(user);
         UserDAO userDAO = new UserDAO();
         Database.doInTransactionWithoutResult(em ->
                 userDAO.save(user, em)
@@ -24,10 +25,10 @@ public class UserServices {
         return UserMapper.INSTANCE.toDto(user);
     }
 
-    public static UserDto loginUser(String email, String password) {
+    public static UserDto loginUser(String userName, String password) {
         UserDAO userDAO = new UserDAO();
         User loggedUser = Database.doInTransaction(em -> {
-            User user = userDAO.getUserByEmail(email, em);
+            User user = userDAO.getUserByUsername(userName, em);
             if (user == null)
                 return null;
             String hashedPassword = user.getPassword();

@@ -34,6 +34,7 @@ public class LoginController implements ServletResolverInt {
     }
 
     private ViewResolver doPost(HttpServletRequest req, HttpServletResponse resp){
+        System.out.println("login doPost");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         System.out.println("username: " + username + " password: " + password);

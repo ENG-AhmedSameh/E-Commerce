@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -24,10 +26,10 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "Category_id", nullable = false)
-    private Category category;
+//    @NotNull
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "Category_id", nullable = true)
+//    private Category category;
 
     @Column(name = "price", precision = 9, scale = 2)
     private BigDecimal price;
@@ -45,5 +47,8 @@ public class Product {
     @Size(max = 45)
     @Column(name = "main_image_url", length = 45)
     private String mainImageUrl;
+
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<CartItem> cartItems = new HashSet<>();
 
 }

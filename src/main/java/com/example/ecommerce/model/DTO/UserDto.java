@@ -8,6 +8,7 @@ import lombok.Value;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -48,7 +49,7 @@ public class UserDto implements Serializable {
     @NotNull
     @Size(max = 16)
     byte[] salt;
-    Set<OrderDto> orders;
+//    Set<OrderDto> orders;
     CartDto cart;
-    Set<CategoryDto> categories;
+//    Set<CategoryDto> categories;
 }

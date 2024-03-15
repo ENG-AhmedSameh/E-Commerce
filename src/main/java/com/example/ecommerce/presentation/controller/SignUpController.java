@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 
 
 public class SignUpController implements ServletResolverInt {
@@ -35,9 +36,7 @@ public class SignUpController implements ServletResolverInt {
         String city = req.getParameter("city");
         String street = req.getParameter("street");
 
-        CartDto cartDto = new CartDto(null,null);
-        UserDto userDto = new UserDto(null,username,password,firstname,lastname,email,phone,creditLimit,job,gender, city,street ,null,null,cartDto,null);
-
+        UserDto userDto = new UserDto(null,username,password,firstname,lastname,phone,email,creditLimit,job,gender, city,street ,null,null/*,null,null*/);
 
         System.out.println("username: " + username );
         userDto = UserServices.registerNewUser(userDto);

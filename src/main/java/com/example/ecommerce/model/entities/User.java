@@ -75,23 +75,19 @@ public class User {
     @NotNull
     private String Street;
 
-
     @Size(max = 16)
     @NotNull
-    @Column(name = "Salt", nullable = false, length = 16)
+    @Column(name = "Salt", nullable = true, length = 16)
     private byte[] salt;
 
 
-    @OneToMany
-    private Set<Order> orders = new LinkedHashSet<>();
 
-//    @OneToOne(cascade = CascadeType.ALL)
-    @OneToOne
+    @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL)
     private Cart cart;
 
-    @ManyToMany
-    private Set<Category> categories = new LinkedHashSet<>();
+//    @ManyToMany(fetch = FetchType.LAZY)
+    //    private Set<Category> categories = new LinkedHashSet<>();
 
-
-
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<Order> orders = new LinkedHashSet<>();
 }
