@@ -5,15 +5,11 @@ import com.example.ecommerce.model.services.UserServices;
 import com.example.ecommerce.presentation.controller.util.PAGES;
 import com.example.ecommerce.presentation.controller.util.ServletResolverInt;
 import com.example.ecommerce.presentation.controller.util.ViewResolver;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import java.io.IOException;
-
-public class LoginServlet implements ServletResolverInt {
+public class LoginController implements ServletResolverInt {
     @Override
     public ViewResolver resolve(HttpServletRequest request, HttpServletResponse response) {
         String methodType = request.getMethod();
@@ -29,18 +25,10 @@ public class LoginServlet implements ServletResolverInt {
         ViewResolver viewResolver = new ViewResolver();
         System.out.println("LoginServlet doGet");
         HttpSession session = req.getSession(false);
-        if (session != null && session.getAttribute("currentUser") != null) {
+        if (session != null && session.getAttribute("currentUser") != null)
             viewResolver.redirect(PAGES.HOME.getValue());
-            System.out.println("LoginServlet doGet if");
-        }
-        else {
-            String PAGES_LOGIN = PAGES.LOGIN.getValue();
-            System.out.println(PAGES_LOGIN);
-            viewResolver.redirect(PAGES_LOGIN);
-
-            System.out.println("LoginServlet doGet else");
-        }
-
+        else
+            viewResolver.forward(PAGES.LOGIN.getValue());
 
         return viewResolver;
     }
@@ -56,7 +44,7 @@ public class LoginServlet implements ServletResolverInt {
             session.setAttribute("currentUser", userDto);
             viewResolver.redirect(PAGES.HOME.getValue());
         } else {
-            viewResolver.redirect(PAGES.LOGIN.getValue());
+            viewResolver.forward(PAGES.LOGIN.getValue());
         }
         return viewResolver;
     }

@@ -3,7 +3,7 @@ package com.example.ecommerce.presentation.controller.util;
 public enum PAGES {
 
     HOME("home", "index.html"),
-    LOGIN("login", "pages/login-register.jsp");
+    LOGIN("login", "/pages/login-register.jsp");
 
     private final String key;
     private final String value;
