@@ -12,7 +12,7 @@ public class ServletFactory {
 
         static {
             // Initialize the controllers map here
-             controllers.put("Login", new LoginServlet());
+             controllers.put("login", new LoginServlet());
         }
 
         // private constructor to prevent instantiation

@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class FrontController extends HttpServlet {
 
-    private static final String CONTROLLER_NAME = "Page";
+    private static final String CONTROLLER_NAME = "page";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

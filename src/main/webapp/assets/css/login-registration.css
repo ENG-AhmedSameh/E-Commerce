@@ -46,10 +46,6 @@
         /* Style for form input fields */
         .form-container input[type="text"],
         .form-container input[type="password"],
-        .form-container input[type="date"],
-        .form-container input[type="tel"],
-        /*.form-container input[type="radio"],*/
-        .form-container input[type="date"],
         .form-container input[type="email"] {
             width: 100%;
             padding: 10px;
@@ -102,16 +98,3 @@
     text-align: center;
 }
 
- /*Style for gender*/
- /* Style for container */
-  .gender-container {
-      display: flex;
-      align-items: flex-start;
-      flex-direction: column;
-
-  }
-
- /* Style for radio buttons */
- .gender-container input[type="radio"] {
-     margin-right: 5px; /* Adjust margin between radio buttons and labels */
- }

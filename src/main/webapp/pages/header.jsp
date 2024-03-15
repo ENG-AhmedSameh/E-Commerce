@@ -68,7 +68,7 @@
 								<a href="Front?Page=">Contact</a>
 							</li>
 							<li>
-                            	<a href="Front?Page=Login&register">Login/register</a>
+                            	<a href="front?page=login">Login/register</a>
                             </li>
 						</ul>
 					</div>
