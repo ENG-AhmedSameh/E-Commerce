@@ -1,8 +1,6 @@
 package com.example.ecommerce.presentation.controller.util;
 
-import com.example.ecommerce.presentation.controller.CheckUserNameAvailabilityController;
-import com.example.ecommerce.presentation.controller.LoginController;
-import com.example.ecommerce.presentation.controller.SignUpController;
+import com.example.ecommerce.presentation.controller.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +15,8 @@ public class ServletFactory {
              controllers.put("login", new LoginController());
              controllers.put("registration", new SignUpController());
              controllers.put("checkUserName",new CheckUserNameAvailabilityController());
+             controllers.put("checkEmail",new checkEmailAvailabilityController());
+             controllers.put("home", new HomeController());
         }
 
         // private constructor to prevent instantiation

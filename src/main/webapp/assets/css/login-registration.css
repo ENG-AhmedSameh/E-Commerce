@@ -1,5 +1,3 @@
-/* Global styles */
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -140,3 +138,31 @@ body {
 .col-lg-7 {
     margin-top: 50px;
 }
+
+   .line-custom {
+            margin-bottom: 10px; /* Add margin at the bottom for spacing */
+        }
+
+        .line input[type="email"] {
+            width: calc(100% - 80px); /* Set the width of the email input */
+            display: inline-block; /* Display inline to appear in the same line */
+        }
+
+        .line .error {
+            display: inline-block; /* Display inline to appear in the same line */
+            width: 80px; /* Set the width of the error message span */
+            color: red; /* Example: set color to red */
+            margin-left: 10px; /* Add margin-left for spacing between input and error message */
+        }
+
+        .separator input[type="checkbox"],
+        .separator input[type="radio"] {
+            margin-right: 1px; /* Adjust the spacing between the input and label */
+            transform: scale(1.2); /* Increase the size of the checkbox/radio button */
+        }
+
+        .separator label {
+            display: inline-block; /* Ensure labels appear in a line */
+            margin-right: 5px; /* Adjust spacing between labels */
+            vertical-align: middle; /* Align labels vertically with inputs */
+        }

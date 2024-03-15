@@ -14,59 +14,86 @@ function showRegister() {
 
 }
 
-function postData(event) {
+////// email validation
+function postEmailData(){
     event.preventDefault();
     var xmlhttp;
-    if (window.XMLHttpRequest) {
+    var label = document.getElementById("emailError");
+
+    if(window.XMLHttpRequest){
         xmlhttp = new XMLHttpRequest();
-    } else if (window.ActiveXObject) {
+    }else if(window.ActiveXObject){
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            var label = document.getElementById("emailWarning");
+    xmlhttp.onreadystatechange = function(){
+
+        if(xmlhttp.readyState===4 && xmlhttp.status===200){
+
             var response = xmlhttp.responseText;
-            if (response === "valid") {
-                label.textContent = ""; // clear the warning message
-            } else {
-                label.textContent = "Username already exists. Please choose another one.";
+            if(response=="valid"){
+                label.textContent = xmlhttp.responseText;
+                label.style.color = "green";
+            }else{
+                label.textContent = xmlhttp.responseText;
+                label.style.color = "red";
+            }
+
+        }
+
+    };
+
+    var url="front?page=checkEmail";
+    var myvalue = document.getElementById("user_email").value;
+
+    console.log("label"+label.textContent);
+    console.log("email"+myvalue);
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("email="+myvalue);
+}
+
+
+////// user name validation
+function posUserNametData(){
+    event.preventDefault();
+    var xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }else if(window.ActiveXObject){
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function(){
+
+        if(xmlhttp.readyState===4 && xmlhttp.status===200){
+            var label = document.getElementById("usernameError");
+            var response = xmlhttp.responseText;
+            if(response==="valid"){
+                label.textContent = xmlhttp.responseText;
+                label.style.color = "green";
+            }else{
+                label.textContent = xmlhttp.responseText;
+                label.style.color = "red";
             }
         }
     };
 
+    url="front?page=checkUserName";
+    myvalue = document.getElementById("user_name").value;
 
-    xmlhttp.open("POST", "checkEmailAvailabilityController", true);
+    xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send(formData);
+    xmlhttp.send("username="+myvalue);
+
 }
 
-function postData(event) {
-    event.preventDefault();
-    var xmlhttp;
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    } else if (window.ActiveXObject) {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            var label = document.getElementById("usernameWarning");
-            var response = xmlhttp.responseText;
-            if (response === "valid") {
-                label.textContent = ""; // clear the warning message
-            } else {
-                label.textContent = "Username already exists!!";
-            }
-        }
-    };
 
 
-    xmlhttp.open("POST", "CheckUserNameAvailabilityController ", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send(formData);
-}
+
+
+
+
 
 // Add event listener for form submission
 document.addEventListener('DOMContentLoaded', function() {

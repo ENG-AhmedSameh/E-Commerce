@@ -32,6 +32,7 @@ public class FrontController extends HttpServlet {
 
         ServletResolverInt servletResolverInt = ServletFactory.getController(controllerName);
         ViewResolver resolver = servletResolverInt.resolve(request, response);
+        System.out.println("View is: " + resolver.getView());
         dispatch(request, response, resolver);
     }
 

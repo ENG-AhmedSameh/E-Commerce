@@ -1,12 +1,3 @@
-
-<% if (session.getAttribute("user") != null) { %>
-    <script>
-        var loginPageElement = document.getElementById("loginPage");
-        loginPageElement.style.pointerEvents = "none";
-        loginPageElement.style.userSelect = "none";
-    </script>
-<% } %>
-
 <header class="header-v4">
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
@@ -49,33 +40,36 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="../index.html">Home</a>
+								<a href="front?page=home">Home</a>
 
 							</li>
 
 							<li class="active-menu">
-								<a href="Front?Page=">Shop</a>
+								<a href="front?page=">Shop</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="Front?Page=l">Features</a>
+								<a href="front?page=">Features</a>
 							</li>
 
 							<li>
-								<a href="Front?Page=">Blog</a>
+								<a href="front?page=">Blog</a>
 							</li>
 
 							<li>
-								<a href="Front?Page=">About</a>
+								<a href="front?page=">About</a>
 							</li>
 
 							<li>
-								<a href="Front?Page=">Contact</a>
+								<a href="front?page=">Contact</a>
 							</li>
 							<li id = "loginPage">
                             	<a href="front?page=login">Login/Register</a>
                             </li>
 						</ul>
+
+
+
 					</div>
 
 					<!-- Icon header -->

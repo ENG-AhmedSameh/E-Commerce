@@ -41,7 +41,7 @@
     <jsp:include page="header.jsp" />
     <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
         <h2 class="ltext-105 cl0 txt-center">
-            About
+            Login - Register
         </h2>
     </section>
 
@@ -89,21 +89,25 @@
                                         </div>
 
                                         <div class="line">
-                                            <input type="text" id="user_name" name="username" placeholder="Username"
+                                            <input type="text" class="line-custom" id="user_name" name="username" onblur="posUserNametData();" placeholder="Username"
                                                 required>
-                                            <input type="text" id="job" name="job" placeholder="Job">
+                                            <span id="usernameError" class="error"></span>
                                         </div>
                                         <div class="line">
                                             <input type="text" id="City" name="city" placeholder="City" required>
                                             <input type="text" id="Street" name="street" placeholder="Street" required>
                                         </div>
 
-                                        <input type="email" id="email" name="email" placeholder="Email" required>
+                                        <div class="line">
+                                        <input type="email" class="line-custom" id="user_email" name="email" placeholder="Email" onblur="postEmailData();" required>
+                                        <span id="emailError" class="error"></span>
+                                        </div>
+
                                         <div class="block-input">
                                             <input type="tel" id="phone_number" name="phoneNumber"
                                                 placeholder="Phone Number" required>
                                         </div>
-
+                                         <input type="text" id="job" name="job" placeholder="Job">
                                         <input type="text" id="creditLimit" name="creditLimit"
                                             placeholder="Credit Limit" required maxlength="7">
 

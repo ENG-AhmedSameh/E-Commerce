@@ -22,6 +22,7 @@ public class CheckUserNameAvailabilityController implements ServletResolverInt {
         String username = req.getParameter("username");
         boolean isAvailable = UserServices.isUserNameAvailable(username);
         try {
+            System.out.println("checkUserName Serves");
             resp.getWriter().write(isAvailable ? "valid" : "not valid");
             ViewResolver viewResolver = new ViewResolver();
             viewResolver.sendOnlyResponse();
