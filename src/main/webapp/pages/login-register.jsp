@@ -6,84 +6,84 @@
     <link
             rel="icon"
             type="image/png"
-            href="../assets/images/icons/favicon.png"
+            href="../../assets/images/icons/favicon.png"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/vendor/bootstrap/css/bootstrap.min.css"
+            href="../../assets/vendor/bootstrap/css/bootstrap.min.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+            href="../../assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/fonts/iconic/css/material-design-iconic-font.min.css"
+            href="../../assets/fonts/iconic/css/material-design-iconic-font.min.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/fonts/linearicons-v1.0.0/icon-font.min.css"
+            href="../../assets/fonts/linearicons-v1.0.0/icon-font.min.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/vendor/animate/animate.css"
+            href="../../assets/vendor/animate/animate.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/vendor/css-hamburgers/hamburgers.min.css"
+            href="../../assets/vendor/css-hamburgers/hamburgers.min.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/vendor/animsition/css/animsition.min.css"
+            href="../../assets/vendor/animsition/css/animsition.min.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/vendor/select2/select2.min.css"
+            href="../../assets/vendor/select2/select2.min.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/vendor/daterangepicker/daterangepicker.css"
+            href="../../assets/vendor/daterangepicker/daterangepicker.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/vendor/slick/slick.css"
+            href="../../assets/vendor/slick/slick.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/vendor/MagnificPopup/magnific-popup.css"
+            href="../../assets/vendor/MagnificPopup/magnific-popup.css"
     />
     <!--===============================================================================================-->
     <link
             rel="stylesheet"
             type="text/css"
-            href="../assets/vendor/perfect-scrollbar/perfect-scrollbar.css"
+            href="../../assets/vendor/perfect-scrollbar/perfect-scrollbar.css"
     />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/util.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/login-registration.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/util.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/login-registration.css" />
     <!--===============================================================================================-->
     <title>User Registration</title>
 </head>
@@ -125,17 +125,20 @@
                         <div id="lg2" class="tab-pane">
                             <div class="form-container">
                                 <form id="registrationForm" action="#" method="post">
-                                    <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
-                                    <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+                                    <input type="text" id="first_name" name="first_name" placeholder="First Name" required><br>
+                                    <input type="text" id="last_name" name="last_name" placeholder="Last Name" required><br>
                                     <input type="text" id="user_name" name="user_name" placeholder="Username" required>
-                                    <input type="date" id="birthday" name="birthday" placeholder="Birthday" required>
-                                    <input type="password" id="Password" name="Password" placeholder="Password" required>
-                                    <input type="text" id="job" name="job" placeholder="Job" required>
+                                    <span id="usernameWarning" class="warning"></span><br> <!-- Warning message for username -->
+                                    <input type="date" id="birthday" name="birthday" placeholder="Birthday" required><br>
+                                    <input type="password" id="Password" name="Password" placeholder="Password" required><br>
+                                    <input type="text" id="job" name="job" placeholder="Job" required><br>
                                     <input type="email" id="email" name="email" placeholder="Email" required>
+                                    <span id="emailWarning" class="warning"></span><br> <!-- Warning message for email -->
                                     <input type="tel" id="phone_number" name="phone_number" placeholder="Phone Number" required>
-                                    <input type="text" id="creditLimit" name="creditLimit" placeholder="Credit Limit" required maxlength="16">
-                                    <input type="text" id="address" name="address" placeholder="Address" required>
-                                    <input type="text" id="interests" name="interests" placeholder="Interests" required>
+                                    <span id="phoneWarning" class="warning"></span><br> <!-- Warning message for phone number -->
+                                    <input type="text" id="creditLimit" name="creditLimit" placeholder="Credit Limit" required maxlength="16"><br>
+                                    <input type="text" id="address" name="address" placeholder="Address" required><br>
+                                    <input type="text" id="interests" name="interests" placeholder="Interests" required><br>
                                     <div class="gender-container">
                                         <input type="radio" id="female" name="gender" value="female" required>
                                         <label for="female">Female</label><br>
@@ -143,9 +146,11 @@
                                         <label for="male">Male</label>
                                     </div>
                                     <div class="button-box">
-                                        <button type="submit"><span>Register</span></button>
+                                        <button type="submit" onclick="postData()"><span>Register</span></button>
                                     </div>
+                                    <span id="validd" class="warning"></span> <!-- General validation message -->
                                 </form>
+
                             </div>
                         </div>
                     </div>
@@ -159,14 +164,14 @@
 </body>
 
 <!--===============================================================================================-->
-<script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="../../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-<script src="../assets/vendor/animsition/js/animsition.min.js"></script>
+<script src="../../assets/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-<script src="../assets/vendor/bootstrap/js/popper.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../assets/vendor/bootstrap/js/popper.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-<script src="../assets/vendor/select2/select2.min.js"></script>
+<script src="../../assets/vendor/select2/select2.min.js"></script>
 
 
 <script>
@@ -178,9 +183,9 @@
     });
 </script>
 <!--===============================================================================================-->
-<script src="../assets/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<script src="../../assets/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 <!--===============================================================================================-->
-<script src="../assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="../../assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
     var error;
     $(".js-pscroll").each(function () {
@@ -201,8 +206,8 @@
 
 <!--===============================================================================================-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
-<script src="../assets/js/map-custom.js"></script>
+<script src="../../assets/js/map-custom.js"></script>
 <!--===============================================================================================-->
-<script src="../assets/js/main.js"></script>
-<script src="../assets/js/login-registration.js"></script>
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/login-registration.js"></script>
 </html>

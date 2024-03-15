@@ -13,6 +13,61 @@ function showRegister() {
 
 
 }
+
+function postData(event) {
+    event.preventDefault();
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            var label = document.getElementById("emailWarning");
+            var response = xmlhttp.responseText;
+            if (response === "valid") {
+                label.textContent = ""; // clear the warning message
+            } else {
+                label.textContent = "Username already exists. Please choose another one.";
+            }
+        }
+    };
+
+
+    xmlhttp.open("POST", "checkEmailAvailabilityController", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(formData);
+}
+
+function postData(event) {
+    event.preventDefault();
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            var label = document.getElementById("usernameWarning");
+            var response = xmlhttp.responseText;
+            if (response === "valid") {
+                label.textContent = ""; // clear the warning message
+            } else {
+                label.textContent = "Username already exists. Please choose another one.";
+            }
+        }
+    };
+
+
+    xmlhttp.open("POST", "CheckUserNameAvailabilityController ", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(formData);
+}
+
 // Add event listener for form submission
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registrationForm');
