@@ -13,6 +13,7 @@ public class ProductImage {
     @EmbeddedId
     private ProductImageId id;
 
+    //
     @MapsId("productId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "product_id", nullable = false)
