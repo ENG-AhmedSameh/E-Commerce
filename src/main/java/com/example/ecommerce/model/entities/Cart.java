@@ -19,7 +19,19 @@ public class Cart {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.REMOVE})
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User owner;
+
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "cart")
     private Set<CartItem> cartItems = new LinkedHashSet<>();
 
+    public void addCartItem(CartItem cartItem) {
+        cartItems.add(cartItem);
+        cartItem.setCart(this);
+    }
+    public void removeCartItem(CartItem cartItem) {
+        cartItems.remove(cartItem);
+        cartItem.setCart(null);
+    }
 }

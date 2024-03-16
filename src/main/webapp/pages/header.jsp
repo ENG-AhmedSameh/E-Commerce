@@ -33,44 +33,43 @@
 
 					<!-- Logo desktop -->
 					<a href="#" class="logo">
-						<img src="../assets/images/icons/logo-01.png" alt="IMG-LOGO">
+						<img src="assets/images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="../index.html">Home</a>
-								<ul class="sub-menu">
-									<li><a href="../index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
-								</ul>
+								<a href="front?page=home">Home</a>
+
 							</li>
 
 							<li class="active-menu">
-								<a href="Front?Page=">Shop</a>
+								<a href="front?page=">Shop</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
-								<a href="Front?Page=l">Features</a>
+								<a href="front?page=">Features</a>
 							</li>
 
 							<li>
-								<a href="Front?Page=">Blog</a>
+								<a href="front?page=">Blog</a>
 							</li>
 
 							<li>
-								<a href="Front?Page=">About</a>
+								<a href="front?page=">About</a>
 							</li>
 
 							<li>
-								<a href="Front?Page=">Contact</a>
+								<a href="front?page=">Contact</a>
 							</li>
-							<li>
-                            	<a href="Front?Page=Login&register">Login/register</a>
+							<li id = "loginPage">
+                            	<a href="front?page=login">Login/Register</a>
                             </li>
 						</ul>
+
+
+
 					</div>
 
 					<!-- Icon header -->
@@ -155,35 +154,34 @@
 			<ul class="main-menu-m">
 				<li>
 					<a href="../index.html">Home</a>
-					<ul class="sub-menu-m">
-						<li><a href="../index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
-					</ul>
+
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
 				</li>
 
 				<li>
-					<a href="product.html">Shop</a>
+					<a href="Front?Page=">Shop</a>
 				</li>
 
 				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="Front?Page=" class="label1 rs1" data-label1="hot">Features</a>
 				</li>
 
 				<li>
-					<a href="blog.html">Blog</a>
+					<a href="Front?Page=">Blog</a>
 				</li>
 
 				<li>
-					<a href="about.html">About</a>
+					<a href="Front?Page=">About</a>
 				</li>
 
 				<li>
-					<a href="contact.html">Contact</a>
+					<a href="Front?Page=">Contact</a>
 				</li>
+				<li id="loginPage">
+                	<a href="front?page=login">Login/Register</a>
+                </li>
 			</ul>
 		</div>
 

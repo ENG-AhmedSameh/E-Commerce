@@ -13,6 +13,88 @@ function showRegister() {
 
 
 }
+
+////// email validation
+function postEmailData(){
+    event.preventDefault();
+    var xmlhttp;
+    var label = document.getElementById("emailError");
+
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }else if(window.ActiveXObject){
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function(){
+
+        if(xmlhttp.readyState===4 && xmlhttp.status===200){
+
+            var response = xmlhttp.responseText;
+            if(response=="valid"){
+                label.textContent = xmlhttp.responseText;
+                label.style.color = "green";
+            }else{
+                label.textContent = xmlhttp.responseText;
+                label.style.color = "red";
+            }
+
+        }
+
+    };
+
+    var url="front?page=checkEmail";
+    var myvalue = document.getElementById("user_email").value;
+
+    console.log("label"+label.textContent);
+    console.log("email"+myvalue);
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("email="+myvalue);
+}
+
+
+////// user name validation
+function posUserNametData(){
+    event.preventDefault();
+    var xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }else if(window.ActiveXObject){
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function(){
+
+        if(xmlhttp.readyState===4 && xmlhttp.status===200){
+            var label = document.getElementById("usernameError");
+            var response = xmlhttp.responseText;
+            if(response==="valid"){
+                label.textContent = xmlhttp.responseText;
+                label.style.color = "green";
+            }else{
+                label.textContent = xmlhttp.responseText;
+                label.style.color = "red";
+            }
+        }
+    };
+
+    url="front?page=checkUserName";
+    myvalue = document.getElementById("user_name").value;
+
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("username="+myvalue);
+
+}
+
+
+
+
+
+
+
+
 // Add event listener for form submission
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registrationForm');

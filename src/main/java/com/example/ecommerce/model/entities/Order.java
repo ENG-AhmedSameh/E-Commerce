@@ -22,8 +22,10 @@ public class Order {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "user_id", nullable = false)
-    private Integer userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
 
     @NotNull
     @Column(name = "create_time", nullable = false)

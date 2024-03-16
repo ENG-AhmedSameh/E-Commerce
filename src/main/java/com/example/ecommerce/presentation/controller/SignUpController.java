@@ -1,29 +1,30 @@
 package com.example.ecommerce.presentation.controller;
 
-import com.example.ecommerce.model.DTO.AddressDto;
+import com.example.ecommerce.model.DTO.CartDto;
+import com.example.ecommerce.model.DTO.LoggedInUserDto;
 import com.example.ecommerce.model.DTO.UserDto;
+import com.example.ecommerce.model.mappers.LoggedInUserMapper;
 import com.example.ecommerce.model.services.UserServices;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
+import com.example.ecommerce.presentation.controller.util.PAGES;
+import com.example.ecommerce.presentation.controller.util.ServletResolverInt;
+import com.example.ecommerce.presentation.controller.util.ViewResolver;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
 
 
-public class SignUpController extends HttpServlet {
+public class SignUpController implements ServletResolverInt {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false);
-        if (session != null && session.getAttribute("currentUser") != null)
-            resp.sendRedirect("index.html");
-        //resp.sendRedirect("register.html");
+    public ViewResolver resolve(HttpServletRequest request, HttpServletResponse response) {
+            return doPost(request,response);
     }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+    protected ViewResolver doPost(HttpServletRequest req, HttpServletResponse resp) {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String firstname = req.getParameter("firstname");
@@ -35,18 +36,19 @@ public class SignUpController extends HttpServlet {
         String gender = req.getParameter("gender");
         String city = req.getParameter("city");
         String street = req.getParameter("street");
-        String buildingNumber = req.getParameter("buildingNumber");
-        String floorNumber = req.getParameter("floorNumber");
-        AddressDto addressDto = new AddressDto(null, city,street,buildingNumber,Byte.parseByte(floorNumber));
-        UserDto userDto = new UserDto(null,username,password,firstname,lastname,email,phone,creditLimit,job,gender,null,addressDto,null,null,null);
 
-        userDto = UserServices.registerNewUser(userDto);
-        if (userDto != null) {
+        UserDto userDto = new UserDto(null,username,password,firstname,lastname,phone,email,creditLimit,job,gender, city,street ,null,null,null,null);
+
+        System.out.println("username: " + username );
+        LoggedInUserDto loggedInUser = UserServices.registerNewUser(userDto);
+        ViewResolver viewResolver = new ViewResolver();
+        if (loggedInUser != null) {
             HttpSession session = req.getSession(true);
-            session.setAttribute("currentUser", userDto);
-            resp.sendRedirect("index.html");
+            session.setAttribute("currentUser", loggedInUser);
+           viewResolver.redirect(PAGES.HOME.getValue());
         } else {
-            resp.sendRedirect("register.html");
+            viewResolver.redirect(PAGES.LOGIN.getValue());
         }
+        return viewResolver;
     }
 }
