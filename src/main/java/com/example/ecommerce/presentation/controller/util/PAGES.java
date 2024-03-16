@@ -9,7 +9,6 @@ public enum PAGES {
     CART("cart", "/pages/cart.jsp"),
     PRODUCT_DETAILS("productDetails", "/pages/product-details.jsp"),
     SHOPPING_CART("shoppingCart", "/pages/shopping-cart.jsp"),
-
     BLOG("blog", "/pages/blog.jsp"),
     BLOG_DETAILS("blogDetails", "/pages/blog-details.jsp"),
     CONTACT("contact", "/pages/contact.jsp"),
