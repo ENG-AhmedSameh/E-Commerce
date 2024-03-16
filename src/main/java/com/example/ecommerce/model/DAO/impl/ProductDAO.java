@@ -40,4 +40,11 @@ public class ProductDAO  implements ProductDAOInt {
                 .setParameter("categoryId", categoryId)
                 .getResultList();
     }
+
+
+    public List<Product> getOneHundredsProducts(EntityManager em) {
+        return em.createQuery("SELECT p FROM Product p", Product.class)
+                .setMaxResults(100)
+                .getResultList();
+    }
 }

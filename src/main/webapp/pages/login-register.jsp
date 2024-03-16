@@ -7,29 +7,29 @@
     <link rel="icon" type="image/png" href="assets/images/icons/favicon.png" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/fonts/iconic/css/material-design-iconic-font.min.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/fonts/linearicons-v1.0.0/icon-font.min.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendor/animate/animate.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendor/css-hamburgers/hamburgers.min.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendor/animsition/css/animsition.min.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendor/select2/select2.min.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendor/daterangepicker/daterangepicker.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendor/slick/slick.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendor/MagnificPopup/magnific-popup.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/vendor/perfect-scrollbar/perfect-scrollbar.css" />
-    <!--===============================================================================================-->
+    <!--============================================================================================-->
     <link rel="stylesheet" type="text/css" href="assets/css/util.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/login-registration.css" />
@@ -38,12 +38,15 @@
 </head>
 
 <body>
+    <!-- Header -->
     <jsp:include page="header.jsp" />
-    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">
-        <h2 class="ltext-105 cl0 txt-center">
-            Login - Register
-        </h2>
-    </section>
+    <!-- Cart -->
+    <jsp:include page="cart.jsp" />
+<%--    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('../assets/images/bg-01.jpg');">--%>
+<%--        <h2 class="ltext-105 cl0 txt-center">--%>
+<%--            Login - Register--%>
+<%--        </h2>--%>
+<%--    </section>--%>
 
     <!-- Content page -->
     <div class="login-register-area ptb-100">
@@ -157,20 +160,19 @@
             </div>
         </div>
     </div>
-    </div>
 
     <jsp:include page="footer.jsp" />
 </body>
 
 <!--===============================================================================================-->
-<script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="../assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-<script src="assets/vendor/animsition/js/animsition.min.js"></script>
+<script src="../assets/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-<script src="assets/vendor/bootstrap/js/popper.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-<script src="assets/vendor/select2/select2.min.js"></script>
+<script src="../assets/vendor/select2/select2.min.js"></script>
 
 
 <script>
@@ -182,9 +184,9 @@
     });
 </script>
 <!--===============================================================================================-->
-<script src="assets/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<script src="../assets/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 <!--===============================================================================================-->
-<script src="assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="../assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
     var error;
     $(".js-pscroll").each(function () {
@@ -205,9 +207,9 @@
 
 <!--===============================================================================================-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
-<script src="assets/js/map-custom.js"></script>
+<script src="../assets/js/map-custom.js"></script>
 <!--===============================================================================================-->
-<script src="assets/js/main.js"></script>
-<script src="assets/js/login-registration.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/login-registration.js"></script>
 
 </html>

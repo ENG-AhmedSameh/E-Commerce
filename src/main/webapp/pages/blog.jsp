@@ -42,7 +42,7 @@
             <div class="p-r-45 p-r-0-lg">
               <!-- item blog -->
               <div class="p-b-63">
-                <a href="blog-detail.html" class="hov-img0 how-pos5-parent">
+                <a href="blog-detail.jsp" class="hov-img0 how-pos5-parent">
                   <img src="../assets/images/blog-04.jpg" alt="IMG-BLOG" />
 
                   <div class="flex-col-c-m size-123 bg9 how-pos5">
@@ -55,7 +55,7 @@
                 <div class="p-t-32">
                   <h4 class="p-b-15">
                     <a
-                      href="blog-detail.html"
+                      href="blog-detail.jsp"
                       class="ltext-108 cl2 hov-cl1 trans-04"
                     >
                       8 Inspiring Ways to Wear Dresses in the Winter
@@ -84,7 +84,7 @@
                     </span>
 
                     <a
-                      href="blog-detail.html"
+                      href="blog-detail.jsp"
                       class="stext-101 cl2 hov-cl1 trans-04 m-tb-10"
                     >
                       Continue Reading
@@ -97,7 +97,7 @@
 
               <!-- item blog -->
               <div class="p-b-63">
-                <a href="blog-detail.html" class="hov-img0 how-pos5-parent">
+                <a href="blog-detail.jsp" class="hov-img0 how-pos5-parent">
                   <img src="../assets/images/blog-05.jpg" alt="IMG-BLOG" />
 
                   <div class="flex-col-c-m size-123 bg9 how-pos5">
@@ -110,7 +110,7 @@
                 <div class="p-t-32">
                   <h4 class="p-b-15">
                     <a
-                      href="blog-detail.html"
+                      href="blog-detail.jsp"
                       class="ltext-108 cl2 hov-cl1 trans-04"
                     >
                       The Great Big List of Men’s Gifts for the Holidays
@@ -139,7 +139,7 @@
                     </span>
 
                     <a
-                      href="blog-detail.html"
+                      href="blog-detail.jsp"
                       class="stext-101 cl2 hov-cl1 trans-04 m-tb-10"
                     >
                       Continue Reading
@@ -152,7 +152,7 @@
 
               <!-- item blog -->
               <div class="p-b-63">
-                <a href="blog-detail.html" class="hov-img0 how-pos5-parent">
+                <a href="blog-detail.jsp" class="hov-img0 how-pos5-parent">
                   <img src="../assets/images/blog-06.jpg" alt="IMG-BLOG" />
 
                   <div class="flex-col-c-m size-123 bg9 how-pos5">
@@ -165,7 +165,7 @@
                 <div class="p-t-32">
                   <h4 class="p-b-15">
                     <a
-                      href="blog-detail.html"
+                      href="blog-detail.jsp"
                       class="ltext-108 cl2 hov-cl1 trans-04"
                     >
                       5 Winter-to-Spring Fashion Trends to Try Now
@@ -194,7 +194,7 @@
                     </span>
 
                     <a
-                      href="blog-detail.html"
+                      href="blog-detail.jsp"
                       class="stext-101 cl2 hov-cl1 trans-04 m-tb-10"
                     >
                       Continue Reading
@@ -274,7 +274,7 @@
                       href="#"
                       class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4"
                     >
-                      Life Style
+                      Lifestyle
                     </a>
                   </li>
 

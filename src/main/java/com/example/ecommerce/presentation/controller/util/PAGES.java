@@ -2,7 +2,7 @@ package com.example.ecommerce.presentation.controller.util;
 
 public enum PAGES {
 
-    HOME("home", "/index.html"),
+    HOME("home", "/index.jsp"),
     LOGIN("login", "/pages/login-register.jsp"),
     SHOP("shop", "/pages/shop.jsp"),
     PRODUCT("product", "/pages/product.jsp"),

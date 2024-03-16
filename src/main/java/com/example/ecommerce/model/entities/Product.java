@@ -26,10 +26,10 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-//    @NotNull
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "Category_id", nullable = true)
-//    private Category category;
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Category_id", nullable = false)
+    private Category category;
 
     @Column(name = "price", precision = 9, scale = 2)
     private BigDecimal price;
