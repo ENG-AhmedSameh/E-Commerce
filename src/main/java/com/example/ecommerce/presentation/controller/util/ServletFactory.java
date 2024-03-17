@@ -17,6 +17,7 @@ public class ServletFactory {
              controllers.put("checkUserName",new CheckUserNameAvailabilityController());
              controllers.put("checkEmail",new checkEmailAvailabilityController());
              controllers.put("home", new HomeController());
+                controllers.put("homeProducts",new HomeScreenProductsController());
         }
 
         // private constructor to prevent instantiation

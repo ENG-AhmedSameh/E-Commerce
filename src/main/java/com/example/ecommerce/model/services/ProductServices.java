@@ -9,9 +9,13 @@ import jakarta.persistence.EntityManager;
 import java.util.List;
 
 public class ProductServices {
-    public List<ProductDto> getFirstOneHundredProducts(EntityManager em) {
+    public List<ProductDto> getFirstTenProducts(EntityManager em) {
         ProductDAO productDAO = new ProductDAO();
-        List<Product> products = productDAO.getOneHundredsProducts(em);
+        System.out.println("ProductServices getFirstTenProducts() called"  );
+
+        List<Product> products = productDAO.getTenProducts(em);
+        System.out.println("getFirstTenProducts() end: " +products.size());
+
         return ProductMapper.INSTANCE.toListDto(products);
     }
 }

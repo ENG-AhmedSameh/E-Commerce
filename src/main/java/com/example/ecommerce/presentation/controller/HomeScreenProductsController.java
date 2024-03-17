@@ -23,14 +23,17 @@ public class HomeScreenProductsController implements ServletResolverInt {
     private ViewResolver doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<ProductDto> productDtos = Database.doInTransaction(em -> {
-            return new ProductServices().getFirstOneHundredProducts(em);
+            return new ProductServices().getFirstTenProducts(em);
         });
 
+        System.out.println(productDtos.size());
         String json = new Gson().toJson(productDtos);
 
+        System.out.println(json.length());
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+        response.getWriter().print(json);
+        System.out.println("HomeScreenProductsController doGet() called");
 
         ViewResolver viewResolver = new ViewResolver();
         viewResolver.sendOnlyResponse();

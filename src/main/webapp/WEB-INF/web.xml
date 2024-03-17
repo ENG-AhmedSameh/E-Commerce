@@ -12,7 +12,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
-        <url-pattern>/Front</url-pattern>
+        <url-pattern>/front</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
@@ -33,14 +33,14 @@
     <!--    ************************************************************      -->
 
     <!--    *********************Products1***************************      -->
-    <servlet>
-        <servlet-name>Products_1_Controller</servlet-name>
-        <servlet-class>com.example.ecommerce.presentation.controller.HomeScreenProductsController</servlet-class>
+<!--    <servlet>-->
+<!--        <servlet-name>Products_1_Controller</servlet-name>-->
+<!--        <servlet-class>com.example.ecommerce.presentation.controller.HomeScreenProductsController</servlet-class>-->
 
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Products_1_Controller</servlet-name>
-        <url-pattern>/p1Servlet</url-pattern>
-    </servlet-mapping>
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>Products_1_Controller</servlet-name>-->
+<!--        <url-pattern>/p1Servlet</url-pattern>-->
+<!--    </servlet-mapping>-->
     <!--    ************************************************************      -->
 </web-app>
