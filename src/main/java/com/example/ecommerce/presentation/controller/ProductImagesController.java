@@ -1,6 +1,5 @@
 package com.example.ecommerce.presentation.controller;
 
-import com.example.ecommerce.model.DAO.Database;
 import com.example.ecommerce.model.services.ProductServices;
 import com.example.ecommerce.presentation.controller.util.ServletResolverInt;
 import com.example.ecommerce.presentation.controller.util.ViewResolver;
@@ -22,9 +21,7 @@ public class ProductImagesController implements ServletResolverInt {
 
         String productId = request.getParameter("productId");
 
-        List<String> productImageDtos = Database.doInTransaction(em -> {
-            return new ProductServices().getProductImagesByProductId(Integer.parseInt(productId), em);
-        });
+        List<String> productImageDtos = new ProductServices().getProductImagesByProductId(Integer.parseInt(productId));
 
         String json = new Gson().toJson(productImageDtos);
 

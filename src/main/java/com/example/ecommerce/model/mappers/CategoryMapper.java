@@ -5,7 +5,7 @@ import com.example.ecommerce.model.entities.Category;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.CDI)
+@Mapper
 public interface CategoryMapper {
     CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
     Category toEntity(CategoryDto categoryDto);

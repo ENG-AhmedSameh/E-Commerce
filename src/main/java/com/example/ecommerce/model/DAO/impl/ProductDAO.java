@@ -52,7 +52,7 @@ public class ProductDAO  implements ProductDAOInt {
         return list;
     }
     public List<String> getProductImagesByProductId(int productId, EntityManager em) {
-        return em.createQuery("SELECT p.imageUrl FROM ProductImage p WHERE p.product.id = :productId", String.class)
+        return em.createQuery("SELECT p.id.imageUrl FROM ProductImage p WHERE p.id.productId = :productId", String.class)
                 .setParameter("productId", productId)
                 .getResultList();
     }

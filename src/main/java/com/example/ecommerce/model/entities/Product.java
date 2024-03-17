@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
@@ -47,6 +48,9 @@ public class Product {
     @Size(max = 45)
     @Column(name = "main_image_url", length = 45)
     private String mainImageUrl;
+
+    @OneToMany(mappedBy = "product")
+    private Set<ProductImage> productImages = new LinkedHashSet<>();
 
 //    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private Set<CartItem> cartItems = new HashSet<>();

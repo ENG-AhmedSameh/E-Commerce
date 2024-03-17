@@ -17,7 +17,7 @@ function getProduct() {
             if (xmlhttp.status === 200) {
                 var response = JSON.parse(xmlhttp.responseText);
                 console.log(response);
-                allProducts += response;
+                allProducts.push(...response);
                 let allProd = '';
                 $('#best_seller_slick').slick({
                     infinite: false,
@@ -95,9 +95,11 @@ function display(product) {
 
 
 function showProductModal(id) {
-    const product = allProducts.find(el => el?.id == id);
+    const product = allProducts.find(el => el?.id === id);
     console.log(product);
-    var imags =  getProductImages(id);
+    var imags =  getProductImages(product.id);
+    console.log(imags[0]);
+    console.log(imags[1]);
     $.magnificPopup.open({
         items: {
             src: `<div class="container">
@@ -121,13 +123,13 @@ function showProductModal(id) {
                                         <!-- Additional images -->
                                         <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="${imags[1]}" alt="IMG-PRODUCT">
+                                                <img src="${imags[0]}" alt="IMG-PRODUCT">
                                             </div>
                                         </div>
     
                                         <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="${image[2]}" alt="IMG-PRODUCT">
+                                                <img src="${imags[1]}" alt="IMG-PRODUCT">
                                             </div>
                                         </div>
                                     </div>
@@ -265,9 +267,6 @@ function showProductModal(id) {
             }
         }
     });
-
-
-
 }
 
 
@@ -275,30 +274,29 @@ function showProductModal(id) {
 
 
 function getProductImages(id) {
-    var xmlhttp;
-    var xmlhttp;
+    return new Promise((resolve, reject) => {
+        var xmlhttp;
 
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    } else if (window.ActiveXObject) {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
-    xmlhttp.onreadystatechange = function () {
-        console.log(xmlhttp.status);
-        if (xmlhttp.readyState === 4) {
-            console.log(xmlhttp.status);
-            if (xmlhttp.status === 200) { 
-                return  JSON.parse(xmlhttp.responseText);
-            }
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
 
-        var url = "front?page=productImages&productId="+id;
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4) {
+                if (xmlhttp.status === 200) {
+                    resolve(JSON.parse(xmlhttp.responseText));
+                } else {
+                    reject(new Error('Request failed with status ' + xmlhttp.status));
+                }
+            }
+        };
 
+        var url = "front?page=productImages&productId=" + id;
         xmlhttp.open("GET", url, true);
         xmlhttp.send(null);
-
-    }
+    });
 }
 
 

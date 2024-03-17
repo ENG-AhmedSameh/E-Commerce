@@ -22,10 +22,7 @@ public class HomeScreenProductsController implements ServletResolverInt {
 
     private ViewResolver doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<ProductDto> productDtos = Database.doInTransaction(em -> {
-            return new ProductServices().getFirstTenProducts(em);
-        });
-
+        List<ProductDto> productDtos = new ProductServices().getFirstTenProducts();
         System.out.println(productDtos.size());
         String json = new Gson().toJson(productDtos);
 
@@ -33,7 +30,6 @@ public class HomeScreenProductsController implements ServletResolverInt {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().print(json);
-        System.out.println("HomeScreenProductsController doGet() called");
 
         ViewResolver viewResolver = new ViewResolver();
         viewResolver.sendOnlyResponse();
@@ -41,29 +37,4 @@ public class HomeScreenProductsController implements ServletResolverInt {
     }
 }
 
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response){
-//
-//        //retrieve all products with category ---> id = 1 , from database
-//        List<Product> products_1 = Database.doInTransaction(em -> {
-//            return new ProductDAO().getAllProductsByCategoryId(1, em);
-//        });
-//
-//
-//        List<ProductDto>productDtos = ProductMapper.INSTANCE.toListDto(products_1);
-//
-////        String json = toJson(productDtos);
-////
-////        PrintWriter printWriter = response.getWriter();
-////
-////        response.setContentType("application/json");
-////        response.setCharacterEncoding("UTF-8");
-////
-////        printWriter.write(json);
-//    }
-//
-////
-////    public static String toJson(List<ProductDto> productDtos) {
-////        Gson gson = new Gson();
-////        return gson.toJson(productDtos);
-//
-////    }
+

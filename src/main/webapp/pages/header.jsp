@@ -1,3 +1,4 @@
+<%@ page session="false" %>
 <header class="header-v2">
 	<!-- Header desktop -->
 	<div class="container-menu-desktop trans-03">
