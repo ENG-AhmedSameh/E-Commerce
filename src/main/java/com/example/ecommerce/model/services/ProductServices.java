@@ -18,4 +18,8 @@ public class ProductServices {
 
         return ProductMapper.INSTANCE.toListDto(products);
     }
+
+    public List<String> getProductImagesByProductId(int productId, EntityManager em) {
+        return new ProductDAO().getProductImagesByProductId(productId, em);
+    }
 }

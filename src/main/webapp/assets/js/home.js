@@ -17,7 +17,7 @@ function getProduct() {
             if (xmlhttp.status === 200) {
                 var response = JSON.parse(xmlhttp.responseText);
                 console.log(response);
-                allProducts = response;
+                allProducts += response;
                 let allProd = '';
                 $('#best_seller_slick').slick({
                     infinite: false,
@@ -97,6 +97,7 @@ function display(product) {
 function showProductModal(id) {
     const product = allProducts.find(el => el?.id == id);
     console.log(product);
+    var imags =  getProductImages(id);
     $.magnificPopup.open({
         items: {
             src: `<div class="container">
@@ -120,13 +121,13 @@ function showProductModal(id) {
                                         <!-- Additional images -->
                                         <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="../images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                                                <img src="${imags[1]}" alt="IMG-PRODUCT">
                                             </div>
                                         </div>
     
                                         <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="../images/product-detail-03.jpg" alt="IMG-PRODUCT">
+                                                <img src="${image[2]}" alt="IMG-PRODUCT">
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +197,7 @@ function showProductModal(id) {
         callbacks: {
             close: () => {
                 //do something on exit
-    
+
             },
             open: () => {
                 // Add event listener for increment button
@@ -204,7 +205,7 @@ function showProductModal(id) {
                     var numProduct = parseInt($(this).closest('.wrap-num-product').find('.num-product').val());
                     $(this).closest('.wrap-num-product').find('.num-product').val(numProduct + 1);
                 });
-    
+
                 // Add event listener for decrement button
                 $(".btn-num-product-down").on("click", function () {
                     var numProduct = parseInt($(this).closest('.wrap-num-product').find('.num-product').val());
@@ -212,7 +213,7 @@ function showProductModal(id) {
                         $(this).closest('.wrap-num-product').find('.num-product').val(numProduct - 1);
                     }
                 });
-    
+
                 // Initialize Slick slider
                 $('.slick3').slick({
                     slidesToShow: 1,
@@ -223,7 +224,7 @@ function showProductModal(id) {
                     nextArrow: '<button class="arrow-slick2 next-slick2"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
                     asNavFor: '.wrap-slick3-dots'
                 });
-    
+
                 // Initialize Slick slider dots
                 $('.wrap-slick3-dots').slick({
                     slidesToShow: 3,
@@ -259,13 +260,13 @@ function showProductModal(id) {
                         }
                     ]
                 });
-    
-                
+
+
             }
         }
     });
-    
-    
+
+
 
 }
 
@@ -273,6 +274,32 @@ function showProductModal(id) {
 
 
 
+function getProductImages(id) {
+    var xmlhttp;
+    var xmlhttp;
+
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function () {
+        console.log(xmlhttp.status);
+        if (xmlhttp.readyState === 4) {
+            console.log(xmlhttp.status);
+            if (xmlhttp.status === 200) { 
+                return  JSON.parse(xmlhttp.responseText);
+            }
+        }
+
+        var url = "front?page=productImages&productId="+id;
+
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send(null);
+
+    }
+}
 
 
 window.onload = function () {
