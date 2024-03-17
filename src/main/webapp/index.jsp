@@ -447,7 +447,7 @@
 				<!-- Tab panes -->
 				<div class="tab-content p-t-50">
 					<!-- - -->
-					<div class="tab-pane fade show active" id="best-seller" role="tabpanel" >
+					<div class="tab-pane fade show active" id="best_seller_slick" role="tabpanel" >
 						<!-- Slide2 -->
 
 					</div>
