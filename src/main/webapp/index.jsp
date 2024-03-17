@@ -447,16 +447,9 @@
 				<!-- Tab panes -->
 				<div class="tab-content p-t-50">
 					<!-- - -->
-					<div class="tab-pane fade show active" id="best-seller" role="tabpanel">
+					<div class="tab-pane fade show active" id="best-seller" role="tabpanel" >
 						<!-- Slide2 -->
-						<div class="wrap-slick2">
-							<div class="slick2">
-								<div id="productList" class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
 
-								</div>
-				
-							</div>
-						</div>
 					</div>
 
 					<!-- - -->

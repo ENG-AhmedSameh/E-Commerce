@@ -14,6 +14,10 @@ function showRegister() {
 
 }
 
+
+
+
+
 ////// email validation
 function postEmailData(){
     event.preventDefault();
