@@ -26,7 +26,6 @@ public class HomeScreenProductsController implements ServletResolverInt {
         System.out.println(productDtos.size());
         String json = new Gson().toJson(productDtos);
 
-        System.out.println(json.length());
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().print(json);

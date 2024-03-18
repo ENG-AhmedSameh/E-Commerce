@@ -167,7 +167,8 @@
 
 
 	<!-- Cart -->
-	<div class="wrap-header-cart js-panel-cart">
+	<jsp:include page="pages/cart.jsp" />
+	<!-- <div class="wrap-header-cart js-panel-cart">
 		<div class="s-full js-hide-cart"></div>
 
 		<div class="header-cart flex-col-l p-l-65 p-r-25">
@@ -249,7 +250,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 
 

@@ -20,11 +20,11 @@ public class ProductImagesController implements ServletResolverInt {
     private ViewResolver doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String productId = request.getParameter("productId");
-
+        System.out.println(productId);
         List<String> productImageDtos = new ProductServices().getProductImagesByProductId(Integer.parseInt(productId));
 
         String json = new Gson().toJson(productImageDtos);
-
+        System.out.println(json);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().print(json);

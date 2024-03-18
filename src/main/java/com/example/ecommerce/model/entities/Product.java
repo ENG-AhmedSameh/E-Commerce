@@ -49,7 +49,7 @@ public class Product {
     @Column(name = "main_image_url", length = 45)
     private String mainImageUrl;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product" , fetch = FetchType.EAGER)
     private Set<ProductImage> productImages = new LinkedHashSet<>();
 
 //    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)

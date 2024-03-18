@@ -33,7 +33,7 @@ function getProduct() {
                     allProd += div;
 
                 }
-                console.log(allProd);
+              
 
             }
 
@@ -94,12 +94,10 @@ function display(product) {
 
 
 
-function showProductModal(id) {
+ function showProductModal(id) {
     const product = allProducts.find(el => el?.id === id);
-    console.log(product);
-    var imags =  getProductImages(product.id);
-    console.log(imags[0]);
-    console.log(imags[1]);
+    
+
     $.magnificPopup.open({
         items: {
             src: `<div class="container">
@@ -123,13 +121,13 @@ function showProductModal(id) {
                                         <!-- Additional images -->
                                         <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="${imags[0]}" alt="IMG-PRODUCT">
+                                                <img src="" alt="IMG-PRODUCT">
                                             </div>
                                         </div>
     
                                         <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="${imags[1]}" alt="IMG-PRODUCT">
+                                                <img src="" alt="IMG-PRODUCT">
                                             </div>
                                         </div>
                                     </div>
@@ -202,6 +200,9 @@ function showProductModal(id) {
 
             },
             open: () => {
+
+            
+
                 // Add event listener for increment button
                 $(".btn-num-product-up").on("click", function () {
                     var numProduct = parseInt($(this).closest('.wrap-num-product').find('.num-product').val());
@@ -264,9 +265,44 @@ function showProductModal(id) {
                 });
 
 
+                $(".js-addcart-detail").on("click", function () {
+                    var cartItem = {
+                        id: product.id,
+                        mainImageUrl:product.mainImageUrl,
+                        name: product.name,
+                        price: product.price,
+                        quantity: parseInt($(".num-product").val())
+                    };
+                    
+                    var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+                    
+                    var existingItemIndex = cartItems.findIndex(item => item.id === cartItem.id);
+
+                    if (existingItemIndex !== -1) {
+                       
+                        cartItems[existingItemIndex].quantity += cartItem.quantity;
+                    } else {
+                        
+                        cartItems.push(cartItem);
+                    }
+ 
+                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                 
+                    alert("Product added to cart.");
+
+                    return false;
+                });
+
+
             }
         }
     });
+
+
+
+
+
+
 }
 
 
@@ -274,7 +310,7 @@ function showProductModal(id) {
 
 
 function getProductImages(id) {
-    return new Promise((resolve, reject) => {
+
         var xmlhttp;
 
         if (window.XMLHttpRequest) {
@@ -284,9 +320,14 @@ function getProductImages(id) {
         }
 
         xmlhttp.onreadystatechange = function () {
+            console.log(xmlhttp.readyState);
             if (xmlhttp.readyState === 4) {
+            console.log(xmlhttp.readyState);
                 if (xmlhttp.status === 200) {
-                    resolve(JSON.parse(xmlhttp.responseText));
+                console.log(xmlhttp.readyState);
+                    var let = JSON.parse(xmlhttp.responseText);
+                    console.log(let);
+                    return let;
                 } else {
                     reject(new Error('Request failed with status ' + xmlhttp.status));
                 }
@@ -296,7 +337,7 @@ function getProductImages(id) {
         var url = "front?page=productImages&productId=" + id;
         xmlhttp.open("GET", url, true);
         xmlhttp.send(null);
-    });
+
 }
 
 
