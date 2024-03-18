@@ -5,10 +5,6 @@ body {
 }
 
 
-/*.login-register-area {*/
-/*    padding-top: 100px;*/
-/*}*/
-
 .login-register-wrapper {
     text-align: center;
 }
@@ -35,6 +31,7 @@ body {
     color: #333;
     font-weight: bold;
     vertical-align: middle;
+    font-family:'Courier New', Courier, monospace;
     font-size: 20px;
 }
 
@@ -165,4 +162,8 @@ body {
             display: inline-block; /* Ensure labels appear in a line */
             margin-right: 5px; /* Adjust spacing between labels */
             vertical-align: middle; /* Align labels vertically with inputs */
+        }
+
+        .login-register-tab-list {
+            margin-bottom: 30px;
         }

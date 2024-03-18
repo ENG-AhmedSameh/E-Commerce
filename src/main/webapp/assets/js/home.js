@@ -264,6 +264,11 @@ function display(product) {
                     ]
                 });
 
+                $('.js-addcart-detail').each(function(){
+                   
+                    
+                });
+
 
                 $(".js-addcart-detail").on("click", function () {
                     var cartItem = {
@@ -288,8 +293,10 @@ function display(product) {
  
                     localStorage.setItem("cartItems", JSON.stringify(cartItems));
                  
-                    alert("Product added to cart.");
-
+                   
+                    swal(product.name, "is added to cart !", "success");
+                    
+                    $('.js-show-cart').attr('data-notify',cartItems.length);
                     return false;
                 });
 

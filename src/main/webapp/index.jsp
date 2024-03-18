@@ -263,7 +263,7 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-202 cl2 respon2">
-									Men Collection 2018
+									Laptop & PC
 								</span>
 							</div>
 								
@@ -274,7 +274,7 @@
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="pages/product.jsp" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="${pageContext.request.contextPath}/front?page=shop" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now
 								</a>
 							</div>
@@ -287,18 +287,18 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-202 cl2 respon2">
-									Men New-Season
+									Accessories
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-104 cl2 p-t-19 p-b-43 respon1">
-									Jackets & Coats
+									New arrivals
 								</h2>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-								<a href="pages/product.jsp" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="${pageContext.request.contextPath}/front?page=shop" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now
 								</a>
 							</div>
@@ -311,18 +311,18 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-202 cl2 respon2">
-									Women Collection 2018
+									Smart Phones
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-104 cl2 p-t-19 p-b-43 respon1">
-									NEW SEASON
+									New arrivals
 								</h2>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="pages/product.jsp" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="${pageContext.request.contextPath}/front?page=shop" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now
 								</a>
 							</div>
@@ -342,14 +342,14 @@
 				<div class="block1 wrap-pic-w">
 					<img src="assets/images/banner-04.jpg" alt="IMG-BANNER">
 
-					<a href="pages/product.jsp" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+					<a href="${pageContext.request.contextPath}/front?page=shop&category=1" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 						<div class="block1-txt-child1 flex-col-l">
 							<span class="block1-name ltext-102 trans-04 p-b-8">
-								Women
+								Smart Phones
 							</span>
 
 							<span class="block1-info stext-102 trans-04">
-								Spring 2018
+								Models 2024
 							</span>
 						</div>
 
@@ -367,14 +367,14 @@
 				<div class="block1 wrap-pic-w">
 					<img src="assets/images/banner-05.jpg" alt="IMG-BANNER">
 
-					<a href="pages/product.jsp" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+					<a href="${pageContext.request.contextPath}/front?page=shop&category=2" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 						<div class="block1-txt-child1 flex-col-l">
 							<span class="block1-name ltext-102 trans-04 p-b-8">
-								Men
+								Laptop & Pc
 							</span>
 
 							<span class="block1-info stext-102 trans-04">
-								Spring 2018
+								Model 2024
 							</span>
 						</div>
 
@@ -392,14 +392,14 @@
 				<div class="block1 wrap-pic-w">
 					<img src="assets/images/banner-06.jpg" alt="IMG-BANNER">
 
-					<a href="pages/product.jsp" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+					<a href="${pageContext.request.contextPath}/front?page=shop&category=3" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 						<div class="block1-txt-child1 flex-col-l">
 							<span class="block1-name ltext-102 trans-04 p-b-8">
-								Bags
+								Accessories
 							</span>
 
 							<span class="block1-info stext-102 trans-04">
-								New Trend
+								Models 
 							</span>
 						</div>
 

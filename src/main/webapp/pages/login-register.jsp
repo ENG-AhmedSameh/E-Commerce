@@ -43,13 +43,15 @@
     <jsp:include page="header.jsp" />
     <!-- Cart -->
     <jsp:include page="cart.jsp" />
-<%--    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('../assets/images/bg-01.jpg');">--%>
-<%--        <h2 class="ltext-105 cl0 txt-center">--%>
-<%--            Login - Register--%>
-<%--        </h2>--%>
-<%--    </section>--%>
+
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('assets/images/bg-01.jpg');">--%>
+        <h2 class="ltext-105 cl0 txt-center">
+            Login - Register
+        </h2>
+    </section>
 
     <!-- Content page -->
+    <section class="bg0 p-t-14 p-b-116">
     <div class="login-register-area ptb-100">
         <div class="container">
             <div class="row">
@@ -93,8 +95,8 @@
                                         </div>
 
                                         <div class="line">
-                                            <input type="text" class="line-custom" id="user_name" name="username" onblur="posUserNametData();" placeholder="Username"
-                                                required>
+                                            <input type="text" class="line-custom" id="user_name" name="username"
+                                                onblur="posUserNametData();" placeholder="Username" required>
                                             <span id="usernameError" class="error"></span>
                                         </div>
                                         <div class="line">
@@ -103,15 +105,16 @@
                                         </div>
 
                                         <div class="line">
-                                        <input type="email" class="line-custom" id="user_email" name="email" placeholder="Email" onblur="postEmailData();" required>
-                                        <span id="emailError" class="error"></span>
+                                            <input type="email" class="line-custom" id="user_email" name="email"
+                                                placeholder="Email" onblur="postEmailData();" required>
+                                            <span id="emailError" class="error"></span>
                                         </div>
 
                                         <div class="block-input">
                                             <input type="tel" id="phone_number" name="phoneNumber"
                                                 placeholder="Phone Number" required>
                                         </div>
-                                         <input type="text" id="job" name="job" placeholder="Job">
+                                        <input type="text" id="job" name="job" placeholder="Job">
                                         <input type="text" id="creditLimit" name="creditLimit"
                                             placeholder="Credit Limit" required maxlength="7">
 
@@ -160,7 +163,7 @@
             </div>
         </div>
     </div>
-
+</section>
     <jsp:include page="footer.jsp" />
 </body>
 
@@ -184,9 +187,9 @@
     });
 </script>
 <!--===============================================================================================-->
-<script src="../assets/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<script src="assets/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 <!--===============================================================================================-->
-<script src="../assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
     var error;
     $(".js-pscroll").each(function () {
@@ -207,9 +210,9 @@
 
 <!--===============================================================================================-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
-<script src="../assets/js/map-custom.js"></script>
+<script src="assets/js/map-custom.js"></script>
 <!--===============================================================================================-->
-<script src="../assets/js/main.js"></script>
-<script src="../assets/js/login-registration.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/login-registration.js"></script>
 
 </html>

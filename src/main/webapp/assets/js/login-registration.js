@@ -1,17 +1,61 @@
-function showLogin() {
-    document.getElementById('lg1').style.display = 'block';
-    document.getElementById('lg2').style.display = 'none';
-    document.getElementById('loginTab').classList.add('active');
-    document.getElementById('registerTab').classList.remove('active');
-}
+// function showLogin() {
+//     document.getElementById('lg1').style.display = 'block';
+//     document.getElementById('lg2').style.display = 'none';
+//     document.getElementById('loginTab').classList.add('active');
+//     document.getElementById('registerTab').classList.remove('active');
+// }
+
+// function showRegister() {
+//     document.getElementById('lg1').style.display = 'none';
+//     document.getElementById('lg2').style.display = 'block';
+//     document.getElementById('loginTab').classList.remove('active');
+//     document.getElementById('registerTab').classList.add('active');
+
+// }
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    function switchTab(event) {
+        console.log("Switching tab");
+        var loginTab = document.getElementById('lg1');
+        var registerTab = document.getElementById('lg2');
+        var loginTabLink = document.getElementById('loginTab');
+        var registerTabLink = document.getElementById('registerTab');
+
+       
+        if (event.target === loginTabLink) {
+            showLogin();
+        }
+
+        // Handle register tab
+        if (event.target === registerTabLink) {
+            showRegister();
+        }
+
+        event.preventDefault(); 
+    }
+
+   
+    showLogin();
+
+    document.getElementById('loginTab').addEventListener('click', switchTab);
+    document.getElementById('registerTab').addEventListener('click', switchTab);
+});
+
 
 function showRegister() {
     document.getElementById('lg1').style.display = 'none';
     document.getElementById('lg2').style.display = 'block';
     document.getElementById('loginTab').classList.remove('active');
     document.getElementById('registerTab').classList.add('active');
+}
 
-
+function showLogin() {
+    document.getElementById('lg1').style.display = 'block';
+    document.getElementById('lg2').style.display = 'none';
+    document.getElementById('loginTab').classList.add('active');
+    document.getElementById('registerTab').classList.remove('active');
 }
 
 

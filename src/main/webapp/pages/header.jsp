@@ -1,4 +1,5 @@
 <%@ page session="false" %>
+
 <header class="header-v2">
 	<!-- Header desktop -->
 	<div class="container-menu-desktop trans-03">
@@ -103,11 +104,7 @@
 		<ul class="main-menu-m">
 			<li>
 				<a href="../index.jsp">Home</a>
-				<ul class="sub-menu-m">
-					<li><a href="../index.jsp">Homepage 1</a></li>
-					<li><a href="../pages/home-02.html">Homepage 2</a></li>
-					<li><a href="../pages/home-03.html">Homepage 3</a></li>
-				</ul>
+			
 				<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>
@@ -151,6 +148,14 @@
 				</button>
 				<input class="plh3" type="text" name="search" placeholder="Search...">
 			</form>
+		</div>
+	</div>
+
+	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+		<div class="overlay-modal1 js-hide-modal1"></div>
+
+		<div  id = "productpop"  class="container">
+			
 		</div>
 	</div>
 </header>
