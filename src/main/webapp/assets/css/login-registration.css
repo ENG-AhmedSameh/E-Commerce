@@ -5,33 +5,11 @@ body {
 }
 
 
-.login-register-wrapper {
-    text-align: center;
-}
-
-.login-register-tab-list {
-    margin-bottom: 20px;
-    font-family: Arial, sans-serif;
-}
-
-.login-register-tab-list a {
-    display: inline-block;
-    margin-right: 20px;
-    text-decoration: none;
-    color: #333;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.login-register-tab-list a.active h4 {
-    color: #9765c9;
-}
-
 .separator-line {
     color: #333;
     font-weight: bold;
     vertical-align: middle;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
 }
 
@@ -45,8 +23,8 @@ body {
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background-color: #e1dada;
 }
 
 .form-container input[type="text"],
@@ -59,9 +37,7 @@ body {
     border-radius: 5px;
 }
 
-.button-box {
-    text-align: center;
-}
+
 
 .button-box button {
     background-color: #ff5722;
@@ -87,7 +63,7 @@ body {
 }
 
 .separator {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 4px solid #ccc;
     margin-bottom: 10px;
     padding-bottom: 10px;
 }
@@ -102,23 +78,7 @@ body {
     transform: scale(0.5);
 }
 
-.separator label {
-    margin-right: 20px;
-    vertical-align: middle;
-}
 
-.line {
-    display: flex;
-}
-
-.line input {
-    flex: 1;
-    margin-right: 10px;
-}
-
-#line input:last-child {
-    margin-right: 0;
-}
 
 .block-input {
     margin-bottom: 15px;
@@ -136,34 +96,92 @@ body {
     margin-top: 50px;
 }
 
-   .line-custom {
-            margin-bottom: 10px; /* Add margin at the bottom for spacing */
-        }
+.line-custom {
+    margin-bottom: 10px;
+}
 
-        .line input[type="email"] {
-            width: calc(100% - 80px); /* Set the width of the email input */
-            display: inline-block; /* Display inline to appear in the same line */
-        }
+.line input[type="email"] {
+    width: calc(100% - 80px);
+    display: inline-block;
+}
 
-        .line .error {
-            display: inline-block; /* Display inline to appear in the same line */
-            width: 80px; /* Set the width of the error message span */
-            color: red; /* Example: set color to red */
-            margin-left: 10px; /* Add margin-left for spacing between input and error message */
-        }
+.line .error {
+    display: inline-block;
+    width: 80px;
+    color: red;
+    margin-left: 10px;
+}
 
-        .separator input[type="checkbox"],
-        .separator input[type="radio"] {
-            margin-right: 1px; /* Adjust the spacing between the input and label */
-            transform: scale(1.2); /* Increase the size of the checkbox/radio button */
-        }
+.separator input[type="checkbox"],
+.separator input[type="radio"] {
+    margin-right: 1px;
+    transform: scale(1.2);
+}
 
-        .separator label {
-            display: inline-block; /* Ensure labels appear in a line */
-            margin-right: 5px; /* Adjust spacing between labels */
-            vertical-align: middle; /* Align labels vertically with inputs */
-        }
+.separator label {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
 
-        .login-register-tab-list {
-            margin-bottom: 30px;
-        }
+.login-register-tab-list {
+    margin-bottom: 30px;
+}
+
+
+.remember{
+    float: left;
+    margin: 5px 10px 5px 0;
+}
+
+
+.login-toggle-btn>a {
+    color: #242424;
+    float: right;
+    font-size: 15px;
+    transition: all 0.3s ease 0s;
+}
+
+.login-toggle-btn>a:hover {
+    color: #b11bc8;
+}
+
+.login-register-tab-list {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.login-register-tab-list.nav a h4 {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 0 20px;
+    text-transform: capitalize;
+    transition: all 0.3s ease 0s;
+}
+
+.login-register-tab-list.nav a {
+    position: relative;
+}
+
+.login-register-tab-list.nav a::before {
+    background-color: #454545;
+    bottom: 5px;
+    content: "";
+    height: 18px;
+    margin: 0 auto;
+    position: absolute;
+    right: -2px;
+    transition: all 0.4s ease 0s;
+    width: 3px;
+
+}
+
+.login-register-tab-list.nav a:last-child::before {
+    display: none;
+}
+
+.login-register-tab-list.nav a.active h4,
+.login-register-tab-list.nav a h4:hover {
+    color: #519f10;
+}

@@ -271,11 +271,13 @@ function display(product) {
 
 
                 $(".js-addcart-detail").on("click", function () {
+                    
                     var cartItem = {
                         id: product.id,
                         mainImageUrl:product.mainImageUrl,
                         name: product.name,
                         price: product.price,
+                        category: product.category,
                         quantity: parseInt($(".num-product").val())
                     };
                     
@@ -291,12 +293,13 @@ function display(product) {
                         cartItems.push(cartItem);
                     }
  
-                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-                 
+                       localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                       console.log(cartItem); 
                    
                     swal(product.name, "is added to cart !", "success");
                     
                     $('.js-show-cart').attr('data-notify',cartItems.length);
+                    console.log(product);
                     return false;
                 });
 
