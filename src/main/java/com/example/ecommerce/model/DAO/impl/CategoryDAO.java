@@ -28,4 +28,6 @@ public class CategoryDAO implements CategoryDAOInt {
     public void delete(Category category, EntityManager em) {
         em.remove(category);
     }
+
+
 }

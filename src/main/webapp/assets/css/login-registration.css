@@ -23,8 +23,8 @@ body {
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    background-color: #e1dada;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    background-color: #f7eeee;
 }
 
 .form-container input[type="text"],
@@ -183,5 +183,5 @@ body {
 
 .login-register-tab-list.nav a.active h4,
 .login-register-tab-list.nav a h4:hover {
-    color: #519f10;
+    color: #a272c4;
 }

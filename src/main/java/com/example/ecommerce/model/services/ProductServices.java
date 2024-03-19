@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ProductServices {
     public List<ProductDto> getFirstTenProducts() {
-        return Database.doInTransaction(em->{
+        return Database.doInTransaction(em -> {
             ProductDAO productDAO = new ProductDAO();
 
             List<Product> products = productDAO.getTenProducts(em);
@@ -21,7 +21,20 @@ public class ProductServices {
     }
 
     public List<String> getProductImagesByProductId(int productId) {
-        return Database.doInTransaction(em-> new ProductDAO().getProductImagesByProductId(productId, em));
+        return Database.doInTransaction(em -> new ProductDAO().getProductImagesByProductId(productId, em));
     }
 
+    public List<ProductDto> getProductsAll() {
+        return Database.doInTransaction(em -> {
+            ProductDAO productDAO = new ProductDAO();
+
+            List<Product> products = productDAO.getProductsAll(em);
+
+            return ProductMapper.INSTANCE.toListDto(products);
+        });
+    }
+
+
+
 }
+

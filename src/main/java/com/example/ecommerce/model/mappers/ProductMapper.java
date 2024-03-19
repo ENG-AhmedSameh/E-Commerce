@@ -7,6 +7,7 @@ import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
+import java.util.Set;
 
 @Mapper
 public interface ProductMapper {
@@ -19,4 +20,5 @@ public interface ProductMapper {
     Product partialUpdate(ProductDto productDto, @MappingTarget Product product);
 
     List<ProductDto> toListDto (List<Product> products);
+    Set<ProductDto> toSetDto (Set<Product> products);
 }

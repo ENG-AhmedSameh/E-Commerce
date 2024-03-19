@@ -91,6 +91,7 @@
                                     <div id="lg2" class="tab-pane">
                                         <div class="form-container">
                                             <form id="registrationForm" action="front?page=registration" method="post">
+
                                                 <div class="line d-flex " >
                                                     <input class="form-controll w-50 mr-2" type="text" id="first_name" name="firstname"
                                                         placeholder="First Name" required>
@@ -105,55 +106,60 @@
 
                                                     <span class="m-2" id="usernameError" class="error"></span>
                                                 </div>
-                                                <div class="line d-flex">
-                                                    <input    class="form-controll w-50 mr-2" type="text" id="City" name="city" placeholder="City"
-                                                        required>
-                                                    <input  class="form-controll w-50 mr-2" type="text" id="Street" name="street" placeholder="Street"
-                                                        required>
-                                                </div>
 
                                                 <div class="line d-flex">
                                                     <input class="form-controll w-75 " type="email" class="line-custom" id="user_email" name="email"
                                                         placeholder="Email" onblur="postEmailData();" required>
+
                                                     <span  class="m-2" id="emailError" class="error"></span>
                                                 </div>
+
+                                                <div class="line d-flex">
+                                                    <input    class="form-controll w-50 mr-2" type="text" id="City" name="city" placeholder="City"
+                                                        required>
+                                                    <input  class="form-controll w-50 ml-2" type="text" id="Street" name="street" placeholder="Street"
+                                                        required>
+                                                </div>
+
+                           
 
                                                 <div class="block-input line d-flex">
                                                     <input  class="form-controll w-50 mr-2" type="tel" id="phone_number" name="phoneNumber"
                                                         placeholder="Phone Number" required>
-                                                        <input  class="form-controll w-50 mr-2" type="text" id="job" name="job" placeholder="Job">
+                                                        <input  class="form-controll w-50 ml-2" type="text" id="job" name="job" placeholder="Job">
                                                 </div>
                                                 
-                                                <input type="text" id="creditLimit" name="creditLimit"
-                                                    placeholder="Credit Limit" required maxlength="7">
+                                                <input  class="d-flex w-60" type="text" id="creditLimit" name="creditLimit"
+                                                    placeholder="Credit Limit" required maxlength="16">
 
                                                 <div class="line d-flex">
                                                     <input class="form-controll w-50 mr-2 " type="password" id="Password" name="password"
                                                         placeholder="Password" required>
-                                                    <input class="form-controll w-50 mr-2" type="password" id="confirmPassword" name="confirmPassword"
+                                                    <input class="form-controll w-50 ml-2" type="password" id="confirmPassword" name="confirmPassword"
                                                         placeholder="Confirm Password" required>
                                                 </div>
                                                 <!-- Checkboxes for selecting things -->
                                                 
-                                                <div class="separator ">
+                                                <div class="separator line ">
 
-                                                    <h3 class="text-center">Interesting</h3>
-                                                    
-                                                    <div class="line d-flex justify-content-center">
-                                                        <div class="d-flex">
+                                                    <!-- justify-content-center -->
+                                                   
+                                                    <div class="line d-flex  m-2">
+                                                        <h3 class="mr-2">Interesting:&nbsp; &nbsp; &nbsp;</h3>
+                                                        <div class="d-flex mr-4">
                                                             <input type="checkbox" id="thing1" name="selectedThing"
                                                                 value="Phones">
-                                                            <label for="thing1" class="ml-2 mt-2 ">Phones</label>
+                                                            <label for="thing1" class="ml-2 mt-2">Phones</label>
                                                         </div>
-                                                        <div class="d-flex">
+                                                        <div class="d-flex mr-4">
                                                             <input type="checkbox" id="thing2" name="selectedThing"
                                                                 value="Laptops">
-                                                            <label for="thing2" class="ml-2 mt-2 ">Laptops</label>
+                                                            <label for="thing2" class="ml-2 mt-2">Laptops</label>
                                                         </div>
-                                                        <div class="d-flex">
+                                                        <div class="d-flex mr-4">
                                                             <input type="checkbox" id="thing3" name="selectedThing"
                                                                 value="Tablets">
-                                                            <label for="thing3" class="ml-2 mt-2 ">Tablets</label>
+                                                            <label for="thing3" class="ml-2 mt-2">Tablets</label>
                                                         </div>
                                                     </div>
                                                 
@@ -161,14 +167,15 @@
                                                 
                                                 <!-- Radio buttons for gender -->
                                                 <div class="separator center-content">
-                                                    <h3 class="text-center">Gender</h3>
-                                                    <div class="line d-flex m-2 justify-content-center">
-                                                        <div class="d-flex">
+                                                   
+                                                    <div class="line d-flex m-2 ">
+                                                        <h3 class=>Gender: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h3>
+                                                        <div class="d-flex mr-5">
                                                             <input type="radio" id="female" name="gender" value="F"
                                                                 required>
                                                             <label for="female" class="ml-2 mt-2 ">Female</label><br>
                                                         </div>
-                                                        <div class="d-flex">
+                                                        <div class="d-flex mr-5">
                                                             <input type="radio" id="male" name="gender" value="M"
                                                                 required>
                                                             <label for="male" class="ml-2 mt-2 ">Male</label>
