@@ -4,7 +4,7 @@ public enum PAGES {
 
     HOME("home", "/index.jsp"),
     LOGIN("login", "/pages/login-register.jsp"),
-    SHOP("shop", "/pages/shop.jsp"),
+    SHOP("shop", "/pages/product.jsp"),
     PRODUCT("product", "/pages/product.jsp"),
     CART("cart", "/pages/cart.jsp"),
     PRODUCT_DETAILS("productDetails", "/pages/product-details.jsp"),

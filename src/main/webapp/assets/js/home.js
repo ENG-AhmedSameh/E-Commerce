@@ -27,22 +27,16 @@ function getProduct() {
                     prevArrow: '<button class="arrow-slick2 prev-slick2"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
                     nextArrow: '<button class="arrow-slick2 next-slick2"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
                 });
-                for (var i = 0; i < 4; i++) {
+                for (var i = 0; i < allProducts.length; i++) {
                     let div = display(response[i]);
                     $('#best_seller_slick').slick('slickAdd', div);
                     allProd += div;
-
                 }
-              
-
             }
-
         }
-
     };
 
     var url = "front?page=homeProducts";
-
     console.log("page=homeProducts");
     xmlhttp.open("GET", url, true);
     xmlhttp.send(null);
@@ -86,18 +80,8 @@ function display(product) {
 }
 
 
-
-
-
-
-
-
-
-
  function showProductModal(id) {
     const product = allProducts.find(el => el?.id === id);
-    
-
     $.magnificPopup.open({
         items: {
             src: `<div class="container">

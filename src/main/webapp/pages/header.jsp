@@ -8,7 +8,7 @@
 
 				<!-- Logo desktop -->
 				<a href="#" class="logo">
-					<img src="../assets/images/icons/logo-01.png" alt="IMG-LOGO">
+					<img src="assets/images/icons/logo-01.png" alt="IMG-LOGO">
 				</a>
 
 				<!-- Menu desktop -->
@@ -20,16 +20,12 @@
 						</li>
 
 						<li>
-							<a href="${pageContext.request.contextPath}/pages/product.jsp">Shop</a>
+							<a href="${pageContext.request.contextPath}/front?page=shop">Shop</a>
 						</li>
 
-						<li class="label1" data-label1="hot">
-							<a href="${pageContext.request.contextPath}/pages/shopping-cart.jsp">Features</a>
-						</li>
-
-						<li>
-							<a href="${pageContext.request.contextPath}/pages/blog.jsp">Blog</a>
-						</li>
+<%--						<li class="label1" data-label1="hot">--%>
+<%--							<a href="${pageContext.request.contextPath}/pages/shopping-cart.jsp">Features</a>--%>
+<%--						</li>--%>
 
 						<li>
 							<a href="${pageContext.request.contextPath}/pages/about.jsp">About</a>
