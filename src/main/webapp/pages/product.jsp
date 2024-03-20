@@ -1,4 +1,6 @@
-<%@ page session="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="com.example.ecommerce.model.entities.Product" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -283,7 +285,7 @@
 			</div>
 
 			<div class="row isotope-grid" id="product">
-				<jsp:useBean id="products" scope="request" type="java.util.List"/>
+
 				<c:forEach var="product1" items="${products}">
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${product1.category.getCategoryName()}">
 						<!-- Block2 -->

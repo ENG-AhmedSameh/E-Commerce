@@ -40,7 +40,7 @@ public class ShopController implements ServletResolverInt {
         }else {
             List<ProductDto> productDtos = new ProductServices().getProductsAll();
             request.setAttribute("products", productDtos);
-
+            System.out.println(productDtos.size());
 //            Gson gson = new Gson();
 //            String json = gson.toJson(productDtos);
 //            response.setContentType("application/json");
