@@ -57,9 +57,6 @@ public class UpdateProfile implements ServletResolverInt {
 
         HttpSession session = request.getSession(false);
         LoggedInUserDto userDto = (LoggedInUserDto) session.getAttribute("currentUser");
-//        Optional<User> userOptional = UserServices.getUser(userDto.getId());
-//        User user = userOptional.orElse(null);
-//        User user = Database.doInTransaction(em-> new UserDAO().getUserById(userDto.getId(),em));
         Optional<User> userOptional = UserServices.getUser(userDto.getId());
         User user = userOptional.orElse(null);
         if (user != null) {
