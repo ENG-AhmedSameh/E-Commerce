@@ -5,7 +5,6 @@ import com.example.ecommerce.model.DAO.impl.ProductDAO;
 import com.example.ecommerce.model.DTO.ProductDto;
 import com.example.ecommerce.model.entities.Product;
 import com.example.ecommerce.model.mappers.ProductMapper;
-import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
@@ -29,7 +28,6 @@ public class ProductServices {
             ProductDAO productDAO = new ProductDAO();
 
             List<Product> products = productDAO.getProductsAll(em);
-
             return ProductMapper.INSTANCE.toListDto(products);
         });
     }

@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.xml.soap.SOAPElement;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,8 +25,7 @@ public class ShopController implements ServletResolverInt {
         String category = request.getParameter("category");
 
         if(category != null){
-            Set<ProductDto> productDtos = new CategoryServices().getCategoryById(Integer.parseInt(category));
-
+            Set<ProductDto> productDtos = new CategoryServices().getProductsOfCategoryById(Integer.parseInt(category));
             Gson gson = new Gson();
             String json = gson.toJson(productDtos);
             response.setContentType("application/json");
@@ -40,7 +38,9 @@ public class ShopController implements ServletResolverInt {
         }else {
             List<ProductDto> productDtos = new ProductServices().getProductsAll();
             request.setAttribute("products", productDtos);
+            System.out.println(productDtos.get(0));
             System.out.println(productDtos.size());
+
 //            Gson gson = new Gson();
 //            String json = gson.toJson(productDtos);
 //            response.setContentType("application/json");

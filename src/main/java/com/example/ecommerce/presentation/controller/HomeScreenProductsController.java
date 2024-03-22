@@ -1,7 +1,6 @@
 package com.example.ecommerce.presentation.controller;
 
 
-import com.example.ecommerce.model.DAO.Database;
 import com.example.ecommerce.model.DTO.ProductDto;
 import com.example.ecommerce.model.services.ProductServices;
 import com.example.ecommerce.presentation.controller.util.ServletResolverInt;

@@ -1,6 +1,5 @@
 package com.example.ecommerce.model.mappers;
 
-import com.example.ecommerce.model.DAO.impl.ProductDAO;
 import com.example.ecommerce.model.DTO.ProductDto;
 import com.example.ecommerce.model.entities.Product;
 import org.mapstruct.*;

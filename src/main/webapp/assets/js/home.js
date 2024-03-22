@@ -105,13 +105,13 @@ function display(product) {
                                         <!-- Additional images -->
                                         <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="" alt="IMG-PRODUCT">
+                                                <img src="${product?.productImages[0].id.imageUrl}" alt="IMG-PRODUCT">
                                             </div>
                                         </div>
     
                                         <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="" alt="IMG-PRODUCT">
+                                                <img src="${product?.productImages[1].id.imageUrl}" alt="IMG-PRODUCT">
                                             </div>
                                         </div>
                                     </div>

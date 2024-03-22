@@ -4,7 +4,6 @@ import com.example.ecommerce.model.DAO.Database;
 import com.example.ecommerce.model.DAO.impl.CategoryDAO;
 import com.example.ecommerce.model.DTO.ProductDto;
 import com.example.ecommerce.model.entities.Category;
-import com.example.ecommerce.model.entities.Product;
 import com.example.ecommerce.model.mappers.ProductMapper;
 
 import java.util.*;
@@ -12,7 +11,7 @@ import java.util.*;
 public class CategoryServices {
 
 
-    public Set<ProductDto> getCategoryById(int id){
+    public Set<ProductDto> getProductsOfCategoryById(int id){
         return Database.doInTransaction(em->{
             CategoryDAO categoryDAO = new CategoryDAO();
             Optional <Category> category  = categoryDAO.get(id ,em);
@@ -25,7 +24,6 @@ public class CategoryServices {
                     },
                     () -> {}
             );
-
             return products;
         });
     }
