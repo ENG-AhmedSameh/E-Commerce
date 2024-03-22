@@ -107,7 +107,7 @@
 			</li>
 
 			<li>
-				<a href="${pageContext.request.contextPath}/pages/product.jsp">Shop</a>
+				<a href="${pageContext.request.contextPath}/front?page=login">Shop</a>
 			</li>
 
 			<li>

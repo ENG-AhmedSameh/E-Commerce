@@ -20,6 +20,7 @@ public class ServletFactory {
              controllers.put("homeProducts",new HomeScreenProductsController());
              controllers.put("productImages",new ProductImagesController());
              controllers.put("shop",new ShopController());
+             controllers.put(("ShoppingCart"),new CartController());
         }
 
         // private constructor to prevent instantiation

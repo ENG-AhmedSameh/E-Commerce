@@ -52,7 +52,7 @@
             <div class="header-cart-total w-full p-tb-40">Total: $00.00</div>
 
             <div class="header-cart-buttons flex-w w-full">
-              <a href="shopping-cart.jsp"
+              <a href="${pageContext.request.contextPath}/front?page=ShoppingCart"
                 class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
                 View Cart
               </a>

@@ -266,6 +266,11 @@
 
     /*==================================================================
     [ Cart ]*/
+
+
+    
+    
+
     $('.js-show-sidebar').on('click', function () {
         $('.js-sidebar').addClass('show-sidebar');
 
