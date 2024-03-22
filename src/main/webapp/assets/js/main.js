@@ -141,6 +141,27 @@
 
     });
 
+    $('[data-filter-price]').each(function () {
+        $(this).on('click', function () {
+            var filterValue = $(this).attr('data-filter-price').split('-');
+            var minPrice = parseInt(filterValue[0]);
+            var maxPrice = parseInt(filterValue[1]);
+
+            // Assuming $topeContainer is the container of your Isotope items
+            var $items = $topeContainer.isotope('getItemElements');
+
+            // Filter the items based on their actual price data
+            var $filteredItems = $($items).filter(function(i, item) {
+                var price = parseFloat($(item).data('price'));
+                console.log("The price is "+price);
+                return price >= minPrice && price <= maxPrice;
+            });
+
+            // Update the Isotope layout with the filtered items
+            $topeContainer.isotope({ filter: $filteredItems });
+        });
+    });
+
     // init Isotope
     $(window).on('load', function () {
         var $grid = $topeContainer.each(function () {

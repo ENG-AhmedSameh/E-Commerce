@@ -99,7 +99,7 @@
 	<div class="menu-mobile">
 		<ul class="main-menu-m">
 			<li>
-				<a href="../index.jsp">Home</a>
+				<a href="${pageContext.request.contextPath}/front?page=home">Home</a>
 			
 				<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -107,7 +107,7 @@
 			</li>
 
 			<li>
-				<a href="${pageContext.request.contextPath}/pages/product.jsp">Shop</a>
+				<a href="${pageContext.request.contextPath}/front?page=shop">Shop</a>
 			</li>
 
 			<li>
