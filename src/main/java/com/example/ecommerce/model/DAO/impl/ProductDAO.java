@@ -15,7 +15,7 @@ public class ProductDAO  implements ProductDAOInt {
     }
 
     @Override
-    public Optional<Product> get(long id, EntityManager em) {
+    public Optional<Product> get(Integer id, EntityManager em) {
         return Optional.ofNullable(em.find(Product.class, id));
     }
 

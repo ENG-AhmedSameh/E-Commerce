@@ -14,7 +14,7 @@ public class CartDAO implements CartDAOInt {
     }
 
     @Override
-    public Optional<Cart> get(long id, EntityManager em) {
+    public Optional<Cart> get(Integer id, EntityManager em) {
         return Optional.ofNullable(em.find(Cart.class, id));
     }
 

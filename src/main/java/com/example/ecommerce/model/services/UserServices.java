@@ -10,6 +10,8 @@ import com.example.ecommerce.model.mappers.LoggedInUserMapper;
 import com.example.ecommerce.model.mappers.UserMapper;
 import com.example.ecommerce.model.util.PasswordManager;
 
+import java.util.Optional;
+
 public class UserServices {
     public static LoggedInUserDto registerNewUser(UserDto userDto ) {
         byte[] salt = PasswordManager.generateSalt();
@@ -55,6 +57,13 @@ public class UserServices {
 
     public static void updateUser(User user) {
         UserDAO userDAO = new UserDAO();
-        Database.doInTransactionWithoutResult(em -> userDAO.update(user, em));
+        Database.doInTransactionWithoutResult(em ->{
+            userDAO.update(user, em);
+        });
+    }
+
+    public static Optional<User> getUser(Integer id) {
+        UserDAO userDAO = new UserDAO();
+        return Database.doInTransaction(em -> userDAO.get(id, em));
     }
 }

@@ -14,7 +14,7 @@ public class OrderDAO implements OrderDAOInt {
     }
 
     @Override
-    public Optional<Order> get(long id, EntityManager em) {
+    public Optional<Order> get(Integer id, EntityManager em) {
         return Optional.ofNullable(em.find(Order.class, id));
     }
 

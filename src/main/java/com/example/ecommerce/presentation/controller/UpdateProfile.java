@@ -1,6 +1,12 @@
 package com.example.ecommerce.presentation.controller;
 
+import com.example.ecommerce.model.DAO.Database;
+import com.example.ecommerce.model.DAO.impl.UserDAO;
+import com.example.ecommerce.model.DTO.LoggedInUserDto;
 import com.example.ecommerce.model.entities.User;
+import com.example.ecommerce.model.mappers.LoggedInUserMapper;
+import com.example.ecommerce.model.mappers.UserMapper;
+import com.example.ecommerce.model.services.UserServices;
 import com.example.ecommerce.presentation.controller.util.PAGES;
 import com.example.ecommerce.presentation.controller.util.ServletResolverInt;
 import com.example.ecommerce.presentation.controller.util.ViewResolver;
@@ -11,6 +17,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Optional;
 
 public class UpdateProfile implements ServletResolverInt {
     @Override
@@ -27,29 +34,15 @@ public class UpdateProfile implements ServletResolverInt {
 
     private ViewResolver doGet(HttpServletRequest request, HttpServletResponse response) {
 
-        HttpSession session = request.getSession(true);
-        User user = (User) session.getAttribute("currentUser");
+        HttpSession session = request.getSession(false);
+        LoggedInUserDto user = (LoggedInUserDto) session.getAttribute("currentUser");
 
-        if (user == null) {
-            user = new User();
-            user.setUserName("Gogz");
-            user.setEmail("hajar@gmail.com");
-            user.setJob("Software Engineer");
-            user.setFirstName("hajar");
-            user.setLastName("Ramadan");
-            user.setCity("Benha");
-            user.setPhoneNumber("01033729354");
-            user.setStreet("13 Farid Nada");
-            user.setCreditLimit(BigDecimal.valueOf(1000));
-
-            session.setAttribute("currentUser", user);
-            System.out.println("user = "+user.getUserName());
+        if (user != null) {
+            ViewResolver viewResolver = new ViewResolver();
+            viewResolver.forward(PAGES.UPDATEPROFILE.getValue());
+            return viewResolver;
         }
-
-        ViewResolver viewResolver = new ViewResolver();
-        viewResolver.forward(PAGES.UPDATEPROFILE.getValue());
-        return viewResolver;
-
+        return null;
     }
 
     private ViewResolver doPost(HttpServletRequest request, HttpServletResponse response) {
@@ -62,9 +55,13 @@ public class UpdateProfile implements ServletResolverInt {
         String street = request.getParameter("street");
         BigDecimal creditLimit = new BigDecimal(request.getParameter("credit_limit"));
 
-        HttpSession session = request.getSession(false);//just retrieve the current session
-        User user = (User) session.getAttribute("currentUser");
-
+        HttpSession session = request.getSession(false);
+        LoggedInUserDto userDto = (LoggedInUserDto) session.getAttribute("currentUser");
+//        Optional<User> userOptional = UserServices.getUser(userDto.getId());
+//        User user = userOptional.orElse(null);
+//        User user = Database.doInTransaction(em-> new UserDAO().getUserById(userDto.getId(),em));
+        Optional<User> userOptional = UserServices.getUser(userDto.getId());
+        User user = userOptional.orElse(null);
         if (user != null) {
             user.setJob(job);
             user.setFirstName(firstName);
@@ -73,8 +70,8 @@ public class UpdateProfile implements ServletResolverInt {
             user.setCity(city);
             user.setStreet(street);
             user.setCreditLimit(creditLimit);
-            session.setAttribute("currentUser", user);//update currentUser
-            System.out.println("user = " + user.getUserName());
+            UserServices.updateUser(user);
+            session.setAttribute("currentUser", LoggedInUserMapper.INSTANCE.toDto(user));
         }
 
         ViewResolver viewResolver = new ViewResolver();

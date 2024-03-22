@@ -32,12 +32,20 @@
 						<li>
 							<a href="${pageContext.request.contextPath}/pages/contact.jsp">Contact</a>
 						</li>
+						<%@ page import="jakarta.servlet.http.HttpSession" %>
+
+						<%
+							HttpSession session = request.getSession(false);
+							if (session == null || session.getAttribute("currentUser") == null) {
+						%>
 						<li>
 							<a href="${pageContext.request.contextPath}/front?page=login">Login /Register</a>
 						</li>
+						<% } else { %>
 						<li>
 							<a href="${pageContext.request.contextPath}/front?page=updateProfile">Update Profile</a>
 						</li>
+						<% } %>
 					</ul>
 				</div>
 

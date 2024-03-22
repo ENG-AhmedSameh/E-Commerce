@@ -18,13 +18,13 @@ public class UserDAO implements UserDAOInt  {
     }
 
     @Override
-    public Optional<User> get(long id,EntityManager em) {
+    public Optional<User> get(Integer id,EntityManager em) {
         return Optional.ofNullable(em.find(User.class,id));
     }
 
     @Override
     public void update(User user,EntityManager em) {
-        em.persist(user);
+        em.merge(user);
     }
 
     @Override
@@ -51,5 +51,9 @@ public class UserDAO implements UserDAOInt  {
         } catch (NoResultException e) {
             return null;
         }
+    }
+
+    public User getUserById(Integer id, EntityManager em) {
+        return em.find(User.class, id);
     }
 }

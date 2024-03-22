@@ -1,4 +1,4 @@
-<%@ page import="com.example.ecommerce.model.entities.User" %>
+<%@ page import="com.example.ecommerce.model.DTO.LoggedInUserDto" %>
 <%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="true" %>
@@ -55,46 +55,46 @@
         <form action="front?page=updateProfile" method="post">
             <div class="form-group">
                 <label for="user_name">Username:</label>
-                <input type="text" id="user_name" name="user_name" value="<%= ((User) session.getAttribute("currentUser")).getUserName() %>" readonly>
+                <input type="text" id="user_name" name="user_name" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getUserName() %>" readonly>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<%= ((User) session.getAttribute("currentUser")).getEmail() %>" readonly>
+                <input type="email" id="email" name="email" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getEmail() %>" readonly>
             </div>
             <div class="form-group">
                 <label for="job">Job Title:</label>
-                <input type="text" id="job" name="job" value="<%= ((User) session.getAttribute("currentUser")).getJob() %>">
+                <input type="text" id="job" name="job" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getJob() %>">
             </div>
 
             <div class="form-row">
                 <div class="form-group col">
                     <label for="first_name">First Name:</label>
-                    <input type="text" id="first_name" name="first_name" value="<%= ((User) session.getAttribute("currentUser")).getFirstName() %>">
+                    <input type="text" id="first_name" name="first_name" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getFirstName() %>">
                 </div>
                 <div class="form-group col">
                     <label for="last_name">Last Name:</label>
-                    <input type="text" id="last_name" name="last_name" value="<%= ((User) session.getAttribute("currentUser")).getLastName() %>">
+                    <input type="text" id="last_name" name="last_name" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getLastName() %>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col">
                     <label for="phone_number">Phone Number:</label>
-                    <input type="text" id="phone_number" name="phone_number" value="<%= ((User) session.getAttribute("currentUser")).getPhoneNumber() %>">
+                    <input type="text" id="phone_number" name="phone_number" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getPhoneNumber() %>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" value="<%= ((User) session.getAttribute("currentUser")).getCity() %>">
+                    <input type="text" id="city" name="city" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getCity() %>">
                 </div>
                 <div class="form-group col">
                     <label for="street">Street:</label>
-                    <input type="text" id="street" name="street" value="<%= ((User) session.getAttribute("currentUser")).getStreet() %>">
+                    <input type="text" id="street" name="street" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getStreet() %>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="credit_limit">Credit Limit:</label>
-                <input type="text" id="credit_limit" name="credit_limit" value="<%= ((User) session.getAttribute("currentUser")).getCreditLimit() %>">
+                <input type="text" id="credit_limit" name="credit_limit" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getCreditLimit() %>">
             </div>
 
             <button type="submit">Update</button>

@@ -8,7 +8,7 @@ import java.util.Optional;
 interface DAO  <T> {
 
      void save(T t, EntityManager em);
-     Optional<T> get(long id, EntityManager em);
+     Optional<T> get(Integer id, EntityManager em);
      void  update(T t, EntityManager em);
      void delete(T t, EntityManager em);
 }
