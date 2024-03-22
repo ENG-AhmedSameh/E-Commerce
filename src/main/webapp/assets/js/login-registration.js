@@ -14,7 +14,6 @@
 // }
 
 
-
 document.addEventListener("DOMContentLoaded", function() {
     function switchTab(event) {
         console.log("Switching tab");
@@ -137,12 +136,6 @@ function posUserNametData(){
 }
 
 
-
-
-
-
-
-
 // Add event listener for form submission
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registrationForm');
@@ -151,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Prevent form submission
 
         // Perform validation
-        const email = document.getElementById('email').value;
+        const email = document.getElementById('user_email').value;
         const phoneNumber = document.getElementById('phone_number').value;
         const password = document.getElementById('Password').value;
 

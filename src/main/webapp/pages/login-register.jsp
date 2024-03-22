@@ -75,6 +75,13 @@
                                             <form action="front?page=login" method="post">
                                                 <input type="text" name="username" placeholder="Username">
                                                 <input type="password" name="password" placeholder="Password">
+                                                <div id="login-error-message" style="color: red;">
+                                                    <!-- This area is for displaying error messages -->
+                                                    <!-- It will be empty and not displayed if there are no errors -->
+                                                    <% if(request.getAttribute("login-error") != null) { %>
+                                                    <%= request.getAttribute("login-error") %>
+                                                    <% } %>
+                                                </div>
                                                 <div class="button-box">
                                                     <div class="login-toggle-btn">
                                                         <input type="checkbox" class="remember"> <label>Remember
@@ -91,7 +98,13 @@
                                     <div id="lg2" class="tab-pane">
                                         <div class="form-container">
                                             <form id="registrationForm" action="front?page=registration" method="post">
-
+                                                <div id="register-error-message" style="color: red;">
+                                                    <!-- This area is for displaying error messages -->
+                                                    <!-- It will be empty and not displayed if there are no errors -->
+                                                    <% if(request.getAttribute("register-error") != null) { %>
+                                                    <%= request.getAttribute("register-error") %>
+                                                    <% } %>
+                                                </div>
                                                 <div class="line d-flex " >
                                                     <input class="form-controll w-50 mr-2" type="text" id="first_name" name="firstname"
                                                         placeholder="First Name" required>

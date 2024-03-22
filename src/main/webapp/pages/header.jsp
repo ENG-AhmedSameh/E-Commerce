@@ -23,13 +23,11 @@
 							<a href="${pageContext.request.contextPath}/front?page=shop">Shop</a>
 						</li>
 
-<%--						<li class="label1" data-label1="hot">--%>
-<%--							<a href="${pageContext.request.contextPath}/pages/shopping-cart.jsp">Features</a>--%>
-<%--						</li>--%>
 
 						<li>
 							<a href="${pageContext.request.contextPath}/pages/about.jsp">About</a>
 						</li>
+
 
 						<li>
 							<a href="${pageContext.request.contextPath}/pages/contact.jsp">Contact</a>
@@ -116,10 +114,6 @@
 
 			<li>
 				<a href="${pageContext.request.contextPath}/pages/blog.jsp">Blog</a>
-			</li>
-
-			<li>
-				<a href="${pageContext.request.contextPath}/pages/about.jsp">About</a>
 			</li>
 
 			<li>

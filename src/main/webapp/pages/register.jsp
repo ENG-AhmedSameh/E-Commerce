@@ -1,4 +1,3 @@
-<%@ page session="false" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>

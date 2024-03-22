@@ -45,9 +45,11 @@ public class SignUpController implements ServletResolverInt {
         if (loggedInUser != null) {
             HttpSession session = req.getSession(true);
             session.setAttribute("currentUser", loggedInUser);
-           viewResolver.redirect(PAGES.HOME.getValue());
+//           viewResolver.redirect(PAGES.HOME.getValue());
+            viewResolver.redirect("front?page=home");
         } else {
-            viewResolver.redirect(PAGES.LOGIN.getValue());
+            req.setAttribute("register-error", "Please Try Again");
+            viewResolver.forward(PAGES.LOGIN.getValue());
         }
         return viewResolver;
     }
