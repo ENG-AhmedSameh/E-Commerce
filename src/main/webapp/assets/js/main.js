@@ -226,7 +226,8 @@
         $('.js-panel-cart').addClass('show-header-cart');
         $('#items').empty();
         console.log("helooo")
-        var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+        var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
+        console.log(cartItems);
         if (cartItems !== null) {
             var total = 0;
             var num = 0;
@@ -260,19 +261,19 @@
 
         $(this).closest('.header-cart-item').remove();
         console.log("remove");
-        var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+        var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
         if (cartItems !== null) {
             cartItems.splice(indexToRemove, 1);
-            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+            sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-            var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+            var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
             $('.js-show-cart').attr('data-notify',cartItems.length );
         }
    
     });
 
     $(document).ready(function() {
-        var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+        var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
         $('.js-show-cart').attr('data-notify',cartItems.length );
     });
     
@@ -286,6 +287,11 @@
 
     /*==================================================================
     [ Cart ]*/
+
+
+    
+    
+
     $('.js-show-sidebar').on('click', function () {
         $('.js-sidebar').addClass('show-sidebar');
 

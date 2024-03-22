@@ -80,7 +80,7 @@ function display(product) {
 }
 
 
- function showProductModal(id) {
+function showProductModal(id) {
     const product = allProducts.find(el => el?.id === id);
     $.magnificPopup.open({
         items: {
@@ -97,7 +97,7 @@ function display(product) {
                                     <div class="slick3 gallery-lb">
                                         <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="${product?.mainImageUrl}" alt="IMG-PRODUCT" class="product-image">
+                                                <img src="${product?.mainImageUrl}" alt="IMG-PRODUCT" class="product-image ">
                                                 <div class="zoom-square-overlay"></div>
                                             </div>
                                         </div>
@@ -181,10 +181,13 @@ function display(product) {
         },
         callbacks: {
             close: () => {
-                //do something on exit
+
 
             },
             open: () => {
+
+
+
                 // Add event listener for increment button
                 $(".btn-num-product-up").on("click", function () {
                     var numProduct = parseInt($(this).closest('.wrap-num-product').find('.num-product').val());
@@ -246,10 +249,10 @@ function display(product) {
                     ]
                 });
 
-                $('.js-addcart-detail').each(function(){
-                   
-                    
-                });
+                // $('.js-addcart-detail').each(function () {
+
+
+                // });
 
 
                 $(".js-addcart-detail").on("click", function () {
@@ -262,28 +265,62 @@ function display(product) {
                         category: product.category,
                         quantity: parseInt($(".num-product").val())
                     };
-                    
-                    var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-                    
+
+                    var cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+
                     var existingItemIndex = cartItems.findIndex(item => item.id === cartItem.id);
 
                     if (existingItemIndex !== -1) {
-                       
                         cartItems[existingItemIndex].quantity += cartItem.quantity;
                     } else {
-                        
                         cartItems.push(cartItem);
                     }
- 
-                       localStorage.setItem("cartItems", JSON.stringify(cartItems));
-                       console.log(cartItem); 
-                   
+
+                    sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+
                     swal(product.name, "is added to cart !", "success");
-                    
-                    $('.js-show-cart').attr('data-notify',cartItems.length);
+
+                    $('.js-show-cart').attr('data-notify', cartItems.length);
+
                     console.log(product);
+
                     return false;
                 });
+
+
+
+                // $(".js-addcart-detail").on("click", function () {
+
+                //     var cartItem = {
+                //         id: product.id,
+                //         mainImageUrl: product.mainImageUrl,
+                //         name: product.name,
+                //         price: product.price,
+                //         category: product.category,
+                //         quantity: parseInt($(".num-product").val())
+                //     };
+
+                //     var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+                //     var existingItemIndex = cartItems.findIndex(item => item.id === cartItem.id);
+
+                //     if (existingItemIndex !== -1) {
+
+                //         cartItems[existingItemIndex].quantity += cartItem.quantity;
+                //     } else {
+
+                //         cartItems.push(cartItem);
+                //     }
+
+                //     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                //     console.log(cartItem);
+
+                //     swal(product.name, "is added to cart !", "success");
+
+                //     $('.js-show-cart').attr('data-notify', cartItems.length);
+                //     console.log(product);
+                //     return false;
+                // });
 
 
             }
@@ -295,33 +332,34 @@ function display(product) {
 
 function getProductImages(id) {
 
-        var xmlhttp;
+    var xmlhttp;
 
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else if (window.ActiveXObject) {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
 
-        xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function () {
+        console.log(xmlhttp.readyState);
+        if (xmlhttp.readyState === 4) {
             console.log(xmlhttp.readyState);
-            if (xmlhttp.readyState === 4) {
-            console.log(xmlhttp.readyState);
-                if (xmlhttp.status === 200) {
+            if (xmlhttp.status === 200) {
                 console.log(xmlhttp.readyState);
-                    var let = JSON.parse(xmlhttp.responseText);
-                    console.log(let);
-                    return let;
-                } else {
-                    reject(new Error('Request failed with status ' + xmlhttp.status));
-                }
+                var let = JSON.parse(xmlhttp.responseText);
+                console.log(let);
+                return let;
+            } else {
+                reject(new Error('Request failed with status ' + xmlhttp.status));
             }
-        };
+        }
+    };
 
         var url = "front?page=productImages&productId=" + id;
         xmlhttp.open("GET", url, true);
         xmlhttp.send(null);
 }
+
 
 window.onload = function () {
     getProduct();
