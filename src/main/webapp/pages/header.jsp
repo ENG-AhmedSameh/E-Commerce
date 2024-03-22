@@ -35,6 +35,9 @@
 						<li>
 							<a href="${pageContext.request.contextPath}/front?page=login">Login /Register</a>
 						</li>
+						<li>
+							<a href="${pageContext.request.contextPath}/front?page=updateProfile">Update Profile</a>
+						</li>
 					</ul>
 				</div>
 
