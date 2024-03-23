@@ -186,17 +186,67 @@
         });
     });
 
+    var currentSort = 'default'; // Tracks the current sorting preference
+
+// Handling click events on the sorting links
+    $('.filter-link').on('click', function(e) {
+        e.preventDefault(); // Prevent the default anchor click behavior
+
+        var sortType = $(this).text().trim(); // Get the sort option text
+
+        if(sortType === 'Price: Low to High') {
+            currentSort = 'asc';
+        } else if(sortType === 'Price: High to Low') {
+            currentSort = 'desc';
+        } else {
+            currentSort = 'default';
+        }
+
+        applyFilters(); // Apply filters and sorting
+    });
+
+
     function applyFilters() {
         $topeContainer.isotope({
-            // Use filter function
+            // Continue to use filter function for filtering
             filter: function() {
                 var isCategoryMatch = currentCategoryFilter === '*' ? true : $(this).is(currentCategoryFilter);
                 var price = parseFloat($(this).data('price'));
                 var isPriceMatch = price >= currentPriceFilter.min && price <= currentPriceFilter.max;
-                return isCategoryMatch && isPriceMatch; // Both conditions must be true
-            }
+                return isCategoryMatch && isPriceMatch;
+            },
+            // Additional configuration for sorting might go here if Isotope directly supported it
         });
+
+        // After filtering, now apply sorting based on the currentSort value
+        if (currentSort !== 'default') {
+            $topeContainer.isotope({
+                sortBy: 'price',
+                sortAscending: currentSort === 'asc' ? true : false
+            });
+        }else {
+            // Default sorting, e.g., by id or original order
+            $topeContainer.isotope({
+                // Use 'original-order' for the original HTML order, or another key if sorting by id
+                sortBy: 'original-order',
+                sortAscending: true // true if ascending, false if descending; it usually doesn't matter for 'original-order'
+            });
+        }
+
     }
+    $topeContainer.isotope({
+        // Other options...
+        getSortData: {
+            price: function(itemElem) { // itemElem is the element
+                return parseFloat($(itemElem).data('price'));
+            },
+            id: function(itemElem) {
+                return $(itemElem).data('id'); // Assuming you're using a data-id attribute for sorting
+            }
+        }
+    });
+
+
 
     // #########################################################################################################
 
