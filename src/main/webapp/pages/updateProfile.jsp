@@ -77,11 +77,11 @@
                             <form action="front?page=updateProfile" method="post">
                                 <div class="form-group ">
                                     <label class="m-2" for="user_name">Username:</label>
-                                    <input type="text" id="user_name" name="user_name" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getUserName() %>" readonly class="form-control">
+                                    <input type="text" id="user_name" name="user_name" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getUserName() %>" readonly class="form-control form-control-plaintext">
                                 </div>
                                 <div class="form-group">
                                     <label class="m-2" for="email">Email:</label>
-                                    <input type="email" id="email" name="email" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getEmail() %>" readonly class="form-control">
+                                    <input type="email" id="email" name="email" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getEmail() %>"   readonly class="form-control form-control-plaintext">
                                 </div>
                                 <div class="form-group">
                                    

@@ -37,6 +37,10 @@ body {
     border-radius: 5px;
 }
 
+.error-input {
+    border: 1px solid red;
+}
+
 
 
 .button-box button {

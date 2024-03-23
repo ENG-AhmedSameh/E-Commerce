@@ -43,10 +43,16 @@
 						<li>
 							<a href="${pageContext.request.contextPath}/front?page=login">Login /Register</a>
 						</li>
+
+
 						<% } else { %>
 						<li>
 							<a href="${pageContext.request.contextPath}/front?page=updateProfile">Update Profile</a>
 						</li>
+
+						<li>
+                             <a href="${pageContext.request.contextPath}/front?page=logout">LogOut</a>
+                        </li>
 						<% } %>
 					</ul>
 				</div>

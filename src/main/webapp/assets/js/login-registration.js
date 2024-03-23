@@ -125,10 +125,13 @@ function posUserNametData(){
             }
         }
     };
+   
+    myvalue = document.getElementById("user_name").value;
+    if(myvalue.length < 5){
+        return;
+    }
 
     url="front?page=checkUserName";
-    myvalue = document.getElementById("user_name").value;
-
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("username="+myvalue);
@@ -136,14 +139,20 @@ function posUserNametData(){
 }
 
 
-// Add event listener for form submission
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registrationForm');
 
     form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
-
-        // Perform validation
+        event.preventDefault(); 
+       
+        
         const email = document.getElementById('user_email').value;
         const phoneNumber = document.getElementById('phone_number').value;
         const password = document.getElementById('Password').value;
