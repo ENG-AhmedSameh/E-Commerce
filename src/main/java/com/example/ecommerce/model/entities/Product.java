@@ -52,6 +52,10 @@ public class Product {
     @OneToMany(mappedBy = "product" , fetch = FetchType.EAGER)
     private Set<ProductImage> productImages = new LinkedHashSet<>();
 
+    @NotNull
+    @Column(name = "is_deleted", nullable = false)
+    private Byte isDeleted;
+
 //    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private Set<CartItem> cartItems = new HashSet<>();
 

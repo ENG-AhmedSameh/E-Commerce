@@ -23,5 +23,6 @@ public class ProductDto implements Serializable {
     String description;
     @Size(max = 45)
     String mainImageUrl;
+    Byte isDeleted;
     Set<ProductImageDto> productImages;
 }
