@@ -481,6 +481,22 @@
 		});
 	</script>
 <!--===============================================================================================-->
+	<script>
+		$(document).ready(function(){
+			$('.filter-link').click(function(e) {
+				e.preventDefault(); // Prevent the default action of the link
+
+				// Remove 'filter-link-active' class from all filter links
+				$('.filter-link').removeClass('filter-link-active');
+
+				// Add 'filter-link-active' class to the clicked link
+				$(this).addClass('filter-link-active');
+			});
+		});
+	</script>
+
+
+
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/home.js"></script>
 </body>
