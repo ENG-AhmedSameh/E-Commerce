@@ -9,6 +9,7 @@ window.onload = function () {
 		minusButtons[i].addEventListener('click', () => {
 			if (inputFields[i].value > 1) {
 				inputFields[i].value = parseInt(inputFields[i].value) - 1;
+				enableUpdateCartButton(); 
 				displayNote();
 			}
 		});
@@ -17,6 +18,7 @@ window.onload = function () {
 	for (let i = 0; i < plusButtons.length; i++) {
 		plusButtons[i].addEventListener('click', () => {
 			inputFields[i].value = parseInt(inputFields[i].value) + 1;
+			enableUpdateCartButton();
 			displayNote();
 		});
 	}
@@ -24,13 +26,18 @@ window.onload = function () {
 	deletee();
 };
 
-
-
-function displayNote() {
-    const noteSpan = document.getElementById('note');
-    noteSpan.textContent = 'Please press the "Update Cart" button to apply the changes.';
-    noteSpan.style.color = "red";
+function enableUpdateCartButton() {
+    const updateCartButton = document.querySelector('.flex-c-m.stext-101.cl2.size-119.bg8.bor13.hov-btn3.p-lr-15.trans-04.pointer.m-tb-10');
+    updateCartButton.removeAttribute('disabled');
 }
+
+
+
+// function displayNote() {
+//     const noteSpan = document.getElementById('note');
+//     noteSpan.textContent = 'Please press the "Update Cart" button to apply the changes.';
+//     noteSpan.style.color = "red";
+// }
 
 
 var total = 0;
@@ -109,9 +116,7 @@ function loadProduct() {
 
 const updateCartButton = document.querySelector('.flex-c-m.stext-101.cl2.size-119.bg8.bor13.hov-btn3.p-lr-15.trans-04.pointer.m-tb-10');
 
-// Add click event listener to the div
 updateCartButton.addEventListener('click', function() {
-    // Call the function to update cart items and refresh the page
     updateCartAndRefresh();
 });
 
@@ -148,15 +153,11 @@ function deletee() {
         var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
         
         if (cartItems !== null && indexToRemove >= 0 && indexToRemove < cartItems.length) {
-            // Remove the item at the specified index from the cart items array
             cartItems.splice(indexToRemove, 1);
             
-            // Update session storage with the modified cart items array
             sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
             
-            // Optionally, update any UI to reflect the change
             
-            // For example, update the data-notify attribute
             $('.js-show-cart').attr('data-notify', cartItems.length);
 			location.reload();
         }

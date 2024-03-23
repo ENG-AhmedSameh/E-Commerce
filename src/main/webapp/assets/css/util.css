@@ -3712,3 +3712,10 @@ iframe {border: none;}
 .pointer-none {
 	pointer-events: none;
 }
+
+/*--------------------------------*/
+#updateCartButton:disabled {
+    background-color: #cccccc; /* Gray color for disabled state */
+    color: #999999; /* Adjust text color for disabled state */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+}
