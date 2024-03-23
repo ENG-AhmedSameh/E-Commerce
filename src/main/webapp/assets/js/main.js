@@ -129,38 +129,76 @@
 
     /*==================================================================
     [ Isotope ]*/
+    // var $topeContainer = $('.isotope-grid');
+    // var $filter = $('.filter-tope-group');
+    //
+    // // filter items on button click
+    // $filter.each(function () {
+    //     $filter.on('click', 'button', function () {
+    //         var filterValue = $(this).attr('data-filter');
+    //         $topeContainer.isotope({ filter: filterValue });
+    //     });
+    //
+    // });
+    //
+    // $('[data-filter-price]').each(function () {
+    //     $(this).on('click', function () {
+    //         var filterValue = $(this).attr('data-filter-price').split('-');
+    //         var minPrice = parseInt(filterValue[0]);
+    //         var maxPrice = parseInt(filterValue[1]);
+    //
+    //         // Assuming $topeContainer is the container of your Isotope items
+    //         var $items = $topeContainer.isotope('getItemElements');
+    //
+    //         // Filter the items based on their actual price data
+    //         var $filteredItems = $($items).filter(function(i, item) {
+    //             var price = parseFloat($(item).data('price'));
+    //             return price >= minPrice && price <= maxPrice;
+    //         });
+    //
+    //         // Update the Isotope layout with the filtered items
+    //         $topeContainer.isotope({ filter: $filteredItems });
+    //     });
+    // });
+
+    // ############################################################################################################
+
+    var currentCategoryFilter = '*'; // '*' means no filter, or show all
+    var currentPriceFilter = { min: 0, max: Infinity }; // No price filter by default
+    var currentSortValue = 'original-order'; // Default sort order
+
     var $topeContainer = $('.isotope-grid');
     var $filter = $('.filter-tope-group');
 
-    // filter items on button click
     $filter.each(function () {
         $filter.on('click', 'button', function () {
-            var filterValue = $(this).attr('data-filter');
-            $topeContainer.isotope({ filter: filterValue });
+            currentCategoryFilter = $(this).attr('data-filter'); // Update the current category filter
+            applyFilters(); // Apply combined filters
         });
-
     });
 
     $('[data-filter-price]').each(function () {
         $(this).on('click', function () {
             var filterValue = $(this).attr('data-filter-price').split('-');
-            var minPrice = parseInt(filterValue[0]);
-            var maxPrice = parseInt(filterValue[1]);
-
-            // Assuming $topeContainer is the container of your Isotope items
-            var $items = $topeContainer.isotope('getItemElements');
-
-            // Filter the items based on their actual price data
-            var $filteredItems = $($items).filter(function(i, item) {
-                var price = parseFloat($(item).data('price'));
-                console.log("The price is "+price);
-                return price >= minPrice && price <= maxPrice;
-            });
-
-            // Update the Isotope layout with the filtered items
-            $topeContainer.isotope({ filter: $filteredItems });
+            currentPriceFilter.min = parseInt(filterValue[0]);
+            currentPriceFilter.max = parseInt(filterValue[1]);
+            applyFilters(); // Apply combined filters
         });
     });
+
+    function applyFilters() {
+        $topeContainer.isotope({
+            // Use filter function
+            filter: function() {
+                var isCategoryMatch = currentCategoryFilter === '*' ? true : $(this).is(currentCategoryFilter);
+                var price = parseFloat($(this).data('price'));
+                var isPriceMatch = price >= currentPriceFilter.min && price <= currentPriceFilter.max;
+                return isCategoryMatch && isPriceMatch; // Both conditions must be true
+            }
+        });
+    }
+
+    // #########################################################################################################
 
     // init Isotope
     $(window).on('load', function () {
