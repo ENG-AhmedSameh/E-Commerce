@@ -97,7 +97,7 @@
 
 							<ul>
 								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
+									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
 										Default
 									</a>
 								</li>
@@ -481,19 +481,45 @@
 		});
 	</script>
 <!--===============================================================================================-->
+<%--	<script>--%>
+<%--		$(document).ready(function(){--%>
+<%--			$('.filter-link').click(function(e) {--%>
+<%--				e.preventDefault(); // Prevent the default action of the link--%>
+
+<%--				// Remove 'filter-link-active' class from all filter links--%>
+<%--				$('.filter-link').removeClass('filter-link-active');--%>
+
+<%--				// Add 'filter-link-active' class to the clicked link--%>
+<%--				$(this).addClass('filter-link-active');--%>
+<%--			});--%>
+<%--		});--%>
+<%--	</script>--%>
 	<script>
 		$(document).ready(function(){
-			$('.filter-link').click(function(e) {
+			// Function for handling clicks on Sort By links
+			$('.filter-col1 .filter-link').click(function(e) {
 				e.preventDefault(); // Prevent the default action of the link
 
-				// Remove 'filter-link-active' class from all filter links
-				$('.filter-link').removeClass('filter-link-active');
+				// Remove 'filter-link-active' class from all Sort By links
+				$('.filter-col1 .filter-link').removeClass('filter-link-active');
 
-				// Add 'filter-link-active' class to the clicked link
+				// Add 'filter-link-active' class to the clicked Sort By link
+				$(this).addClass('filter-link-active');
+			});
+
+			// Function for handling clicks on Price links
+			$('.filter-col2 .filter-link').click(function(e) {
+				e.preventDefault(); // Prevent the default action of the link
+
+				// Remove 'filter-link-active' class from all Price links
+				$('.filter-col2 .filter-link').removeClass('filter-link-active');
+
+				// Add 'filter-link-active' class to the clicked Price link
 				$(this).addClass('filter-link-active');
 			});
 		});
 	</script>
+
 
 
 
