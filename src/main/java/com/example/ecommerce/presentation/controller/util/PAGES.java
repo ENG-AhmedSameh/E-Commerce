@@ -7,7 +7,7 @@ public enum PAGES {
     SHOP("shop", "/pages/product.jsp"),
     PRODUCT("product", "/pages/product.jsp"),
     CART("cart", "/pages/cart.jsp"),
-    PRODUCT_DETAILS("productDetails", "/pages/product-details.jsp"),
+    PRODUCT_DETAILS("productDetails", "/pages/product-detail.jsp"),
     SHOPPING_CART("shoppingCart", "/pages/shopping-cart.jsp"),
     BLOG("blog", "/pages/blog.jsp"),
     BLOG_DETAILS("blogDetails", "/pages/blog-details.jsp"),

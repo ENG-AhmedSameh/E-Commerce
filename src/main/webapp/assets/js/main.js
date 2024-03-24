@@ -165,7 +165,6 @@
 
     var currentCategoryFilter = '*'; // '*' means no filter, or show all
     var currentPriceFilter = { min: 0, max: Infinity }; // No price filter by default
-    var currentSortValue = 'original-order'; // Default sort order
 
     var $topeContainer = $('.isotope-grid');
     var $filter = $('.filter-tope-group');
@@ -376,9 +375,6 @@
     /*==================================================================
     [ Cart ]*/
 
-
-    
-    
 
     $('.js-show-sidebar').on('click', function () {
         $('.js-sidebar').addClass('show-sidebar');
