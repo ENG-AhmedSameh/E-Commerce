@@ -23,6 +23,8 @@ public class ServletFactory {
              controllers.put("updateProfile", new UpdateProfile());
              controllers.put(("ShoppingCart"),new CartController());
              controllers.put("logout",new LogOutController());
+             controllers.put("productDetails",new ProductDetailsController());
+             controllers.put("productDetailsData",new ProductDetailsDataController());
              controllers.put("AddToCart",new AddToUserCart());
         }
 
