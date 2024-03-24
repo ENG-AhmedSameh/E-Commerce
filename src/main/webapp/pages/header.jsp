@@ -1,4 +1,3 @@
-<%@ page session="false" %>
 
 <header class="header-v2">
 	<!-- Header desktop -->
@@ -37,8 +36,8 @@
 						<%@ page import="jakarta.servlet.http.HttpSession" %>
 
 						<%
-							HttpSession session = request.getSession(false);
-							if (session == null || session.getAttribute("currentUser") == null) {
+//							HttpSession session = request.getSession(false);
+							if (request.getSession().getAttribute("currentUser") == null) {
 						%>
 						<li>
 							<a href="${pageContext.request.contextPath}/front?page=login">Login /Register</a>
