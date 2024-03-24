@@ -31,6 +31,7 @@ public class CartItem {
     @Column(name = "quantity")
     private Short quantity;
 
+
     public CartItem(Product product,Cart cart,Short quantity){
         this.product = product;
         this.cart = cart;

@@ -66,4 +66,13 @@ public class UserServices {
         UserDAO userDAO = new UserDAO();
         return Database.doInTransaction(em -> userDAO.get(id, em));
     }
+
+    public static LoggedInUserDto  getLoggedInUser(String userName) {
+        UserDAO userDAO = new UserDAO();
+        User loggedUser = Database.doInTransaction(em -> {
+            User user = userDAO.getUserByUsername(userName, em);
+            return user;
+        });
+        return LoggedInUserMapper.INSTANCE.toDto(loggedUser);
+    }
 }

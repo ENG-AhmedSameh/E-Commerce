@@ -34,4 +34,13 @@ public class Cart {
         cartItems.remove(cartItem);
         cartItem.setCart(null);
     }
+
+    public void addCartItem(Set<CartItem> cartItem) {
+        if (cartItems != null)
+        {
+            cartItems.addAll(cartItem);
+        }
+
+
+    }
 }

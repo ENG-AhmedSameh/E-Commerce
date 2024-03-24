@@ -62,4 +62,8 @@ public class ProductDAO  implements ProductDAOInt {
     public  List<Product> getProductsAll(EntityManager em){
         return em.createQuery("SELECT p FROM Product p", Product.class).getResultList();
     }
+
+    public Product getProductById(int productId, EntityManager em){
+        return em.find(Product.class, productId);
+    }
 }

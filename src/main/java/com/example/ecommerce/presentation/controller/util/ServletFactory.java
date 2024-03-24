@@ -23,6 +23,7 @@ public class ServletFactory {
              controllers.put("updateProfile", new UpdateProfile());
              controllers.put(("ShoppingCart"),new CartController());
              controllers.put("logout",new LogOutController());
+             controllers.put("AddToCart",new AddToUserCart());
         }
 
         // private constructor to prevent instantiation

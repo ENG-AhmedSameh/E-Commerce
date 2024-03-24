@@ -1,6 +1,7 @@
 package com.example.ecommerce.presentation.controller;
 
 import com.example.ecommerce.model.DTO.CartDto;
+import com.example.ecommerce.model.DTO.CartItemDto;
 import com.example.ecommerce.model.DTO.LoggedInUserDto;
 import com.example.ecommerce.model.DTO.UserDto;
 import com.example.ecommerce.model.mappers.LoggedInUserMapper;
@@ -37,16 +38,19 @@ public class SignUpController implements ServletResolverInt {
         String city = req.getParameter("city");
         String street = req.getParameter("street");
 
-        UserDto userDto = new UserDto(null,username,password,firstname,lastname,phone,email,creditLimit,job,gender, city,street ,null,null,null,null);
+        UserDto userDto = new UserDto(null, username, password, firstname, lastname, phone, email, creditLimit, job, gender, city, street, null, null, null, null);
 
         System.out.println("username: " + username );
         LoggedInUserDto loggedInUser = UserServices.registerNewUser(userDto);
+
         ViewResolver viewResolver = new ViewResolver();
         if (loggedInUser != null) {
             HttpSession session = req.getSession(true);
             session.setAttribute("currentUser", loggedInUser);
+
 //           viewResolver.redirect(PAGES.HOME.getValue());
             viewResolver.redirect("front?page=home");
+
         } else {
             req.setAttribute("register-error", "Please Try Again");
             viewResolver.forward(PAGES.LOGIN.getValue());
