@@ -22,9 +22,6 @@
 						<li>
 							<a href="${pageContext.request.contextPath}/front?page=shop">Shop</a>
 						</li>
-						<li>
-							<a href="${pageContext.request.contextPath}/pages/product-detail.jsp">product</a>
-						</li>
 
 <%--						<li class="label1" data-label1="hot">--%>
 <%--							<a href="${pageContext.request.contextPath}/pages/shopping-cart.jsp">Features</a>--%>
