@@ -2,11 +2,13 @@ package com.example.ecommerce.model.DAO.impl;
 
 
 import com.example.ecommerce.model.DAO.Interface.UserDAOInt;
+import com.example.ecommerce.model.entities.Product;
 import com.example.ecommerce.model.entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.Query;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -55,5 +57,9 @@ public class UserDAO implements UserDAOInt  {
 
     public User getUserById(Integer id, EntityManager em) {
         return em.find(User.class, id);
+    }
+
+    public List<User> getAllUsers(EntityManager em) {
+        return em.createQuery("SELECT p FROM User p", User.class).getResultList();
     }
 }

@@ -1,15 +1,20 @@
 package com.example.ecommerce.model.services;
 
 import com.example.ecommerce.model.DAO.Database;
+import com.example.ecommerce.model.DAO.impl.ProductDAO;
 import com.example.ecommerce.model.DAO.impl.UserDAO;
 import com.example.ecommerce.model.DTO.LoggedInUserDto;
+import com.example.ecommerce.model.DTO.ProductDto;
 import com.example.ecommerce.model.DTO.UserDto;
 import com.example.ecommerce.model.entities.Cart;
+import com.example.ecommerce.model.entities.Product;
 import com.example.ecommerce.model.entities.User;
 import com.example.ecommerce.model.mappers.LoggedInUserMapper;
+import com.example.ecommerce.model.mappers.ProductMapper;
 import com.example.ecommerce.model.mappers.UserMapper;
 import com.example.ecommerce.model.util.PasswordManager;
 
+import java.util.List;
 import java.util.Optional;
 
 public class UserServices {
@@ -65,5 +70,23 @@ public class UserServices {
     public static Optional<User> getUser(Integer id) {
         UserDAO userDAO = new UserDAO();
         return Database.doInTransaction(em -> userDAO.get(id, em));
+    }
+
+//    public List<ProductDto> getAllCustomers() {
+//        return Database.doInTransaction(em -> {
+//            ProductDAO productDAO = new ProductDAO();
+//
+//            List<Product> products = productDAO.getProductsAll(em);
+//            return ProductMapper.INSTANCE.toListDto(products);
+//        });
+//    }
+
+    public List<UserDto> getAllUsers() {
+        return Database.doInTransaction(em -> {
+            UserDAO userDAO = new UserDAO();
+
+            List<User> users = userDAO.getAllUsers(em);
+            return UserMapper.INSTANCE.toListDto(users);
+        });
     }
 }
