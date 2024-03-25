@@ -34,6 +34,14 @@ public class ProductServices {
         });
     }
 
+    public Product getProductById(int productId) {
+        return Database.doInTransaction(em -> {
+            ProductDAO productDAO = new ProductDAO();
+
+            Product product = productDAO.getProductById(productId, em);
+            return product;
+        });
+    }
 
     //
 

@@ -20,7 +20,7 @@ public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated( HttpSessionEvent sessionEvent ) {
         System.out.println( "Session created with id " + sessionEvent.getSession().getId() );
-        CartDto cart = new CartDto(null,null,new HashSet<>());
+        CartDto cart = new CartDto(null,new HashSet<>());
         HttpSession session = sessionEvent.getSession();
         session.setAttribute( "cart", cart);
     }

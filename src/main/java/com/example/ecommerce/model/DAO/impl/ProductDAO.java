@@ -84,4 +84,8 @@ public class ProductDAO  implements ProductDAOInt {
                 .setParameter("productId", product.getId())
                 .executeUpdate();
     }
+
+    public Product getProductById(int productId, EntityManager em){
+        return em.find(Product.class, productId);
+    }
 }

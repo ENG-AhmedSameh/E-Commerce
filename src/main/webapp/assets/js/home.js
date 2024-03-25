@@ -177,13 +177,17 @@ function showProductModal(id) {
                         </div>
 
                     </div>
-                </div>
-                </div>`
+                </div></div>`
         },
         callbacks: {
             close: () => {
+
+
             },
             open: () => {
+
+
+
                 // Add event listener for increment button
                 $(".btn-num-product-up").on("click", function () {
                     var numProduct = parseInt($(this).closest('.wrap-num-product').find('.num-product').val());
@@ -245,10 +249,7 @@ function showProductModal(id) {
                     ]
                 });
 
-                // $('.js-addcart-detail').each(function () {
 
-
-                // });
 
 
                 $(".js-addcart-detail").on("click", function () {
@@ -279,6 +280,7 @@ function showProductModal(id) {
                     $('.js-show-cart').attr('data-notify', cartItems.length);
 
                     console.log(product);
+                    SendToCart();
 
                     return false;
                 });
@@ -317,41 +319,50 @@ function showProductModal(id) {
                 //     console.log(product);
                 //     return false;
                 // });
+
+
             }
         }
     });
 
 }
 
-
-function getProductImages(id) {
-
+function SendToCart() {
     var xmlhttp;
 
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     } else if (window.ActiveXObject) {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } else {
+        console.error('XMLHttpRequest is not supported by this browser.');
+        return;
     }
 
     xmlhttp.onreadystatechange = function () {
-        console.log(xmlhttp.readyState);
         if (xmlhttp.readyState === 4) {
-            console.log(xmlhttp.readyState);
             if (xmlhttp.status === 200) {
-                console.log(xmlhttp.readyState);
-                var let = JSON.parse(xmlhttp.responseText);
-                console.log(let);
-                return let;
+                console.log("Items added to cart successfully.");
             } else {
-                reject(new Error('Request failed with status ' + xmlhttp.status));
+                console.error('Request failed with status ' + xmlhttp.status);
             }
         }
     };
 
-        var url = "front?page=productImages&productId=" + id;
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send(null);
+    var url = 'front?page=AddToCart';
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+
+    var cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+    var transformedCartItems = cartItems.map(function(item) {
+        return { id: item.id, quantity: item.quantity };
+    });
+
+    var data = JSON.stringify(transformedCartItems);
+
+    console.log("data "+ data);
+
+    xmlhttp.send(data);
 }
 
 

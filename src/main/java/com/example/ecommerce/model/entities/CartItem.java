@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
 
 @Getter
 @Setter
@@ -19,7 +20,7 @@ public class CartItem {
     private CartItemId id;
 
     @MapsId("productId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
@@ -30,6 +31,7 @@ public class CartItem {
 
     @Column(name = "quantity")
     private Short quantity;
+
 
     public CartItem(Product product,Cart cart,Short quantity){
         this.product = product;
