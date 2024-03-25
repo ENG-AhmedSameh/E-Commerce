@@ -26,6 +26,9 @@ public class ServletFactory {
             controllers.put("deleteProductsPanel", new DeleteProductsPanelController());
 
 
+             controllers.put("logout",new LogOutController());
+             controllers.put("productDetails",new ProductDetailsController());
+             controllers.put("productDetailsData",new ProductDetailsDataController());
         }
 
         // private constructor to prevent instantiation

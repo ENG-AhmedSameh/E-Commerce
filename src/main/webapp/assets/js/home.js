@@ -177,17 +177,13 @@ function showProductModal(id) {
                         </div>
 
                     </div>
-                </div></div>`
+                </div>
+                </div>`
         },
         callbacks: {
             close: () => {
-
-
             },
             open: () => {
-
-
-
                 // Add event listener for increment button
                 $(".btn-num-product-up").on("click", function () {
                     var numProduct = parseInt($(this).closest('.wrap-num-product').find('.num-product').val());
@@ -321,8 +317,6 @@ function showProductModal(id) {
                 //     console.log(product);
                 //     return false;
                 // });
-
-
             }
         }
     });

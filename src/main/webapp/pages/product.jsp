@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="com.example.ecommerce.model.DTO.ProductDto" %>
+<%@ page import="com.google.gson.Gson" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +50,7 @@
 						All Products
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".smartphone" onclick="getphone()">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".smartphone">
 						Smart Phones
 					</button>
 
@@ -166,26 +168,22 @@
 			</div>
 
 			<div class="row isotope-grid" id="product">
+
 				<c:forEach var="product1" items="${products}">
+
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${product1.category.name}" data-price="${product1.price}">
 						<!-- Block2 -->
 						<div class="block2">
-							<div class="block2-pic hov-img0">
-						<img src= "${product1.mainImageUrl}" alt="IMG-PRODUCT">
-<%--						<a href="front?controller=ProductDetailController&productId=${product1.id}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">--%>
-<%--									Overview--%>
-<%--								</a>--%>
-								<a onclick="showProductModal(${product1.id})" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04" style="cursor:pointer;">
+							<div class="block2-pic hov-img0" style="width: 100%; height: 200px; overflow: hidden;">
+								<img src="${product1.mainImageUrl}" alt="IMG-PRODUCT" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+								<a href="front?page=productDetails&id=${product1.id}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04" style="cursor:pointer;">
 									Overview
 								</a>
 							</div>
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
-<%--									<a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">--%>
-<%--											${product1.name}--%>
-<%--									</a>--%>
-									<a onclick="showProductModal(${product1.id})" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6" style="cursor:pointer;" >
+									<a href="front?page=productDetails&id=${product1.id}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6" style="cursor:pointer;" >
 											${product1.name}
 									</a>
 
@@ -523,7 +521,9 @@
 
 
 
+
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/home.js"></script>
+	<script src="assets/js/product.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ import com.example.ecommerce.model.entities.Product;
 import com.example.ecommerce.model.mappers.ProductMapper;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ProductServices {
     public List<ProductDto> getFirstTenProducts() {
@@ -81,6 +82,17 @@ public class ProductServices {
         }
     }
 
+    public ProductDto getProductById(int id) {
+        return Database.doInTransaction(em -> {
+            ProductDAO productDAO = new ProductDAO();
 
+            Optional<Product> productOptional = productDAO.get(id, em);
+            if (productOptional.isEmpty()) {
+                return null;
+            }
+            Product product = productOptional.get();
+            return ProductMapper.INSTANCE.toDto(product);
+        });
+    }
 }
 
