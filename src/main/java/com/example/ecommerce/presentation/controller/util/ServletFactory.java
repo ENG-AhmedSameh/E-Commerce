@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ServletFactory {
-    // class contents.. list of all controllers
+    // class contents list of all controllers
 
         private static final Map<String, ServletResolverInt> controllers = new HashMap<>();
 
