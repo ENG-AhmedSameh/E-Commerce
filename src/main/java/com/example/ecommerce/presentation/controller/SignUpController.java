@@ -41,18 +41,24 @@ public class SignUpController implements ServletResolverInt {
         UserDto userDto = new UserDto(null, username, password, firstname, lastname, phone, email, creditLimit, job, gender, city, street, null, null, null, null);
 
         System.out.println("username: " + username );
-        LoggedInUserDto loggedInUser = UserServices.registerNewUser(userDto);
-
         ViewResolver viewResolver = new ViewResolver();
-        if (loggedInUser != null) {
-            HttpSession session = req.getSession(true);
-            session.setAttribute("currentUser", loggedInUser);
+        try {
+            LoggedInUserDto loggedInUser = UserServices.registerNewUser(userDto);
 
+            if (loggedInUser != null) {
+                HttpSession session = req.getSession(true);
+                session.setAttribute("currentUser", loggedInUser);
+                req.getSession().setAttribute("loginSuccess", true);
 //           viewResolver.redirect(PAGES.HOME.getValue());
-            viewResolver.redirect("front?page=home");
+                viewResolver.redirect("front?page=home");
 
-        } else {
-            req.setAttribute("register-error", "Please Try Again");
+            } else {
+                req.setAttribute("register-error", "Please Try Again");
+                viewResolver.forward(PAGES.LOGIN.getValue());
+            }
+        }catch (Exception e){
+            //e.printStackTrace();
+            req.setAttribute("register-error", "Can't register user with these data !! Please Try Again");
             viewResolver.forward(PAGES.LOGIN.getValue());
         }
         return viewResolver;

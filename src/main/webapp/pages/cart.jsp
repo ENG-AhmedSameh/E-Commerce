@@ -17,7 +17,7 @@
                 </div>
                 <div class="header-cart-item-txt p-t-8">
                     <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">${item.name}</a>
-                    <span class="header-cart-item-info">${item.quantity} x $${item.price}</span>
+                    <span class="header-cart-item-info">${item.quantity} x ${item.price} EGP</span>
                 </div>
             </li>`;
             document.getElementById("items").innerHTML += html;
@@ -49,7 +49,7 @@
           </ul>
 
           <div class="w-full">
-            <div class="header-cart-total w-full p-tb-40">Total: $00.00</div>
+            <div class="header-cart-total w-full p-tb-40">Total: 00.00 EGP</div>
 
             <div class="header-cart-buttons flex-w w-full">
               <a href="${pageContext.request.contextPath}/front?page=ShoppingCart"

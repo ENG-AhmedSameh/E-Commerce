@@ -62,7 +62,7 @@ function display(product) {
                         </a>
 
                         <span class="stext-105 cl3">
-                            ${product.price}
+                            ${product.price} EGP
                         </span>
                     </div>
 
@@ -128,7 +128,7 @@ function showProductModal(id) {
                                  </h4>
                     
                             <span class="mtext-106 cl2">
-                                     $${product?.price}
+                                     ${product?.price} EGP
                                  </span>
                     
                                  <p class="stext-102 cl3 p-t-23">
@@ -280,7 +280,7 @@ function showProductModal(id) {
                     $('.js-show-cart').attr('data-notify', cartItems.length);
 
                     console.log(product);
-//                    SendToCart();
+                    SendToCart();
 
                     return false;
                 });

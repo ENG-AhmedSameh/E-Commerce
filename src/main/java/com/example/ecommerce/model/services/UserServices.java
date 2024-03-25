@@ -13,12 +13,13 @@ import com.example.ecommerce.model.mappers.ProductMapper;
 import com.example.ecommerce.model.mappers.UserMapper;
 import com.example.ecommerce.model.util.PasswordManager;
 import jakarta.servlet.http.HttpServletRequest;
+import org.hibernate.HibernateException;
 
 import java.util.List;
 import java.util.Optional;
 
 public class UserServices {
-    public static LoggedInUserDto registerNewUser(UserDto userDto ) {
+    public static LoggedInUserDto registerNewUser(UserDto userDto ) throws HibernateException {
         byte[] salt = PasswordManager.generateSalt();
         String hashedPassword = PasswordManager.encode(userDto.getPassword(), salt);
         User user = UserMapper.INSTANCE.toEntity(userDto);

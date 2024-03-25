@@ -76,9 +76,9 @@ function loadProduct() {
 					</div>
 				</td>
 				<td class="column-2">${item.name}</td>
-				<td class="column-3">$ ${item.price.toLocaleString('en-US', {
+				<td class="column-3">${item.price.toLocaleString('en-US', {
 				style: 'currency',
-				currency: 'USD'
+				currency: 'EGP'
 			})}</td>
 				<td class="column-4">
 					<div class="wrap-num-product flex-w m-l-auto m-r-0">
@@ -93,9 +93,9 @@ function loadProduct() {
 						</div>
 					</div>
 				</td>
-				<td class="column-5">$ ${(item.quantity * item.price).toLocaleString('en-US', {
+				<td class="column-5">${(item.quantity * item.price).toLocaleString('en-US', {
 				style: 'currency',
-				currency: 'USD'
+				currency: 'EGP'
 			})}</td>
 			</tr>
 			`
@@ -105,7 +105,7 @@ function loadProduct() {
 
 		var formattedAmount = total.toLocaleString('en-US', {
 			style: 'currency',
-			currency: 'USD'
+			currency: 'EGP'
 		});
 
 		const spanElement = $('.mtext-110');
@@ -116,12 +116,13 @@ function loadProduct() {
 
 const updateCartButton = document.querySelector('.flex-c-m.stext-101.cl2.size-119.bg8.bor13.hov-btn3.p-lr-15.trans-04.pointer.m-tb-10');
 
-updateCartButton.addEventListener('click', function() {
-    updateCartAndRefresh();
-});
+// updateCartButton.addEventListener('click', function() {
+//     updateCartAndRefresh();
+// });
 
 
-function updateCartAndRefresh() {
+function updateCartAndRefresh(event) {
+	event.preventDefault();
 	console.log("update cart");
 	let cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
 
@@ -141,10 +142,10 @@ function updateCartAndRefresh() {
 
 	location.reload();
 
+	SendToCart();
 }
 
 
-//Sameh
 function deletee() {
     $('.how-itemcart1').on('click', function() {
 		console.log("dellet");
@@ -167,22 +168,60 @@ function deletee() {
 }
 
 
-//Sameh
- function removeItem(item_id){
-        var postData = {
-                id: item_id,
+function removeItem(item_id){
+       var postData = {
+               id: item_id,
 
-            };
+           };
 
-            $.post('front?page=removeFromCart', postData)
-                .done(function(response) {
-                    console.log('Item sent to server successfully');
-                    // Handle success response if needed
-                })
-                .fail(function(xhr, status, error) {
-                    console.error('Error sending item to server:', error);
-                    // Handle error if needed
-                });
-    }
+           $.post('front?page=removeFromCart', postData)
+               .done(function(response) {
+                   console.log('Item sent to server successfully');
+                   // Handle success response if needed
+               })
+               .fail(function(xhr, status, error) {
+                   console.error('Error sending item to server:', error);
+                   // Handle error if needed
+               });
+}
+
+function SendToCart() {
+	var xmlhttp;
+
+	if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	} else if (window.ActiveXObject) {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	} else {
+		console.error('XMLHttpRequest is not supported by this browser.');
+		return;
+	}
+
+	xmlhttp.onreadystatechange = function () {
+		if (xmlhttp.readyState === 4) {
+			if (xmlhttp.status === 200) {
+				console.log("Items added to cart successfully.");
+			} else {
+				console.error('Request failed with status ' + xmlhttp.status);
+			}
+		}
+	};
+
+	var url = 'front?page=AddToCart';
+	xmlhttp.open("POST", url, true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/json');
+
+	var cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+	var transformedCartItems = cartItems.map(function(item) {
+		return { id: item.id, quantity: item.quantity };
+	});
+
+	var data = JSON.stringify(transformedCartItems);
+
+	console.log("data "+ data);
+
+	xmlhttp.send(data);
+}
+
 
 

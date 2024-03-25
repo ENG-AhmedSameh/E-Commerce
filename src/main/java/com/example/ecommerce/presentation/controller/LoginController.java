@@ -49,7 +49,7 @@ public class LoginController implements ServletResolverInt {
             viewResolver.redirect("front?page=home");
         } else {
             req.setAttribute("login-error", "Invalid username or password.");
-            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             viewResolver.forward(PAGES.LOGIN.getValue());
         }
         return viewResolver;

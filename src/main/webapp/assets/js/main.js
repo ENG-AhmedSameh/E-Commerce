@@ -326,7 +326,7 @@
                     </div>
                     <div class="header-cart-item-txt p-t-8">
                         <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">${item.name}</a>
-                        <span class="header-cart-item-info">${item.quantity} x $${item.price}</span>
+                        <span class="header-cart-item-info">${item.quantity} x ${item.price} EGP</span>
                     </div>
                 </li>`;
                 total += (item.quantity * item.price);
@@ -342,7 +342,6 @@
         }
     });
 
-// Sameh
     $(document).on('click', '.header-cart-item-img', function () {
         var indexToRemove = $(this).closest('.header-cart-item').index();
         console.log("index: "+indexToRemove);
@@ -369,16 +368,12 @@
     });
     
 
-
-
-
     $('.js-hide-cart').on('click', function () {
 
         $('.js-panel-cart').removeClass('show-header-cart');
     });
 
 
-//Sameh
     function removeItem(item_id){
         var postData = {
                 id: item_id,

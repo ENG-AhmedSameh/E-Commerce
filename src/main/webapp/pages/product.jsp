@@ -188,7 +188,7 @@
 									</a>
 
 									<span class="stext-105 cl3">
-                            $${product1.price}
+                            ${product1.price} EGP
                         </span>
 								</div>
 

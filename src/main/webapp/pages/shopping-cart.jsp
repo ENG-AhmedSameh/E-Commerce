@@ -2,7 +2,7 @@
 	<html lang="en">
 
 	<head>
-		<title>Shoping Cart</title>
+		<title>Shopping Cart</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--===============================================================================================-->
@@ -75,17 +75,17 @@
 							</div>
 
 							<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-								<div class="flex-w flex-m m-r-20 m-tb-5">
-									<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text"
-										name="coupon" placeholder="Coupon Code">
+<%--								<div class="flex-w flex-m m-r-20 m-tb-5">--%>
+<%--									<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text"--%>
+<%--										name="coupon" placeholder="Coupon Code">--%>
 
-									<div
-										class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-										Apply coupon
-									</div>
-								</div>
+<%--									<div--%>
+<%--										class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">--%>
+<%--										Apply coupon--%>
+<%--									</div>--%>
+<%--								</div>--%>
 
-								<button disabled id="updateCartButton"
+								<button onclick="updateCartAndRefresh(event)" disabled id="updateCartButton"
 									class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
 									Update Cart
 								</button>
@@ -113,7 +113,7 @@
 
 								<div class="size-209">
 									<span class="mtext-110 cl2">
-										$00.00
+										00.00 EGP
 									</span>
 								</div>
 							</div>
@@ -175,7 +175,7 @@
 
 								<div class="size-209 p-t-1">
 									<span class="mtext-110 cl2">
-										$00.00
+										00.00 EGP
 									</span>
 								</div>
 							</div>
