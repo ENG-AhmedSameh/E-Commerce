@@ -20,7 +20,7 @@ public class CartDAO implements CartDAOInt {
 
     @Override
     public void update(Cart cart, EntityManager em) {
-        em.persist(cart);
+        em.merge(cart);
     }
 
     @Override

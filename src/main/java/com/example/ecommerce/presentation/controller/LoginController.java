@@ -39,15 +39,17 @@ public class LoginController implements ServletResolverInt {
         String password = req.getParameter("password");
         System.out.println("username: " + username + " password: " + password);
         ViewResolver viewResolver = new ViewResolver();
-        LoggedInUserDto loggedInUserDto = UserServices.loginUser(username, password);
+        LoggedInUserDto loggedInUserDto = UserServices.loginUser(req,username, password);
         System.out.println(loggedInUserDto);
         if (loggedInUserDto != null) {
             HttpSession session = req.getSession(true);
             session.setAttribute("currentUser", loggedInUserDto);
+            req.getSession().setAttribute("loginSuccess", true);
 //            viewResolver.forward(PAGES.HOME.getValue());
             viewResolver.redirect("front?page=home");
         } else {
             req.setAttribute("login-error", "Invalid username or password.");
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             viewResolver.forward(PAGES.LOGIN.getValue());
         }
         return viewResolver;

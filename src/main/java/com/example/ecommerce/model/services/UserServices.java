@@ -2,6 +2,7 @@ package com.example.ecommerce.model.services;
 
 import com.example.ecommerce.model.DAO.Database;
 import com.example.ecommerce.model.DAO.impl.UserDAO;
+import com.example.ecommerce.model.DTO.CartDto;
 import com.example.ecommerce.model.DTO.LoggedInUserDto;
 import com.example.ecommerce.model.DTO.UserDto;
 import com.example.ecommerce.model.entities.Cart;
@@ -9,6 +10,7 @@ import com.example.ecommerce.model.entities.User;
 import com.example.ecommerce.model.mappers.LoggedInUserMapper;
 import com.example.ecommerce.model.mappers.UserMapper;
 import com.example.ecommerce.model.util.PasswordManager;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.Optional;
 
@@ -29,7 +31,7 @@ public class UserServices {
         return LoggedInUserMapper.INSTANCE.toDto(user);
     }
 
-    public static LoggedInUserDto loginUser(String userName, String password) {
+    public static LoggedInUserDto loginUser(HttpServletRequest req, String userName, String password) {
         UserDAO userDAO = new UserDAO();
         User loggedUser = Database.doInTransaction(em -> {
             User user = userDAO.getUserByUsername(userName, em);
@@ -37,8 +39,10 @@ public class UserServices {
                 return null;
             String hashedPassword = user.getPassword();
             byte[] salt = user.getSalt();
-            if (PasswordManager.isEqual(hashedPassword, password, salt))
+            if (PasswordManager.isEqual(hashedPassword, password, salt)){
+                CartDto cartDto = (CartDto) req.getSession().getAttribute("cart");
                 return user;
+            }
 
             return null;
         });

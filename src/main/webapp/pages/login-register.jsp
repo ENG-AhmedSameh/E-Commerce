@@ -71,9 +71,9 @@
                                 <div class="tab-content">
                                     <div id="lg1" class="tab-pane active">
                                         <div class="form-container">
-                                            <form action="front?page=login" method="post">
-                                                <input type="text" name="username" placeholder="Username">
-                                                <input type="password" name="password" placeholder="Password">
+                                            <form id="loginForm" action="front?page=login" method="post">
+                                                <input id="username1" type="text" name="username" placeholder="Username">
+                                                <input id="password1" type="password" name="password" placeholder="Password">
                                                 <div id="login-error-message" style="color: red;">
                                                     <!-- This area is for displaying error messages -->
                                                     <!-- It will be empty and not displayed if there are no errors -->
@@ -82,13 +82,13 @@
                                                     <% } %>
                                                 </div>
                                                 <div class="button-box">
-                                                    <div class="login-toggle-btn">
-                                                        <input type="checkbox" class="remember"> <label>Remember
-                                                            me</label>
-                                                        <label class="login-toggle-btn center-content">
-                                                            <a href="#">Forgot Password?</a>
-                                                        </label>
-                                                    </div>
+<%--                                                    <div class="login-toggle-btn">--%>
+<%--                                                        <input type="checkbox" class="remember"> <label>Remember--%>
+<%--                                                            me</label>--%>
+<%--                                                        <label class="login-toggle-btn center-content">--%>
+<%--                                                            <a href="#">Forgot Password?</a>--%>
+<%--                                                        </label>--%>
+<%--                                                    </div>--%>
                                                     <button type="submit"><span>Login</span></button>
                                                 </div>
                                             </form>

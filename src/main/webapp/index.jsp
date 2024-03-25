@@ -36,6 +36,8 @@
 <!--===============================================================================================-->
 </head>
 
+
+
 <body class="animsition">
 
 	<!-- Header -->
@@ -1555,6 +1557,22 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!--===============================================================================================-->
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/home.js"></script>
+	<script src="assets/js/login-registration.js"></script>
 
+	<%
+		Boolean loginSuccess = (Boolean) session.getAttribute("loginSuccess");
+		if (loginSuccess != null) {
+	%>
+		<script>
+			console.log("i'm here");
+			getUserSavedCartItems();
+		</script>
+	<% session.removeAttribute("loginSuccess"); %>
+	<% }else {%>
+
+	<script>
+		console.log("i'm here2");
+	</script>
+	<% }%>
 </body>
 </html>

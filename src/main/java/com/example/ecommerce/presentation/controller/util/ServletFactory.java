@@ -26,6 +26,7 @@ public class ServletFactory {
              controllers.put("productDetails",new ProductDetailsController());
              controllers.put("productDetailsData",new ProductDetailsDataController());
              controllers.put("AddToCart",new AddToUserCart());
+             controllers.put("getUserCartItem", new LoginCartItemsGetter());
         }
 
         // private constructor to prevent instantiation
