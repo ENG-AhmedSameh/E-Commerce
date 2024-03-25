@@ -144,7 +144,7 @@ function updateCartAndRefresh() {
 }
 
 
-
+//Sameh
 function deletee() {
     $('.how-itemcart1').on('click', function() {
 		console.log("dellet");
@@ -153,13 +153,36 @@ function deletee() {
         var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
         
         if (cartItems !== null && indexToRemove >= 0 && indexToRemove < cartItems.length) {
+            var id = cartItems[indexToRemove].id;
             cartItems.splice(indexToRemove, 1);
             
             sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
             
             
             $('.js-show-cart').attr('data-notify', cartItems.length);
+             removeItem(id);
 			location.reload();
         }
     });
 }
+
+
+//Sameh
+ function removeItem(item_id){
+        var postData = {
+                id: item_id,
+
+            };
+
+            $.post('front?page=removeFromCart', postData)
+                .done(function(response) {
+                    console.log('Item sent to server successfully');
+                    // Handle success response if needed
+                })
+                .fail(function(xhr, status, error) {
+                    console.error('Error sending item to server:', error);
+                    // Handle error if needed
+                });
+    }
+
+

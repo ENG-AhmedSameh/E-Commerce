@@ -23,7 +23,7 @@ public class ProductDetailsDataController implements ServletResolverInt {
     private ViewResolver doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println(request.getQueryString());
         int id = Integer.parseInt(request.getParameter("id"));
-        ProductDto productDto = new ProductServices().getProductById(id);
+        ProductDto productDto = new ProductServices().getProductDTOById(id);
 
         String json = new Gson().toJson(productDto);
 
