@@ -39,6 +39,7 @@ public class AddToUserCart implements ServletResolverInt {
         System.out.println("AddToUserCart Post");
         resp.setContentType("application/json");
         LoggedInUserDto loggedInUserDto = (LoggedInUserDto) req.getSession().getAttribute("currentUser");
+        System.out.println("The user id is: "+loggedInUserDto.getId());
         Optional<User> optionalUser = UserServices.getUser(loggedInUserDto.getId());
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
