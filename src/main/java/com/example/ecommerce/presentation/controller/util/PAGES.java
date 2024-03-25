@@ -13,7 +13,8 @@ public enum PAGES {
     BLOG_DETAILS("blogDetails", "/pages/blog-details.jsp"),
     CONTACT("contact", "/pages/contact.jsp"),
     ABOUT("about", "/pages/about.jsp"),
-    UPDATEPROFILE("updateProfile","/pages/updateProfile.jsp");
+    UPDATEPROFILE("updateProfile","/pages/updateProfile.jsp"),
+    PRODUCTSPANEL("productsPanel","/pages/productsPanel.jsp");
 
     private final String key;
     private final String value;

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Panel</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/products.css">
+<!--    <style>-->
+<!--       -->
+<!--    </style>-->
+</head>
+<body>
+
+<div class="container mt-5">
+    <!-- Products Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="headline">Products</h2>
+            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addProductModal">Add Product</button>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Discount %</th>
+                    <th>Main Image</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="productTableBody">
+                <!-- Product details will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addProductForm">
+                    <div class="form-group">
+                        <label for="productName">Name:</label>
+                        <input type="text" class="form-control" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescription">Description:</label>
+                        <textarea class="form-control" id="productDescription"  rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="productQuantity">Quantity:</label>
+                        <input type="number" class="form-control" id="productQuantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Price:</label>
+                        <input type="number" class="form-control" id="productPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDiscount">Discount Percentage:</label>
+                        <input type="number" class="form-control" id="productDiscount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productCategory">Category:</label>
+                        <input type="text" class="form-control" id="productCategory" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mainImageUrl">Main Image URL:</label>
+                        <input type="url" class="form-control form-control-url" id="mainImageUrl" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!--<script src="../assets/js/products.js"></script>-->
+
+<!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editProductForm">
+                    <div class="form-group">
+                        <label for="editProductName">Name:</label>
+                        <input type="text" class="form-control" id="editProductName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductDescription">Description:</label>
+                        <textarea class="form-control" id="editProductDescription" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductQuantity">Quantity:</label>
+                        <input type="number" class="form-control" id="editProductQuantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductPrice">Price:</label>
+                        <input type="number" class="form-control" id="editProductPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductDiscount">Discount Percentage:</label>
+                        <input type="number" class="form-control" id="editProductDiscount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProductCategory">Category:</label>
+                        <input type="text" class="form-control" id="editProductCategory" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMainImageUrl">Main Image URL:</label>
+                        <input type="url" class="form-control form-control-url" id="editMainImageUrl" required>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="saveChangesBtn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script >
+    //Sample product data
+    let products = [];
+
+    // Function to render products
+    function renderProducts() {
+        const productTableBody = document.getElementById('productTableBody');
+        productTableBody.innerHTML = '';
+
+        products.forEach(product => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${product.id}</td>
+                <td>${product.name}</td>
+                <td>${product.description}</td>
+                <td>${product.quantity}</td>
+                <td>${product.price}</td>
+                <td>${product.discount}</td>
+                <td><a href="${product.mainImageUrl}" target="_blank">${truncateUrl(product.mainImageUrl)}</a></td>
+                <td>${product.category}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" onclick="editProduct(${product.id})">Edit</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
+                </td>
+            `;
+            productTableBody.appendChild(row);
+        });
+    }
+
+    // Function to add product
+    function addProduct() {
+        const productName = document.getElementById('productName').value;
+        const productDescription = document.getElementById('productDescription').value;
+        const productQuantity = document.getElementById('productQuantity').value;
+        const productPrice = document.getElementById('productPrice').value;
+        const productDiscount = document.getElementById('productDiscount').value;
+        const productCategory = document.getElementById('productCategory').value;
+        const mainImageUrl = document.getElementById('mainImageUrl').value;
+
+
+        const newProduct = {
+            id: products.length + 1,
+            name: productName,
+            description: productDescription,
+            quantity: productQuantity,
+            price: productPrice,
+            discount: productDiscount,
+            category: productCategory,
+            mainImageUrl: mainImageUrl,
+
+        };
+
+        products.push(newProduct);
+        renderProducts();
+        $('#addProductModal').modal('hide');
+    }
+
+    // Function to truncate long URLs
+    function truncateUrl(url) {
+        const maxLength = 20; // Maximum length of displayed URL
+        if (url.length > maxLength) {
+            return url.substring(0, maxLength - 3) + '...';
+        }
+        return url;
+    }
+
+    // Function to edit product
+    function editProduct(productId) {
+        // Find the product with the given ID
+        const product = products.find(prod => prod.id === productId);
+        // Fill the form fields with the product data
+        document.getElementById('editProductName').value = product.name;
+        document.getElementById('editProductDescription').value = product.description;
+        document.getElementById('editProductQuantity').value = product.quantity;
+        document.getElementById('editProductPrice').value = product.price;
+        document.getElementById('editProductDiscount').value = product.discount;
+        document.getElementById('editProductCategory').value = product.category;
+        document.getElementById('editMainImageUrl').value = product.mainImageUrl;
+
+        // Show the modal
+        $('#editProductModal').modal('show');
+        // Handle the save changes button click
+        document.getElementById('saveChangesBtn').onclick = function() {
+            // Update the product data
+            product.name = document.getElementById('editProductName').value;
+            product.description = document.getElementById('editProductDescription').value;
+            product.quantity = document.getElementById('editProductQuantity').value;
+            product.price = document.getElementById('editProductPrice').value;
+            product.discount = document.getElementById('editProductDiscount').value;
+            product.category = document.getElementById('editProductCategory').value;
+            product.mainImageUrl = document.getElementById('editMainImageUrl').value;
+
+            // Re-render the products table
+            renderProducts();
+            // Hide the modal
+            $('#editProductModal').modal('hide');
+        };
+    }
+
+    // Function to delete product
+    function deleteProduct(productId) {
+        // Implement delete functionality here
+        console.log("Delete product with ID:", productId);
+        products = products.filter(product => product.id !== productId);
+        renderProducts();
+    }
+
+    // Initial rendering
+    renderProducts();
+
+    // Add Product form submit event listener
+    document.getElementById('addProductForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        addProduct();
+    });
+</script>
+</body>
+</html>
+
+

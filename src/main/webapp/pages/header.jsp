@@ -20,6 +20,11 @@
 						</li>
 
 						<li>
+							<a href="${pageContext.request.contextPath}/front?page=productsPanel">Products Panel</a>
+						</li>
+
+
+						<li>
 							<a href="${pageContext.request.contextPath}/front?page=shop">Shop</a>
 						</li>
 
@@ -48,6 +53,7 @@
 							<a href="${pageContext.request.contextPath}/front?page=updateProfile">Update Profile</a>
 						</li>
 						<% } %>
+
 					</ul>
 				</div>
 

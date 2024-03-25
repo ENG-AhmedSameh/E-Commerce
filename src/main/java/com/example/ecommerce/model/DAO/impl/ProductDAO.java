@@ -62,4 +62,26 @@ public class ProductDAO  implements ProductDAOInt {
     public  List<Product> getProductsAll(EntityManager em){
         return em.createQuery("SELECT p FROM Product p", Product.class).getResultList();
     }
+
+    public void editProduct(EntityManager em, Product product) {
+        em.createQuery("UPDATE Product p SET p.name = :newName, p.description = :newDescription, " +
+                        "p.availableQuantity = :newQuantity, p.price = :newPrice, p.discountPercentage = :newDiscount, " +
+                        "p.mainImageUrl = :newMainImage, p.category = :newCategory " +
+                        "WHERE p.id = :productId")
+                .setParameter("newName", product.getName())
+                .setParameter("newDescription", product.getDescription())
+                .setParameter("newQuantity", product.getAvailableQuantity())
+                .setParameter("newPrice", product.getPrice())
+                .setParameter("newDiscount", product.getDiscountPercentage())
+                .setParameter("newMainImage", product.getMainImageUrl())
+                .setParameter("newCategory", product.getCategory())
+                .setParameter("productId", product.getId())
+                .executeUpdate();
+    }
+
+    public void deleteProduct(EntityManager em, Product product) {
+        em.createQuery("UPDATE Product p SET p.isDeleted = 1 WHERE p.id = :productId")
+                .setParameter("productId", product.getId())
+                .executeUpdate();
+    }
 }
