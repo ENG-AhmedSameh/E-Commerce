@@ -14,4 +14,5 @@ public interface CartMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Cart partialUpdate(CartDto cartDto, @MappingTarget Cart cart);
+
 }

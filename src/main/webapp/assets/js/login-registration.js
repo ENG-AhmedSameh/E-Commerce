@@ -125,7 +125,7 @@ function posUserNametData(){
             }
         }
     };
-   
+
     myvalue = document.getElementById("user_name").value;
     if(myvalue.length < 5){
         return;
@@ -139,20 +139,13 @@ function posUserNametData(){
 }
 
 
-
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registrationForm');
 
     form.addEventListener('submit', function(event) {
-        event.preventDefault(); 
-       
-        
+        event.preventDefault();
+
+
         const email = document.getElementById('user_email').value;
         const phoneNumber = document.getElementById('phone_number').value;
         const password = document.getElementById('Password').value;
@@ -191,4 +184,66 @@ document.addEventListener('DOMContentLoaded', function() {
         return re.test(phoneNumber);
     }
 });
+
+function getUserSavedCartItems() {
+    //event.preventDefault();
+
+    console.log("Getting user cart items from data base");
+
+    // var username = document.getElementById("username1").value;
+    // var password = document.getElementById("password1").value;
+    var data = new URLSearchParams();
+    var cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+    var productIds = cartItems.map((item) => item.id);
+    var quantities = cartItems.map((item) => item.quantity);
+    // data.append("username", username);
+    // data.append("password", password);
+    data.append("productIds", JSON.stringify(productIds));
+    data.append("quantities", JSON.stringify(quantities));
+
+    fetch("front?page=getUserCartItem", {
+        method: "POST",
+        body: data,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Product added to cart:", data);
+
+            if(data=="Invalid username or password."){
+                document.getElementById("login-error-message").innerText = data;
+                return;
+            }
+            var newCartItems =[];
+
+            data.forEach((cartProduct) => {
+                var cartItem = {
+                    id: cartProduct.id,
+                    mainImageUrl:cartProduct.mainImageUrl,
+                    name: cartProduct.name,
+                    price: cartProduct.price,
+                    category: cartProduct.category,
+                    quantity: cartProduct.quantity
+                };
+                newCartItems.push(cartItem);
+            });
+            sessionStorage.setItem("cartItems", JSON.stringify(newCartItems));
+            document.getElementById("login-error-message").innerText = '';
+        })
+        .then(() => {
+            window.location.href = "";
+            // updateCount();
+            // loadProductsToCart();
+        })
+        .catch((error) => {
+            console.log(
+                "An error occurred while getting the user cart items from data base:",
+                error
+            );
+        });
+}
+
+
 
