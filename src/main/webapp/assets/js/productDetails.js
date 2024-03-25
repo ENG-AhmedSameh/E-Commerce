@@ -201,6 +201,7 @@ function populateProductDetail(product) {
                 sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
                 swal(cartItem.name, "is added to cart !", "success");
                 $('.js-show-cart').attr('data-notify', cartItems.length);
+                SendToCart();
             });
         });
 
@@ -221,7 +222,43 @@ function populateProductDetail(product) {
     });
 
 }
+function SendToCart() {
+    var xmlhttp;
 
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } else {
+        console.error('XMLHttpRequest is not supported by this browser.');
+        return;
+    }
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4) {
+            if (xmlhttp.status === 200) {
+                console.log("Items added to cart successfully.");
+            } else {
+                console.error('Request failed with status ' + xmlhttp.status);
+            }
+        }
+    };
+
+    var url = 'front?page=AddToCart';
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+
+    var cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+    var transformedCartItems = cartItems.map(function(item) {
+        return { id: item.id, quantity: item.quantity };
+    });
+
+    var data = JSON.stringify(transformedCartItems);
+
+    console.log("data "+ data);
+
+    xmlhttp.send(data);
+}
 function populateProductModal(product) {
     const modalPlaceholder = document.getElementById('product-modal-placeholder');
     // For simplicity, let's say your modal just repeats the product's name and price
