@@ -342,24 +342,28 @@
         }
     });
 
-
+// Sameh
     $(document).on('click', '.header-cart-item-img', function () {
         var indexToRemove = $(this).closest('.header-cart-item').index();
-
+        console.log("index: "+indexToRemove);
         $(this).closest('.header-cart-item').remove();
         console.log("remove");
         var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
         if (cartItems !== null) {
+           var id = cartItems[indexToRemove].id;
+
             cartItems.splice(indexToRemove, 1);
             sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
 
             var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
             $('.js-show-cart').attr('data-notify',cartItems.length );
+              removeItem(id);
         }
    
     });
 
     $(document).ready(function() {
+
         var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
         $('.js-show-cart').attr('data-notify',cartItems.length );
     });
@@ -369,8 +373,28 @@
 
 
     $('.js-hide-cart').on('click', function () {
+
         $('.js-panel-cart').removeClass('show-header-cart');
     });
+
+
+//Sameh
+    function removeItem(item_id){
+        var postData = {
+                id: item_id,
+
+            };
+
+            $.post('front?page=removeFromCart', postData)
+                .done(function(response) {
+                    console.log('Item sent to server successfully');
+                    // Handle success response if needed
+                })
+                .fail(function(xhr, status, error) {
+                    console.error('Error sending item to server:', error);
+                    // Handle error if needed
+                });
+    }
 
     /*==================================================================
     [ Cart ]*/

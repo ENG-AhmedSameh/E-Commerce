@@ -69,4 +69,12 @@ public class CartServices {
             cartDAO.update(cart, em);
         });
     }
+
+    //Sameh
+    public static void removeFromCart(Cart cart, int productId) {
+        Database.doInTransactionWithoutResult(em -> {
+            CartDAO cartDAO = new CartDAO();
+            cartDAO.removeFromCart(cart, productId, em);
+        });
+    }
 }

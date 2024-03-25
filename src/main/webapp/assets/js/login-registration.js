@@ -218,7 +218,10 @@ function getUserSavedCartItems() {
             }
             var newCartItems =[];
 
+            console.log("Cart items:", data);
+
             data.forEach((cartProduct) => {
+            console.log("Product added to cart:", cartProduct);
                 var cartItem = {
                     id: cartProduct.id,
                     mainImageUrl:cartProduct.mainImageUrl,

@@ -36,13 +36,12 @@ public class ProductServices {
     public Product getProductById(int productId) {
         return Database.doInTransaction(em -> {
             ProductDAO productDAO = new ProductDAO();
-
             Product product = productDAO.getProductById(productId, em);
             return product;
         });
     }
 
-    public ProductDto getProductById(int id) {
+    public ProductDto getProductDTOById(int id) {
         return Database.doInTransaction(em -> {
             ProductDAO productDAO = new ProductDAO();
 
@@ -54,5 +53,7 @@ public class ProductServices {
             return ProductMapper.INSTANCE.toDto(product);
         });
     }
+
+
 }
 
