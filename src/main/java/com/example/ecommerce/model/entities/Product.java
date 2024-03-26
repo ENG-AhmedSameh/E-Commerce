@@ -27,10 +27,10 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-//    @NotNull
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "Category_id", nullable = true)
-//    private Category category;
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "Category_id", nullable = false)
+    private Category category;
 
     @Column(name = "price", precision = 9, scale = 2)
     private BigDecimal price;
@@ -49,8 +49,12 @@ public class Product {
     @Column(name = "main_image_url", length = 45)
     private String mainImageUrl;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product" , fetch = FetchType.EAGER)
     private Set<ProductImage> productImages = new LinkedHashSet<>();
+
+    @NotNull
+    @Column(name = "is_deleted", nullable = false)
+    private Byte isDeleted;
 
 //    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private Set<CartItem> cartItems = new HashSet<>();

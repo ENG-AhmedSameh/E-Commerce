@@ -5,7 +5,7 @@ import com.example.ecommerce.model.entities.Cart;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.CDI)
+@Mapper
 public interface CartMapper {
     CartMapper INSTANCE = Mappers.getMapper(CartMapper.class);
     Cart toEntity(CartDto cartDto);
@@ -14,4 +14,5 @@ public interface CartMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Cart partialUpdate(CartDto cartDto, @MappingTarget Cart cart);
+
 }

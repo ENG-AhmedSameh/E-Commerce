@@ -1,0 +1,127 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #ede0c8, #f6f0ea); /* Beige gradient background */
+    color: #ffffff; /* Set text color to white */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Set full viewport height */
+    background-size: 150% 150%; /* Increase background size for a more pronounced gradient */
+}
+
+.container {
+    text-align: center;
+    background-color: rgb(243, 235, 235); /* Semi-transparent white background */
+    padding: 20px; /* Add some padding for spacing */
+    border-radius: 10px; /* Add border radius */
+    margin-top: 50px; /* Add margin to top */
+    max-width: 1300px; /* Set maximum width */
+    margin-left: auto; /* Center the container horizontally */
+    margin-right: auto; /* Center the container horizontally */
+}
+
+.headline {
+    font-size: 36px; /* Reduce font size */
+    font-weight: bold;
+    margin-bottom: 20px; /* Reduce margin */
+    color: #f6f6f6; /* Set headline color to dark gray */
+    background-color: rgb(255, 193, 7); /* Semi-transparent black background */
+    padding: 15px; /* Reduce padding */
+    border-radius: 8px; /* Add border radius */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for depth */
+}
+
+.table {
+    background-color: #fff; /* White background for table */
+    border-radius: 10px; /* Add border radius */
+    margin-top: 10px; /* Reduce margin to top */
+}
+
+.table th,
+.table td {
+    border: none; /* Remove border */
+}
+
+.table th {
+    background-color: rgb(255, 193, 7); /* Header background color */
+    color: #fff; /* Header text color */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background for odd rows */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background for even rows */
+}
+
+.btn {
+    color: #fff; /* Button text color */
+    border-radius: 5px; /* Add border radius */
+}
+
+.btn-primary {
+    background-color: #ffc107; /* Primary button background color */
+}
+
+.btn-danger {
+    background-color: #ff0000; /* Danger button background color */
+}
+
+.btn-primary:hover, .btn-danger:hover {
+    background-color: #ffca28; /* Button background color on hover */
+}
+
+/* Adjusting input width for image URLs */
+.form-control-url {
+    width: calc(100% - 80px); /* Adjust width as needed */
+}
+
+/* Styling links */
+a {
+    color: blue; /* Link color */
+    text-decoration: underline; /* Underline link */
+}
+
+a:hover {
+    color: darkblue; /* Link color on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+/* Tooltip styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #000 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

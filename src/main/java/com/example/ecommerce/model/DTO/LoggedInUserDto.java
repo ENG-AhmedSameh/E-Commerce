@@ -2,9 +2,11 @@ package com.example.ecommerce.model.DTO;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Value;
 
 import java.math.BigDecimal;
 
+@Value
 public class LoggedInUserDto {
     Integer id;
     @NotNull

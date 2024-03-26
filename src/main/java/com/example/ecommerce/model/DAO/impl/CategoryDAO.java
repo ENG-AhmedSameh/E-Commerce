@@ -15,7 +15,7 @@ public class CategoryDAO implements CategoryDAOInt {
     }
 
     @Override
-    public Optional<Category> get(long id, EntityManager em) {
+    public Optional<Category> get(Integer id, EntityManager em) {
         return Optional.ofNullable(em.find(Category.class, id));
     }
 
@@ -28,4 +28,6 @@ public class CategoryDAO implements CategoryDAOInt {
     public void delete(Category category, EntityManager em) {
         em.remove(category);
     }
+
+
 }

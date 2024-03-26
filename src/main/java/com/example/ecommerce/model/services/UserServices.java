@@ -2,16 +2,24 @@ package com.example.ecommerce.model.services;
 
 import com.example.ecommerce.model.DAO.Database;
 import com.example.ecommerce.model.DAO.impl.UserDAO;
+import com.example.ecommerce.model.DTO.CartDto;
 import com.example.ecommerce.model.DTO.LoggedInUserDto;
 import com.example.ecommerce.model.DTO.UserDto;
 import com.example.ecommerce.model.entities.Cart;
+import com.example.ecommerce.model.entities.Product;
 import com.example.ecommerce.model.entities.User;
 import com.example.ecommerce.model.mappers.LoggedInUserMapper;
+import com.example.ecommerce.model.mappers.ProductMapper;
 import com.example.ecommerce.model.mappers.UserMapper;
 import com.example.ecommerce.model.util.PasswordManager;
+import jakarta.servlet.http.HttpServletRequest;
+import org.hibernate.HibernateException;
+
+import java.util.List;
+import java.util.Optional;
 
 public class UserServices {
-    public static LoggedInUserDto registerNewUser(UserDto userDto ) {
+    public static LoggedInUserDto registerNewUser(UserDto userDto ) throws HibernateException {
         byte[] salt = PasswordManager.generateSalt();
         String hashedPassword = PasswordManager.encode(userDto.getPassword(), salt);
         User user = UserMapper.INSTANCE.toEntity(userDto);
@@ -27,7 +35,7 @@ public class UserServices {
         return LoggedInUserMapper.INSTANCE.toDto(user);
     }
 
-    public static LoggedInUserDto loginUser(String userName, String password) {
+    public static LoggedInUserDto loginUser(HttpServletRequest req, String userName, String password) {
         UserDAO userDAO = new UserDAO();
         User loggedUser = Database.doInTransaction(em -> {
             User user = userDAO.getUserByUsername(userName, em);
@@ -35,8 +43,10 @@ public class UserServices {
                 return null;
             String hashedPassword = user.getPassword();
             byte[] salt = user.getSalt();
-            if (PasswordManager.isEqual(hashedPassword, password, salt))
+            if (PasswordManager.isEqual(hashedPassword, password, salt)){
+                CartDto cartDto = (CartDto) req.getSession().getAttribute("cart");
                 return user;
+            }
 
             return null;
         });
@@ -55,6 +65,40 @@ public class UserServices {
 
     public static void updateUser(User user) {
         UserDAO userDAO = new UserDAO();
-        Database.doInTransactionWithoutResult(em -> userDAO.update(user, em));
+        Database.doInTransactionWithoutResult(em ->{
+            userDAO.update(user, em);
+        });
+    }
+
+    public static Optional<User> getUser(Integer id) {
+        UserDAO userDAO = new UserDAO();
+        return Database.doInTransaction(em -> userDAO.get(id, em));
+    }
+
+    public static LoggedInUserDto  getLoggedInUser(String userName) {
+        UserDAO userDAO = new UserDAO();
+        User loggedUser = Database.doInTransaction(em -> {
+            User user = userDAO.getUserByUsername(userName, em);
+            return user;
+        });
+        return LoggedInUserMapper.INSTANCE.toDto(loggedUser);
+    }
+
+//    public List<ProductDto> getAllCustomers() {
+//        return Database.doInTransaction(em -> {
+//            ProductDAO productDAO = new ProductDAO();
+//
+//            List<Product> products = productDAO.getProductsAll(em);
+//            return ProductMapper.INSTANCE.toListDto(products);
+//        });
+//    }
+
+    public List<UserDto> getAllUsers() {
+        return Database.doInTransaction(em -> {
+            UserDAO userDAO = new UserDAO();
+
+            List<User> users = userDAO.getAllUsers(em);
+            return UserMapper.INSTANCE.toListDto(users);
+        });
     }
 }

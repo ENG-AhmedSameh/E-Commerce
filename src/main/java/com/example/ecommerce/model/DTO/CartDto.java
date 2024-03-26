@@ -11,6 +11,5 @@ import java.util.Set;
 @Value
 public class CartDto implements Serializable {
     Integer id;
-    Integer userId;
     Set<CartItemDto> cartItems;
 }

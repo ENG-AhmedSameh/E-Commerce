@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Value
 public class CartItemDto implements Serializable {
     CartItemId id;
-    CartDto cart;
-    ProductDto product;
+//    CartDto cart;
+//    ProductDto product;
     Short quantity;
 }

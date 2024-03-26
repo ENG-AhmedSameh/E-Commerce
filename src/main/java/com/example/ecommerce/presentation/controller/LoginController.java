@@ -1,7 +1,6 @@
 package com.example.ecommerce.presentation.controller;
 
 import com.example.ecommerce.model.DTO.LoggedInUserDto;
-import com.example.ecommerce.model.DTO.UserDto;
 import com.example.ecommerce.model.services.UserServices;
 import com.example.ecommerce.presentation.controller.util.PAGES;
 import com.example.ecommerce.presentation.controller.util.ServletResolverInt;
@@ -27,7 +26,7 @@ public class LoginController implements ServletResolverInt {
         System.out.println("LoginServlet doGet");
         HttpSession session = req.getSession(false);
         if (session != null && session.getAttribute("currentUser") != null)
-            viewResolver.redirect(PAGES.HOME.getValue());
+            viewResolver.forward(PAGES.HOME.getValue());
         else
             viewResolver.forward(PAGES.LOGIN.getValue());
 
@@ -40,12 +39,17 @@ public class LoginController implements ServletResolverInt {
         String password = req.getParameter("password");
         System.out.println("username: " + username + " password: " + password);
         ViewResolver viewResolver = new ViewResolver();
-        LoggedInUserDto loggedInUserDto = UserServices.loginUser(username, password);
+        LoggedInUserDto loggedInUserDto = UserServices.loginUser(req,username, password);
+        System.out.println(loggedInUserDto);
         if (loggedInUserDto != null) {
             HttpSession session = req.getSession(true);
             session.setAttribute("currentUser", loggedInUserDto);
-            viewResolver.redirect(PAGES.HOME.getValue());
+            req.getSession().setAttribute("loginSuccess", true);
+//            viewResolver.forward(PAGES.HOME.getValue());
+            viewResolver.redirect("front?page=home");
         } else {
+            req.setAttribute("login-error", "Invalid username or password.");
+//            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             viewResolver.forward(PAGES.LOGIN.getValue());
         }
         return viewResolver;

@@ -13,19 +13,17 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "all_order", schema = "e_commerce", indexes = {
-        @Index(name = "fk_all_order_user1_idx", columnList = "user_id")
-})
+@Table(name = "all_order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
 
     @NotNull
     @Column(name = "create_time", nullable = false)
@@ -35,7 +33,16 @@ public class Order {
     @Column(name = "price", nullable = false, precision = 11, scale = 2)
     private BigDecimal price;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.REMOVE})
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<OrderItem> orderItems = new LinkedHashSet<>();
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+    public void removeOrderItem(OrderItem orderItem) {
+        orderItems.remove(orderItem);
+        orderItem.setOrder(null);
+    }
 
 }

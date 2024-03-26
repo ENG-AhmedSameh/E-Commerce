@@ -12,17 +12,17 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
-        <url-pattern>/Front</url-pattern>
+        <url-pattern>/front</url-pattern>
     </servlet-mapping>
 
+    <listener>
+        <listener-class>com.example.ecommerce.presentation.listeners.SessionListener</listener-class>
+    </listener>
+
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.example.ecommerce.presentation.controller.FrontController</servlet-class>
-    </servlet>
 
     <!--    ************************************************************      -->
 <!--    <servlet>-->
@@ -37,14 +37,14 @@
     <!--    ************************************************************      -->
 
     <!--    *********************Products1***************************      -->
-    <servlet>
-        <servlet-name>Products_1_Controller</servlet-name>
-        <servlet-class>com.example.ecommerce.presentation.controller.Products_1_Controller</servlet-class>
+<!--    <servlet>-->
+<!--        <servlet-name>Products_1_Controller</servlet-name>-->
+<!--        <servlet-class>com.example.ecommerce.presentation.controller.HomeScreenProductsController</servlet-class>-->
 
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Products_1_Controller</servlet-name>
-        <url-pattern>/p1Servlet</url-pattern>
-    </servlet-mapping>
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>Products_1_Controller</servlet-name>-->
+<!--        <url-pattern>/p1Servlet</url-pattern>-->
+<!--    </servlet-mapping>-->
     <!--    ************************************************************      -->
 </web-app>
