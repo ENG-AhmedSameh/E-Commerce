@@ -131,7 +131,7 @@
                                     <input type="text" id="credit_limit" name="credit_limit" value="<%= ((LoggedInUserDto) session.getAttribute("currentUser")).getCreditLimit() %>" class="form-control">
                                 </div>
                                 <div class="button-box text-center">
-                                    <button id="registerButton" type="submit" disabled><span>Register</span></button>
+                                    <button id="registerButton" type="submit" disabled><span>Confirm Update</span></button>
                                 </div>
                             </form>
                         </div>
