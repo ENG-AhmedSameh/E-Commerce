@@ -8,11 +8,19 @@
     <servlet>
         <servlet-name>FrontController</servlet-name>
         <servlet-class>com.example.ecommerce.presentation.controller.FrontController</servlet-class>
-
     </servlet>
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/front</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminFrontController</servlet-name>
+        <servlet-class>com.example.ecommerce.presentation.controller.AdminFrontController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminFrontController</servlet-name>
+        <url-pattern>/admin</url-pattern>
     </servlet-mapping>
 
     <listener>
@@ -23,28 +31,29 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <security-constraint>
+        <auth-constraint>
+            <role-name>ECommerceAdmin</role-name>
+        </auth-constraint>
+        <web-resource-collection>
+            <web-resource-name>Restricted Area</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
 
-    <!--    ************************************************************      -->
-<!--    <servlet>-->
-<!--        <servlet-name>ProductController</servlet-name>-->
-<!--        <servlet-class>com.example.ecommerce.presentation.controller.ProductController</servlet-class>-->
+            <web-resource-collection>
+                <web-resource-name>Restricted Methods</web-resource-name>
+                <url-pattern>/*</url-pattern>
+                <http-method>PUT</http-method>
+                <http-method>DELETE</http-method>
+            </web-resource-collection>
 
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>ProductController</servlet-name>-->
-<!--        <url-pattern>/pServlet</url-pattern>-->
-<!--    </servlet-mapping>-->
-    <!--    ************************************************************      -->
+    </security-constraint>
+    <security-role>
+        <role-name>ECommerceAdmin</role-name>
+    </security-role>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
 
-    <!--    *********************Products1***************************      -->
-<!--    <servlet>-->
-<!--        <servlet-name>Products_1_Controller</servlet-name>-->
-<!--        <servlet-class>com.example.ecommerce.presentation.controller.HomeScreenProductsController</servlet-class>-->
 
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>Products_1_Controller</servlet-name>-->
-<!--        <url-pattern>/p1Servlet</url-pattern>-->
-<!--    </servlet-mapping>-->
-    <!--    ************************************************************      -->
 </web-app>

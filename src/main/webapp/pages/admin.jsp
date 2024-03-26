@@ -86,23 +86,23 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
-                <img src="../assets/images/electric%20devices.jpg" class="card-img-top" alt="Image 1">
+                <img src="assets/images/electric%20devices.jpg" class="card-img-top" alt="Image 1">
                 <div class="card-body">
-                    <a href="products.html" class="card-link">View Products</a>
+                    <a href="${pageContext.request.contextPath}/admin?page=productsPanel" class="card-link">View Products</a>
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="card">
-                <img src="../assets/images/customers.jpg" class="card-img-top" alt="Image 2">
+                <img src="assets/images/customers.jpg" class="card-img-top" alt="Image 2">
                 <div class="card-body">
-                    <a href="customers.html" class="card-link">View Customers</a>
+                    <a href="${pageContext.request.contextPath}/admin?page=customersPanel" class="card-link">View Customers</a>
                 </div>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="card">
-                <img src="../assets/images/cart.jpg" class="card-img-top" alt="Image 3">
+                <img src="assets/images/cart.jpg" class="card-img-top" alt="Image 3">
                 <div class="card-body">
                     <a href="add-product.html" class="card-link">Add Product</a>
                 </div>

@@ -19,15 +19,6 @@
 						</li>
 
 						<li>
-							<a href="${pageContext.request.contextPath}/front?page=productsPanel">Products Panel</a>
-						</li>
-
-						<li>
-							<a href="${pageContext.request.contextPath}/front?page=customersPanel">Customers Panel</a>
-						</li>
-
-
-						<li>
 							<a href="${pageContext.request.contextPath}/front?page=shop">Shop</a>
 						</li>
 
@@ -126,7 +117,7 @@
 		<ul class="main-menu-m">
 			<li>
 				<a href="${pageContext.request.contextPath}/front?page=home">Home</a>
-			
+
 				<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>

@@ -15,7 +15,8 @@ public enum PAGES {
     ABOUT("about", "/pages/about.jsp"),
     UPDATEPROFILE("updateProfile","/pages/updateProfile.jsp"),
     PRODUCTSPANEL("productsPanel","/pages/productsPanel.jsp"),
-    CUSTOMERSPANEL("customersPanel","/pages/customersPanel.jsp");
+    CUSTOMERSPANEL("customersPanel","/pages/customersPanel.jsp"),
+    ADMIN_HOME_SCREEN("adminHome", "/pages/admin.jsp");
 
     private final String key;
     private final String value;
