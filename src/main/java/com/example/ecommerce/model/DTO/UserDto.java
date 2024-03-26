@@ -49,7 +49,7 @@ public class UserDto implements Serializable {
     @NotNull
     @Size(max = 16)
     byte[] salt;
-    Set<OrderDto> orders;
-    CartDto cart;
-    Set<CategoryDto> categories;
+//    Set<OrderDto> orders;
+//    CartDto cart;
+//    Set<CategoryDto> categories;
 }
