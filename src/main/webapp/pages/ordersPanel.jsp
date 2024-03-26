@@ -1,0 +1,116 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.google.gson.Gson" %>
+<%@ page import="com.example.ecommerce.model.DTO.OrderDto" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers Panel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/pro.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="headline">Customers</h2>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User-ID</th>
+                    <th>Created Time</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody id="orderTableBody">
+                <% List<OrderDto> orders = (List<OrderDto>) request.getSession().getAttribute("customersPanel");
+                    if (orders != null && !orders.isEmpty()) {
+                        for (OrderDto order : orders) { %>
+                <tr>
+                    <td><%= order.getId() %></td>
+                    <td><%= order.getUserId() %></td>
+                    <td><%= order.getCreateTime() %></td>
+                    <td><%= order.getPrice() %></td>
+                    <td>
+                        <button class="btn btn-primary btn-edit" data-order-id="<%= order.getId() %>">View</button>
+                    </td>
+                </tr>
+                <% }
+                } else { %>
+                <tr>
+                    <td colspan="13">No Customers exist.</td>
+                </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Edit modal -->
+<div class="modal fade" id="editOrderModal" tabindex="-1" role="dialog" aria-labelledby="editOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editOrderModalLabel">Edit Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editOrderForm">
+                    <input type="hidden" id="editOrderId">
+                    <div class="form-group">
+                        <label for="editUserID">User-ID:</label>
+                        <input type="number" class="form-control" id="editUserID">
+                    </div>
+                    <div class="form-group">
+                        <label for="editCreatedTime">Created-Time:</label>
+                        <input type="date" class="form-control" id="editCreatedTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="editPrice">Price:</label>
+                        <input type="number" class="form-control" id="editPrice">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.btn-edit').click(function () {
+            var orderId = $(this).data('order-id');
+
+            // Fetch order data from the table
+            var userID = $(this).closest('tr').find('td:eq(1)').text();
+            var createdTime = $(this).closest('tr').find('td:eq(2)').text();
+            var price = $(this).closest('tr').find('td:eq(3)').text();
+
+            // Set values in the edit modal
+            $('#editOrderId').val(orderId);
+            $('#editUserID').val(userID);
+            $('#editCreatedTime').val(createdTime);
+            $('#editPrice').val(price);
+
+            $('#editOrderModal').modal('show');
+        });
+    });
+</script>
+
+</body>
+</html>
+

@@ -25,6 +25,7 @@ public class ServletFactory {
              controllers.put("productsPanel", new ProductsPanelController());
              controllers.put("deleteProductsPanel", new DeleteProductsPanelController());
              controllers.put("customersPanel", new CustomersPanelController());
+             controllers.put("ordersPanel", new OrdersPanelController());
 
 
              controllers.put("logout",new LogOutController());

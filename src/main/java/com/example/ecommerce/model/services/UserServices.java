@@ -72,14 +72,6 @@ public class UserServices {
         return Database.doInTransaction(em -> userDAO.get(id, em));
     }
 
-//    public List<ProductDto> getAllCustomers() {
-//        return Database.doInTransaction(em -> {
-//            ProductDAO productDAO = new ProductDAO();
-//
-//            List<Product> products = productDAO.getProductsAll(em);
-//            return ProductMapper.INSTANCE.toListDto(products);
-//        });
-//    }
 
     public List<UserDto> getAllUsers() {
         return Database.doInTransaction(em -> {

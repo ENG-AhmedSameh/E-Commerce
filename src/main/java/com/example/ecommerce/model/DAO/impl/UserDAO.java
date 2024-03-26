@@ -60,6 +60,6 @@ public class UserDAO implements UserDAOInt  {
     }
 
     public List<User> getAllUsers(EntityManager em) {
-        return em.createQuery("SELECT p FROM User p", User.class).getResultList();
+        return em.createQuery("SELECT u FROM User u", User.class).getResultList();
     }
 }
