@@ -61,7 +61,6 @@ public class CartServices {
         });
     }
 
-    public static void addOfflineCartItemsToUserCart(){};
 
     public static void updateCart(Cart cart) {
         Database.doInTransactionWithoutResult(em -> {

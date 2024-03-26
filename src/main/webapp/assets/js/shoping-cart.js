@@ -223,5 +223,42 @@ function SendToCart() {
 	xmlhttp.send(data);
 }
 
+function checkOutOrder(event) {
+	event.preventDefault();
+	console.log("checkout");
+	var xmlhttp;
+
+	if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	} else if (window.ActiveXObject) {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	} else {
+		console.error('XMLHttpRequest is not supported by this browser.');
+		return;
+	}
+
+	xmlhttp.open('POST', 'front?page=checkout', true);
+	xmlhttp.setRequestHeader('Content-Type', 'text/plain');
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState === 4) { // The operation is complete
+			if (xmlhttp.status === 200) {
+				if (!xmlhttp.responseText.startsWith("Error")) {
+					sessionStorage.removeItem('cartItems');
+					swal("Order placed successfully!", "your order will be shipped in two days", "success");
+				} else {
+					let errorMessage = xmlhttp.responseText.substring("Error: ".length);
+					swal("Error", errorMessage, "error");
+				}
+			} else {
+				console.error('An error occurred during the request: ' + xmlhttp.status);
+			}
+		}
+	};
+
+	xmlhttp.send(null);
+}
+
+
+
 
 

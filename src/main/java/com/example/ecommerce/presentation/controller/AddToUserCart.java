@@ -39,40 +39,41 @@ public class AddToUserCart implements ServletResolverInt {
         System.out.println("AddToUserCart Post");
         resp.setContentType("application/json");
         LoggedInUserDto loggedInUserDto = (LoggedInUserDto) req.getSession().getAttribute("currentUser");
-        System.out.println("The user id is: "+loggedInUserDto.getId());
-        Optional<User> optionalUser = UserServices.getUser(loggedInUserDto.getId());
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            Cart cart = user.getCart();
-            System.out.println("cart: " + cart);
-            if (cart != null) {
-                String jsonData = null;
-                try {
-                    jsonData = req.getReader().lines().collect(Collectors.joining());
-                    System.out.println("jsonData: " + jsonData);
+        if (loggedInUserDto != null) {
+            Optional<User> optionalUser = UserServices.getUser(loggedInUserDto.getId());
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+                Cart cart = user.getCart();
+                System.out.println("cart: " + cart);
+                if (cart != null) {
+                    String jsonData = null;
+                    try {
+                        jsonData = req.getReader().lines().collect(Collectors.joining());
+                        System.out.println("jsonData: " + jsonData);
 
-                    String[] s = jsonData.split(":");
-                    ObjectMapper objectMapper = new ObjectMapper();
+                        String[] s = jsonData.split(":");
+                        ObjectMapper objectMapper = new ObjectMapper();
 
-                    JsonNode jsonArray = objectMapper.readTree(jsonData);
+                        JsonNode jsonArray = objectMapper.readTree(jsonData);
 
-                    // Extract numbers from the JSON array
-                    for (JsonNode objNode : jsonArray) {
-                        int id = objNode.get("id").asInt();
-                        int quantity = objNode.get("quantity").asInt();
-                        System.out.println("id: " + id + " quantity: " + quantity);
-                        System.out.println("---------------------------------------");
+                        // Extract numbers from the JSON array
+                        for (JsonNode objNode : jsonArray) {
+                            int id = objNode.get("id").asInt();
+                            int quantity = objNode.get("quantity").asInt();
+                            System.out.println("id: " + id + " quantity: " + quantity);
+                            System.out.println("---------------------------------------");
 
-                        CartServices.addProductToCart(cart, id, quantity);
+                            CartServices.addProductToCart(cart, id, quantity);
+                        }
+                        CartServices.updateCart(cart);
+                        System.out.println(cart.getCartItems().size());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
                     }
-                    CartServices.updateCart(cart);
-                    System.out.println(cart.getCartItems().size());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    System.out.println("jsonData: " + jsonData);
+                    System.out.println("cart updated");
+                    req.getSession().setAttribute("cart", CartMapper.INSTANCE.toDto(cart));
                 }
-                System.out.println("jsonData: " + jsonData);
-                System.out.println("cart updated");
-                req.getSession().setAttribute("cart", CartMapper.INSTANCE.toDto(cart));
             }
         }
         ViewResolver viewResolver = new ViewResolver();

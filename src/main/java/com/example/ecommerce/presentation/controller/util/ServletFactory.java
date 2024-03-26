@@ -25,14 +25,13 @@ public class ServletFactory {
              controllers.put("productsPanel", new ProductsPanelController());
              controllers.put("deleteProductsPanel", new DeleteProductsPanelController());
              controllers.put("customersPanel", new CustomersPanelController());
-
-
              controllers.put("logout",new LogOutController());
              controllers.put("productDetails",new ProductDetailsController());
              controllers.put("productDetailsData",new ProductDetailsDataController());
              controllers.put("AddToCart",new AddToUserCart());
              controllers.put("getUserCartItem", new LoginCartItemsGetter());
-             controllers.put("removeFromCart",new RemoveFromUserCart()); // Sameh
+             controllers.put("removeFromCart",new RemoveFromUserCart());
+             controllers.put("checkout",new CheckOutController());
         }
 
         // private constructor to prevent instantiation

@@ -88,4 +88,11 @@ public class ProductDAO  implements ProductDAOInt {
     public Product getProductById(int productId, EntityManager em){
         return em.find(Product.class, productId);
     }
+
+    public void updateProductQuantity(Product product, int boughtQuantity, EntityManager em) {
+        em.createQuery("UPDATE Product p SET p.availableQuantity = :newQuantity WHERE p.id = :productId")
+                .setParameter("newQuantity", product.getAvailableQuantity()-boughtQuantity)
+                .setParameter("productId", product.getId())
+                .executeUpdate();
+    }
 }

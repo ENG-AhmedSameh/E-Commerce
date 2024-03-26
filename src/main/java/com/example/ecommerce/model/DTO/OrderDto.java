@@ -14,7 +14,8 @@ import java.util.Set;
 @Value
 public class OrderDto implements Serializable {
     Integer id;
-    Integer userId;
+    @NotNull
+    UserDto user;
     @NotNull
     Instant createTime;
     @NotNull

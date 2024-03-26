@@ -30,7 +30,6 @@ public class CartDAO implements CartDAOInt {
         em.remove(cart);
     }
 
-    //Sameh
     public void  removeFromCart(Cart cart, int productId , EntityManager em){
         Set<CartItem> cartItems = cart.getCartItems();
         CartItem cartItem = cartItems.stream()
@@ -44,4 +43,12 @@ public class CartDAO implements CartDAOInt {
 
     }
 
+    public void removeCartItem(CartItem cartItem, EntityManager em) {
+        String jpql = "DELETE FROM CartItem c WHERE c.id.cartId = :cartId AND c.id.productId = :productId";
+
+        int deletedCount = em.createQuery(jpql)
+                .setParameter("cartId", cartItem.getId().getCartId())
+                .setParameter("productId", cartItem.getId().getProductId())
+                .executeUpdate();
+    }
 }

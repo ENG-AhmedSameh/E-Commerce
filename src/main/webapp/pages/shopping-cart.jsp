@@ -180,8 +180,8 @@
 								</div>
 							</div>
 
-							<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-								Proceed to Checkout
+							<button onclick="checkOutOrder(event)" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+								Checkout
 							</button>
 						</div>
 					</div>
@@ -240,8 +240,9 @@
 			});
 		</script>
 		<!--===============================================================================================-->
-		<script src="assets/js/shoping-cart.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script src="assets/js/shoping-cart.js"></script>
 
 
 	</body>
