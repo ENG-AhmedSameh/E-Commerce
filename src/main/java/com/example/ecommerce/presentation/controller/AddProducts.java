@@ -1,5 +1,6 @@
 package com.example.ecommerce.presentation.controller;
 
+import com.example.ecommerce.model.DAO.Database;
 import com.example.ecommerce.model.DTO.ProductDto;
 import com.example.ecommerce.model.entities.Category;
 import com.example.ecommerce.model.entities.Product;
@@ -81,6 +82,7 @@ public class AddProducts implements ServletResolverInt {
 
         Product addProduct = new Product();
 //        addProduct.setId(dataObject.getId());
+        addProduct.setId(100);
         addProduct.setName(dataObject.getName());
         addProduct.setDescription(dataObject.getDescription());
         addProduct.setAvailableQuantity(dataObject.getAvailableQuantity());
@@ -88,17 +90,24 @@ public class AddProducts implements ServletResolverInt {
         addProduct.setDiscountPercentage(dataObject.getDiscountPercentage());
         addProduct.setMainImageUrl(dataObject.getMainImageUrl());
 
-        Category category = new Category();
-        category.setName(dataObject.getCategory().getName());
-        category.setId(1);
-        addProduct.setCategory(category);
-        addProduct.setIsDeleted((byte) 0);
+
+        Database.doInTransactionWithoutResult(em->{
+            Category category = em.find(Category.class, dataObject.getCategory().getId());
+            addProduct.setCategory(category);
+
+            ProductImage productImage1 = new ProductImage(addProduct , secondImageUrl );
+            ProductImage productImage2 = new ProductImage(addProduct , theardImageUrl );
+
+            addProduct.addProductImage(productImage1);
+            addProduct.addProductImage(productImage2);
+
+            em.persist(addProduct);
+
+        });
         //------------------------------------------------------
-        Set<ProductImage> productImageSet = new HashSet<>();
-        ProductImage productImage = new ProductImage();
-        productImage.setProduct(addProduct);
-        productImageSet.add(productImage);
-        addProduct.setProductImages(productImageSet);
+
+
+
         //------------------------------------------------------
 
         System.out.println(addProduct.getName());

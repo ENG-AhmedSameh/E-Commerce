@@ -19,4 +19,12 @@ public class ProductImage {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    ProductImage() {
+    }
+
+    public ProductImage( Product product , String imageUrl) {
+        this.product = product;
+        this.id = new ProductImageId(product.getId(), imageUrl);
+    }
+
 }

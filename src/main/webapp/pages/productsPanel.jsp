@@ -183,6 +183,7 @@
 <%--<script src="assets/js/pro.js"></script>--%>
 
 
+
 <script>
     $(document).ready(function() {
 
@@ -285,6 +286,7 @@
         // Event listener for the "Submit" button inside the modal form
         $('#submitAddBtn').click(function () {
             // Retrieve data from the modal form fields
+            event.preventDefault();
             var newProduct = {
                 name: $('#addName').val(),
                 description: $('#addDescription').val(),
@@ -333,10 +335,12 @@
 
 
 
+
+
     // Function to retrieve product details from the session
     function getProductDetails(productId) {
         // Assuming products are stored in the session as an array
-        var products = <%= new Gson().toJson(request.getSession().getAttribute("productsPanel")) %>;
+        var products = <%= new Gson().toJson(request.getSession().getAttribute("productsPanel"))%>;
 
         // Find the product with the given productId
         for (var i = 0; i < products.length; i++) {
@@ -347,6 +351,7 @@
 
         return null;
     }
+
 
 
 </script>

@@ -51,7 +51,7 @@ public class Product {
     @Column(name = "main_image_url", length = 45)
     private String mainImageUrl;
 
-    @OneToMany(mappedBy = "product" , fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product" ,cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ProductImage> productImages = new LinkedHashSet<>();
 
     @NotNull
@@ -61,4 +61,13 @@ public class Product {
 //    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private Set<CartItem> cartItems = new HashSet<>();
 
+    public void addProductImage(ProductImage productImage) {
+        productImages.add(productImage);
+        productImage.setProduct(this);
+    }
+
+    public void removeProductImage(ProductImage productImage) {
+        productImages.remove(productImage);
+        productImage.setProduct(null);
+    }
 }
