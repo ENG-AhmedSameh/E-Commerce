@@ -3,36 +3,41 @@ package com.example.ecommerce.presentation.controller;
 import com.example.ecommerce.model.DTO.ProductDto;
 import com.example.ecommerce.model.entities.Category;
 import com.example.ecommerce.model.entities.Product;
+import com.example.ecommerce.model.entities.ProductImage;
+
 import com.example.ecommerce.model.services.ProductServices;
 import com.example.ecommerce.presentation.controller.util.PAGES;
 import com.example.ecommerce.presentation.controller.util.ServletResolverInt;
 import com.example.ecommerce.presentation.controller.util.ViewResolver;
-
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class ProductsPanelController implements ServletResolverInt {
+public class AddProducts implements ServletResolverInt {
     @Override
     public ViewResolver resolve(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String methodType = request.getMethod();
         if ("GET".equals(methodType)) {
-            System.out.println("Now in , doGet in ProductsPanelController.");
+            System.out.println("Now in , doGet in AddProducts Controller.");
             return doGet(request, response);
         } else if ("POST".equals(methodType)) {
-            System.out.println("Now in , doPost in ProductsPanelController.");
+            System.out.println("Now in , doPost in AddProducts Controller.");
             return doPost(request, response);
         }
         return null;
     }
 
     private ViewResolver doGet(HttpServletRequest request, HttpServletResponse response) {
+
+        System.out.println("hello 1 from , doGet in AddProducts Controller.");
+
         List<ProductDto> productDtos = new ProductServices().getProductsAllExist();
         request.getSession().setAttribute("productsPanel", productDtos);
 
@@ -43,17 +48,7 @@ public class ProductsPanelController implements ServletResolverInt {
 
     private ViewResolver doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-//        JsonObject jsonObject = gson.fromJson(jsonData, JsonObject.class);
-//        String action = jsonObject.get("action").getAsString();
-//        System.out.println("action = " + action);
-        //**********************************************************
-//        String action = request.getParameter("action");
-//        System.out.println("action = " + action);
-//
-//        if ("delete".equals(action)) {
-//            handleDelete(request, response);
-//        }
-
+        System.out.println("hello 1 from , doPost in AddProducts Controller.");
 
         StringBuilder sb = new StringBuilder();
         BufferedReader reader = request.getReader();
@@ -66,6 +61,7 @@ public class ProductsPanelController implements ServletResolverInt {
             reader.close();
         }
 
+        System.out.println("hello 2 from , doPost in AddProducts Controller.");
         String jsonData = sb.toString();
 
         System.out.println("-------------------- json data --------------------");
@@ -73,7 +69,9 @@ public class ProductsPanelController implements ServletResolverInt {
         System.out.println("---------------------------------------------------");
 
         Gson gson = new Gson();
+        System.out.println("hello 3 from , doPost in AddProducts Controller.");
         ProductDto dataObject = gson.fromJson(jsonData, ProductDto.class);
+        System.out.println("hello 4 from , doPost in AddProducts Controller.");
         //****************************************************************
         System.out.println(dataObject.toString());
         System.out.println(dataObject.getName());
@@ -81,41 +79,44 @@ public class ProductsPanelController implements ServletResolverInt {
         //****************************************************************
 
 
-        Product updatedProduct = new Product();
-
-        updatedProduct.setId(dataObject.getId());
-        updatedProduct.setName(dataObject.getName());
-        updatedProduct.setDescription(dataObject.getDescription());
-        updatedProduct.setAvailableQuantity(dataObject.getAvailableQuantity());
-        updatedProduct.setPrice(dataObject.getPrice());
-        updatedProduct.setDiscountPercentage(dataObject.getDiscountPercentage());
-        updatedProduct.setMainImageUrl(dataObject.getMainImageUrl());
+        Product addProduct = new Product();
+//        addProduct.setId(dataObject.getId());
+        addProduct.setName(dataObject.getName());
+        addProduct.setDescription(dataObject.getDescription());
+        addProduct.setAvailableQuantity(dataObject.getAvailableQuantity());
+        addProduct.setPrice(dataObject.getPrice());
+        addProduct.setDiscountPercentage(dataObject.getDiscountPercentage());
+        addProduct.setMainImageUrl(dataObject.getMainImageUrl());
 
         Category category = new Category();
         category.setName(dataObject.getCategory().getName());
-        updatedProduct.setCategory(category);
+        category.setId(1);
+        addProduct.setCategory(category);
+        addProduct.setIsDeleted((byte) 0);
+        //------------------------------------------------------
+        Set<ProductImage> productImageSet = new HashSet<>();
+        ProductImage productImage = new ProductImage();
+        productImage.setProduct(addProduct);
+        productImageSet.add(productImage);
+        addProduct.setProductImages(productImageSet);
+        //------------------------------------------------------
 
-        System.out.println(updatedProduct.getName());
-        System.out.println(updatedProduct.toString());
+        System.out.println(addProduct.getName());
+        System.out.println(addProduct.toString());
+        System.out.println("hello 5 from , doPost in AddProducts Controller.");
 
-        new ProductServices().updateProduct(updatedProduct);
+        //new ProductServices().updateProduct(updatedProduct);
 
         List<ProductDto> productDtos = new ProductServices().getProductsAllExist();
-        System.out.println("after updateProduct method  = " + productDtos.get(0).getName());
+        System.out.println("hello 6 from , doPost in AddProducts Controller.");
+        //productDtos.add(new ProductMapperImpl().toDto(addProduct));
         request.getSession().setAttribute("productsPanel", productDtos);
+        System.out.println("hello 7 from , doPost in AddProducts Controller.");
 
         ViewResolver viewResolver = new ViewResolver();
+        System.out.println("hello 8 from , doPost in AddProducts Controller.");
         viewResolver.forward(PAGES.PRODUCTSPANEL.getValue());
+        System.out.println("hello 9 from , doPost in AddProducts Controller.");
         return viewResolver;
-
-        }
-
-//    private void handleDelete(HttpServletRequest request, HttpServletResponse response) {
-//        System.out.println("handleDelete method");
-//    }
-
-
-
-
+    }
 }
-

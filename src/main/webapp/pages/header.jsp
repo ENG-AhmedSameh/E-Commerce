@@ -30,6 +30,10 @@
 							<a href="${pageContext.request.contextPath}/front?page=ordersPanel">Orders Panel</a>
 						</li>
 
+						<li>
+							<a href="${pageContext.request.contextPath}/front?page=addProducts">Test Add Products</a>
+						</li>
+
 
 						<li>
 							<a href="${pageContext.request.contextPath}/front?page=shop">Shop</a>

@@ -34,6 +34,22 @@ public class ProductServices {
         });
     }
 
+    public List<ProductDto> getProductsAllExist() {
+        try{
+            return Database.doInTransaction(em -> {
+                ProductDAO productDAO = new ProductDAO();
+
+                List<Product> products = productDAO.getProductsAllExist(em);
+                return ProductMapper.INSTANCE.toListDto(products);
+            });
+        }catch (Exception e) {
+            System.err.println("Error in getProductsAllExist Method: " + e.getMessage());
+            e.printStackTrace();
+             return null;
+        }
+
+    }
+
 
     //
 

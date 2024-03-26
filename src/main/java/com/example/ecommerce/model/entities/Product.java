@@ -5,14 +5,17 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "product", schema = "e_commerce", indexes = {
         @Index(name = "fk_products_Categories1_idx", columnList = "Category_id")
 })

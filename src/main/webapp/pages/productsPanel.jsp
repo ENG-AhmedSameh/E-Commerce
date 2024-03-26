@@ -1,4 +1,3 @@
-
 <%@ page import="com.example.ecommerce.model.DTO.ProductDto" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.google.gson.Gson" %>
@@ -19,6 +18,11 @@
     <div class="row">
         <div class="col-md-12">
             <h2 class="headline">Products</h2>
+
+            <%--  Add Button--%>
+            <button type="button" id="addBtn" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
+                Add Product
+            </button>
 
             <table class="table table-striped">
                 <thead>
@@ -118,6 +122,56 @@
         </div>
     </div>
 </div>
+
+<!-- Add Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form for adding product -->
+                <form id="addProductForm">
+                    <!-- Your form fields -->
+                    <div class="form-group">
+                        <label for="addName">Name</label>
+                        <input type="text" class="form-control" id="addName" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="addDescription">Description</label>
+                        <textarea class="form-control" id="addDescription" name="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="addQuantity">Quantity</label>
+                        <input type="number" class="form-control" id="addQuantity" name="quantity">
+                    </div>
+                    <div class="form-group">
+                        <label for="addPrice">Price</label>
+                        <input type="number" class="form-control" id="addPrice" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="addDiscount">Discount %</label>
+                        <input type="number" class="form-control" id="addDiscount" name="discount">
+                    </div>
+                    <div class="form-group">
+                        <label for="addMainImage">Main Image URL</label>
+                        <input type="text" class="form-control" id="addMainImage" name="mainImage">
+                    </div>
+                    <div class="form-group">
+                        <label for="addCategory">Category</label>
+                        <input type="text" class="form-control" id="addCategory" name="category">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submitAddBtn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -220,7 +274,64 @@
                 }
             });
         });
+
+        //-----------------------------------------------------------------------------------
+        // Event listener for the "Add" button to open the modal form
+        $('#addBtn').on('click', function() {
+            console.log('add button in console');
+            $('#addProductModal').modal('show');
+        });
+
+        // Event listener for the "Submit" button inside the modal form
+        $('#submitAddBtn').click(function () {
+            // Retrieve data from the modal form fields
+            var newProduct = {
+                name: $('#addName').val(),
+                description: $('#addDescription').val(),
+                availableQuantity: $('#addQuantity').val(),
+                price: $('#addPrice').val(),
+                discountPercentage: $('#addDiscount').val(),
+                mainImageUrl: $('#addMainImage').val(),
+                category: {
+                    name: $('#addCategory').val()
+                }
+            };
+
+            // Send the new product data to the server for processing
+            $.ajax({
+                url: 'front?page=addProducts', // Server endpoint
+                type: 'POST', // Request type
+                contentType: 'application/json', // Data format
+                data: JSON.stringify(newProduct), // Data to be sent
+                success: function (response) {
+                    // Handle success response
+                    console.log('Product added successfully:', response);
+                    // Optionally, you can close the modal or perform any other action
+                    $('#addProductModal').modal('hide');
+                    // Reload the page or update the product list as needed
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error response
+                    console.error('Error adding product:', error);
+                    if (xhr.status === 500) {
+                        // Display an error message to the user
+                        alert('Internal Server Error. Please try again later. Hajar ');
+                    } else {
+                        // Display a generic error message
+                        alert('An error occurred while adding the product.');
+                    }
+                }
+            });
+        });
+
+        //-----------------------------------------------------------------------------------
+
+
+
     });
+
+
 
     // Function to retrieve product details from the session
     function getProductDetails(productId) {
