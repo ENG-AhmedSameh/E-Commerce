@@ -95,11 +95,11 @@ public class AddProducts implements ServletResolverInt {
             Category category = em.find(Category.class, dataObject.getCategory().getId());
             addProduct.setCategory(category);
 
-            ProductImage productImage1 = new ProductImage(addProduct , secondImageUrl );
-            ProductImage productImage2 = new ProductImage(addProduct , theardImageUrl );
-
-            addProduct.addProductImage(productImage1);
-            addProduct.addProductImage(productImage2);
+//            ProductImage productImage1 = new ProductImage(addProduct , secondImageUrl );
+//            ProductImage productImage2 = new ProductImage(addProduct , theardImageUrl );
+//
+//            addProduct.addProductImage(productImage1);
+//            addProduct.addProductImage(productImage2);
 
             em.persist(addProduct);
 

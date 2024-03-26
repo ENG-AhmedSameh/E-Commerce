@@ -32,7 +32,7 @@
                         for (OrderDto order : orders) { %>
                 <tr>
                     <td><%= order.getId() %></td>
-                    <td><%= order.getUserId() %></td>
+                    <td><%= order.getUser().getId() %></td>
                     <td><%= order.getCreateTime() %></td>
                     <td><%= order.getPrice() %></td>
                     <td>

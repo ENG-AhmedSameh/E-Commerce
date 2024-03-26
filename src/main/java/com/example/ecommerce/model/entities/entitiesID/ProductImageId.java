@@ -25,6 +25,15 @@ public class ProductImageId implements Serializable {
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
+    public ProductImageId(Integer id, String imageUrl) {
+        this.productId = id;
+        this.imageUrl = imageUrl;
+    }
+
+    public ProductImageId() {
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
