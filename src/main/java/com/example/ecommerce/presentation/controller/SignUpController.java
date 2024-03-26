@@ -37,7 +37,7 @@ public class SignUpController implements ServletResolverInt {
         String city = req.getParameter("city");
         String street = req.getParameter("street");
 
-        UserDto userDto = new UserDto(null,username,password,firstname,lastname,phone,email,creditLimit,job,gender, city,street ,null,null,null,null);
+        UserDto userDto = new UserDto(null,username,password,firstname,lastname,phone,email,creditLimit,job,gender, city,street ,null);
 
         System.out.println("username: " + username );
         LoggedInUserDto loggedInUser = UserServices.registerNewUser(userDto);

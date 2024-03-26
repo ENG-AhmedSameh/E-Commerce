@@ -33,14 +33,14 @@ public class OrderDAO implements OrderDAOInt {
         em.remove(order);
     }
 
-//    public List<Order> getAllOrders(EntityManager em) {
-//        return em.createQuery("SELECT o FROM Order o", Order.class).getResultList();
-//    }
-
     public List<Order> getAllOrders(EntityManager em) {
-        return em.createQuery("SELECT DISTINCT o FROM Order o LEFT JOIN FETCH o.orderItems", Order.class)
-                .getResultList();
+        return em.createQuery("SELECT o FROM Order o", Order.class).getResultList();
     }
+
+//    public List<Order> getAllOrders(EntityManager em) {
+//        return em.createQuery("SELECT DISTINCT o FROM Order o LEFT JOIN FETCH o.orderItems", Order.class)
+//                .getResultList();
+//    }
 
 
 //    public List<OrderItem> getOrderItemsByOrderId(Integer orderId, EntityManager em) {

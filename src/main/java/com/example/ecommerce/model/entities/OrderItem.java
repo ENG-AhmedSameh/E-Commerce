@@ -1,8 +1,10 @@
 package com.example.ecommerce.model.entities;
 
+import com.example.ecommerce.model.entities.entitiesID.CartItemId;
 import com.example.ecommerce.model.entities.entitiesID.OrderItemId;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
@@ -10,13 +12,16 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
-@Table(name = "order_item", schema = "e_commerce", indexes = {
-        @Index(name = "fk_order_item_all_order1_idx", columnList = "order_id"),
-        @Index(name = "fk_order_items_product1_idx", columnList = "product_id")
-})
+@Table(name = "order_item")
+@NoArgsConstructor
 public class OrderItem {
     @EmbeddedId
     private OrderItemId id;
+
+    @MapsId("orderId")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
     @MapsId("productId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -28,5 +33,14 @@ public class OrderItem {
 
     @Column(name = "quantity")
     private Short quantity;
+
+
+    public OrderItem(Order order, Product product, BigDecimal price, Short quantity) {
+        this.order = order;
+        this.product = product;
+        this.price = price;
+        this.quantity = quantity;
+        this.id = new OrderItemId(order.getId(),product.getId());
+    }
 
 }
