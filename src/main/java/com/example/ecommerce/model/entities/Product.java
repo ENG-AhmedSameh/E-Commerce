@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "product", schema = "e_commerce", indexes = {
         @Index(name = "fk_products_Categories1_idx", columnList = "Category_id")
 })
@@ -49,7 +51,7 @@ public class Product {
     @Column(name = "main_image_url", length = 45)
     private String mainImageUrl;
 
-    @OneToMany(mappedBy = "product" , fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product" , fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<ProductImage> productImages = new LinkedHashSet<>();
 
     @NotNull
@@ -59,4 +61,13 @@ public class Product {
 //    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private Set<CartItem> cartItems = new HashSet<>();
 
+    public void addProductImage(ProductImage productImage) {
+        productImages.add(productImage);
+        productImage.setProduct(this);
+    }
+
+    public void removeProductImage(ProductImage productImage) {
+        productImages.remove(productImage);
+        productImage.setProduct(null);
+    }
 }

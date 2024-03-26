@@ -33,7 +33,7 @@ public class ProductsPanelController implements ServletResolverInt {
     }
 
     private ViewResolver doGet(HttpServletRequest request, HttpServletResponse response) {
-        List<ProductDto> productDtos = new ProductServices().getProductsAll();
+        List<ProductDto> productDtos = new ProductServices().getProductsAllExist();
         request.getSession().setAttribute("productsPanel", productDtos);
 
         ViewResolver viewResolver = new ViewResolver();
@@ -67,6 +67,11 @@ public class ProductsPanelController implements ServletResolverInt {
         }
 
         String jsonData = sb.toString();
+
+        System.out.println("-------------------- json data --------------------");
+        System.out.println(jsonData);
+        System.out.println("---------------------------------------------------");
+
         Gson gson = new Gson();
         ProductDto dataObject = gson.fromJson(jsonData, ProductDto.class);
         //****************************************************************
@@ -77,6 +82,7 @@ public class ProductsPanelController implements ServletResolverInt {
 
 
         Product updatedProduct = new Product();
+
         updatedProduct.setId(dataObject.getId());
         updatedProduct.setName(dataObject.getName());
         updatedProduct.setDescription(dataObject.getDescription());
@@ -90,10 +96,11 @@ public class ProductsPanelController implements ServletResolverInt {
         updatedProduct.setCategory(category);
 
         System.out.println(updatedProduct.getName());
+        System.out.println(updatedProduct.toString());
 
         new ProductServices().updateProduct(updatedProduct);
 
-        List<ProductDto> productDtos = new ProductServices().getProductsAll();
+        List<ProductDto> productDtos = new ProductServices().getProductsAllExist();
         System.out.println("after updateProduct method  = " + productDtos.get(0).getName());
         request.getSession().setAttribute("productsPanel", productDtos);
 

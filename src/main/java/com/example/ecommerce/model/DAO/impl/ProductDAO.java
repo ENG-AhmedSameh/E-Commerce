@@ -63,6 +63,13 @@ public class ProductDAO  implements ProductDAOInt {
         return em.createQuery("SELECT p FROM Product p", Product.class).getResultList();
     }
 
+    //***************************************************
+    public List<Product> getProductsAllExist(EntityManager em) {
+        return em.createQuery("SELECT p FROM Product p WHERE p.isDeleted = 0", Product.class)
+                .getResultList();
+    }
+    //***************************************************
+
     public void editProduct(EntityManager em, Product product) {
         em.createQuery("UPDATE Product p SET p.name = :newName, p.description = :newDescription, " +
                         "p.availableQuantity = :newQuantity, p.price = :newPrice, p.discountPercentage = :newDiscount, " +

@@ -17,4 +17,13 @@ public class ProductImage {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
+
+    public ProductImage() {
+    }
+
+    public ProductImage( Product product , String imageUrl) {
+        this.product = product;
+        this.id = new ProductImageId(product.getId(), imageUrl);
+    }
+
 }
