@@ -101,56 +101,56 @@
 					<div class="flex-w flex-sb p-t-36 gallery-lb">
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-01.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-01.jpg');"></a>
+							<a class="item-gallery bg-img1" href="assets/images/2.jpg" data-lightbox="gallery"
+							style="background-image: url('assets/images/2.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-02.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-02.jpg');"></a>
+							<a class="item-gallery bg-img1" href="assets/images/3.jpg" data-lightbox="gallery"
+							style="background-image: url('assets/images/3.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-03.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-03.jpg');"></a>
+							<a class="item-gallery bg-img1" href="assets/images/4.jpg" data-lightbox="gallery"
+							style="background-image: url('assets/images/4.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-04.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-04.jpg');"></a>
+							<a class="item-gallery bg-img1" href="assets/images/5.jpg" data-lightbox="gallery"
+							style="background-image: url('assets/images/5.jpg);"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-05.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-05.jpg');"></a>
+							<a class="item-gallery bg-img1" href="assets/images/5.jpg" data-lightbox="gallery"
+							style="background-image: url('assets/images/6.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-06.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-06.jpg');"></a>
+							<a class="item-gallery bg-img1" href="assets/images/7.jpg" data-lightbox="gallery"
+							style="background-image: url('assets/images/7.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-07.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-07.jpg');"></a>
+							<a class="item-gallery bg-img1" href="assets/images/8.jpg" data-lightbox="gallery"
+							style="background-image: url('assets/images/8.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-08.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-08.jpg');"></a>
+							<a class="item-gallery bg-img1" href="assets/images/9.jpg" data-lightbox="gallery"
+							style="background-image: url('assets/images/9.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="assets/images/gallery-09.jpg" data-lightbox="gallery"
-							style="background-image: url('assets/images/gallery-09.jpg');"></a>
+							<a class="item-gallery bg-img1" href="assets/images/11.jpg" data-lightbox="gallery"
+							style="background-image: url('assets/images/11.jpg');"></a>
 						</div>
 					</div>
 				</div>
