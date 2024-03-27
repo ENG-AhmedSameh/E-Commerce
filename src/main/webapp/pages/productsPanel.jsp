@@ -9,7 +9,7 @@
     <title>Products Panel</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/pro.css">
+    <link rel="stylesheet" href="../css/pro.css">
 </head>
 <body>
 
@@ -323,10 +323,10 @@
                 description: $('#addDescription').val(),
                 availableQuantity: $('#addQuantity').val(),
                 price: $('#addPrice').val(),
-                discountPercentage: $('#addDiscount').val(),
+                // discountPercentage: $('#addDiscount').val(),
                 mainImageUrl: $('#addMainImage').val(),
                 secondImageUrl: $('secondUrlImage').val,
-                thirdImageUri:$('thirdUrlImage').val,
+                thirdImageUrl: $('thirdUrlImage').val,
                 category: {
                     name: $('#addCategory').val()
                 }
