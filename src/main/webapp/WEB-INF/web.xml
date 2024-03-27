@@ -51,8 +51,16 @@
     <security-role>
         <role-name>ECommerceAdmin</role-name>
     </security-role>
+<!--    <login-config>-->
+<!--        <auth-method>BASIC</auth-method>-->
+<!--    </login-config>-->
+
     <login-config>
-        <auth-method>BASIC</auth-method>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/pages/admin.html</form-login-page>
+            <form-error-page>/errorAdmin.html</form-error-page>
+        </form-login-config>
     </login-config>
 
 

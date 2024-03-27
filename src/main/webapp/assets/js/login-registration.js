@@ -93,6 +93,10 @@ function postEmailData(){
     var url="front?page=checkEmail";
     var myvalue = document.getElementById("user_email").value;
 
+     if(myvalue.length < 10){
+            return;
+     }
+
     console.log("label"+label.textContent);
     console.log("email"+myvalue);
     xmlhttp.open("POST", url, true);
