@@ -63,5 +63,8 @@
         </form-login-config>
     </login-config>
 
+    <error-page>
+        <location>/pages/error.html</location>
+    </error-page>
 
 </web-app>
