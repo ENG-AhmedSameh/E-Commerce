@@ -236,6 +236,12 @@ function checkOutOrder(event) {
 		console.error('XMLHttpRequest is not supported by this browser.');
 		return;
 	}
+	const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+	if(allProd.length == 0){
+
+	    swal("Error", "Your cart is empty", "error");
+	    return;
+	}
 
 	xmlhttp.open('POST', 'front?page=checkout', true);
 	xmlhttp.setRequestHeader('Content-Type', 'text/plain');

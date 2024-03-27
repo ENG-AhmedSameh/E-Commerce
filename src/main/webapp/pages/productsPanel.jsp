@@ -20,6 +20,7 @@
         <div class="col-md-12">
             <h2 class="headline">Products</h2>
 
+
             <%--  Add Button--%>
             <button type="button" id="addBtn" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
                 Add Product
@@ -33,7 +34,7 @@
                     <th>Description</th>
                     <th>Quantity</th>
                     <th>Price</th>
-                    <th>Discount %</th>
+                    <!-- <th>Discount %</th> -->
                     <th>Main Image</th>
                     <th>Category</th>
                     <th>Actions</th>
@@ -50,8 +51,9 @@
                     <td><%= product.getDescription() %></td>
                     <td><%= product.getAvailableQuantity() %></td>
                     <td><%= product.getPrice() %></td>
-                    <td><%= product.getDiscountPercentage() %></td>
-                    <td><a href="<%= product.getMainImageUrl() %>" target="_blank"><%= truncateUrl(product.getMainImageUrl()) %></a></td>
+                    <!-- <td><%= product.getDiscountPercentage() %></td> -->
+                    <td><img src="<%= product.getMainImageUrl() %>" alt="_blank">  </td>
+                   <!-- <%= truncateUrl(product.getMainImageUrl()) %></a> -->
                     <td><%= product.getCategory().getName() %></td>
                     <td>
                         <!-- Edit button -->
@@ -102,17 +104,29 @@
                         <label for="editPrice">Price:</label>
                         <input type="number" class="form-control" id="editPrice">
                     </div>
-                    <div class="form-group">
-                        <label for="editDiscount">Discount %:</label>
-                        <input type="number" class="form-control" id="editDiscount">
-                    </div>
+                 
                     <div class="form-group">
                         <label for="editMainImage">Main Image URL:</label>
                         <input type="text" class="form-control" id="editMainImage">
                     </div>
                     <div class="form-group">
+                        <label for="secondUrlImage">Seconde Image URL:</label>
+                        <input type="text" class="form-control" id="secondUrlImage">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="thirdUrlImage">Third Image URL:</label>
+                        <input type="text" class="form-control" id="thirdUrlImage">
+                    </div>
+
+                    <div class="form-group">
                         <label for="editCategory">Category:</label>
-                        <input type="text" class="form-control" id="editCategory">
+                        <!-- <input type="text" class="form-control" id="editCategory"> -->
+                        <select class="form-control"  name="editCategory" id="editCategory">
+                            <option value="1">Smart Phone</option>
+                            <option value="2">Laptop</option>
+                            <option value="3">Accessory</option>
+                        </select>
                     </div>
                 </form>
             </div>
@@ -154,17 +168,31 @@
                         <label for="addPrice">Price</label>
                         <input type="number" class="form-control" id="addPrice" name="price">
                     </div>
-                    <div class="form-group">
-                        <label for="addDiscount">Discount %</label>
-                        <input type="number" class="form-control" id="addDiscount" name="discount">
-                    </div>
+                  
                     <div class="form-group">
                         <label for="addMainImage">Main Image URL</label>
                         <input type="text" class="form-control" id="addMainImage" name="mainImage">
                     </div>
+
+                    <div class="form-group">
+                        <label for="secondUrlImage">Second Image URL:</label>
+                        <input type="text" class="form-control" id="secondUrlImage">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="thirdUrlImage">Third Image URL:</label>
+                        <input type="text" class="form-control" id="thirdUrlImage">
+                    </div>
+
+
                     <div class="form-group">
                         <label for="addCategory">Category</label>
-                        <input type="text" class="form-control" id="addCategory" name="category">
+                        <!-- <input type="text" class="form-control" id="addCategory" name="category"> -->
+                        <select class="form-control"  name="category" id="addCategory">
+                            <option value="1">Smart Phone</option>
+                            <option value="2">Laptop</option>
+                            <option value="3">Accessory</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary" id="submitAddBtn">Submit</button>
                 </form>
@@ -199,6 +227,8 @@
             $('#editPrice').val(product.price);
             $('#editDiscount').val(product.discountPercentage);
             $('#editMainImage').val(product.mainImageUrl);
+            $('#secondUrlImage').val(product.productImages[0].id.imageUrl)
+            $('#thirdUrlImage').val(product.productImages[1].id.imageUrl)
             $('#editCategory').val(product.category.name);
 
             $('#editProductModal').modal('show');
@@ -295,6 +325,8 @@
                 price: $('#addPrice').val(),
                 discountPercentage: $('#addDiscount').val(),
                 mainImageUrl: $('#addMainImage').val(),
+                secondImageUrl: $('secondUrlImage').val,
+                thirdImageUri:$('thirdUrlImage').val,
                 category: {
                     name: $('#addCategory').val()
                 }
