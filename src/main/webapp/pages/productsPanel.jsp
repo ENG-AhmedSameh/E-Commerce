@@ -362,13 +362,13 @@ a:hover {
                     </div>
 
                     <div class="form-group">
-                        <label for="secondUrlImage">Second Image URL:</label>
-                        <input type="text" class="form-control" id="addsecondUrlImage">
+                        <label for="addSecondUrlImage">Second Image URL</label>
+                        <input type="text" class="form-control" id="addSecondUrlImage" name="secondImage">
                     </div>
 
                     <div class="form-group">
-                        <label for="thirdUrlImage">Third Image URL:</label>
-                        <input type="text" class="form-control" id="addthirdUrlImage">
+                        <label for="addThirdUrlImage">Third Image URL</label>
+                        <input type="text" class="form-control" id="addThirdUrlImage" name="thirdImage">
                     </div>
 
 
@@ -566,11 +566,11 @@ function updatePage(change) {
                 price: $('#addPrice').val(),
                 // discountPercentage: $('#addDiscount').val(),
                 mainImageUrl: $('#addMainImage').val(),
-                secondImageUrl: $('addsecondUrlImage').val,
-                thirdImageUrl: $('addthirdUrlImage').val,
+                secondImageUrl: $('#addSecondUrlImage').val(),
+                thirdImageUrl: $('#addThirdUrlImage').val(),
                 categoryId: $('#addCategory').val()
-                
             };
+            console.log(newProduct);
 
             // Send the new product data to the server for processing
             $.ajax({
