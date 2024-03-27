@@ -61,6 +61,8 @@ public class AddProducts implements ServletResolverInt {
             JsonNode objNode = objectMapper.readTree(jsonData);
 
             Product productTobeAdded = new Product();
+
+            //Very bad code here, but I will leave it as it is 3shan mafeesh w2t
             // Extract numbers from the JSON array
             productTobeAdded.setName(objNode.get("name").asText());
             productTobeAdded.setDescription(objNode.get("description").asText());

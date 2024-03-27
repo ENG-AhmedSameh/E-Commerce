@@ -1,3 +1,4 @@
+
 <%@ page import="com.example.ecommerce.model.DTO.ProductDto" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.google.gson.Gson" %>
@@ -11,162 +12,162 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom right, #ede0c8, #f6f0ea); /* Beige gradient background */
-    color: #ffffff; /* Set text color to white */
-    margin: 0;
-    padding: 0;
-    height: 100vh; /* Set full viewport height */
-    background-size: 150% 150%; /* Increase background size for a more pronounced gradient */
-}
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #ede0c8, #f6f0ea); /* Beige gradient background */
+            color: #ffffff; /* Set text color to white */
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Set full viewport height */
+            background-size: 150% 150%; /* Increase background size for a more pronounced gradient */
+        }
 
-.container {
-    text-align: center;
-    background-color: rgb(243, 235, 235); /* Semi-transparent white background */
-    padding: 20px; /* Add some padding for spacing */
-    border-radius: 10px; /* Add border radius */
-    margin-top: 50px; /* Add margin to top */
-    max-width: 1300px; /* Set maximum width */
-    margin-left: auto; /* Center the container horizontally */
-    margin-right: auto; /* Center the container horizontally */
-}
+        .container {
+            text-align: center;
+            background-color: rgb(243, 235, 235); /* Semi-transparent white background */
+            padding: 20px; /* Add some padding for spacing */
+            border-radius: 10px; /* Add border radius */
+            margin-top: 50px; /* Add margin to top */
+            max-width: 1300px; /* Set maximum width */
+            margin-left: auto; /* Center the container horizontally */
+            margin-right: auto; /* Center the container horizontally */
+        }
 
-.headline {
-    font-size: 36px; /* Reduce font size */
-    font-weight: bold;
-    margin-bottom: 20px; /* Reduce margin */
-    color: #f6f6f6; /* Set headline color to dark gray */
-    background-color: rgb(255, 193, 7); /* Semi-transparent black background */
-    padding: 15px; /* Reduce padding */
-    border-radius: 8px; /* Add border radius */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for depth */
-}
+        .headline {
+            font-size: 36px; /* Reduce font size */
+            font-weight: bold;
+            margin-bottom: 20px; /* Reduce margin */
+            color: #f6f6f6; /* Set headline color to dark gray */
+            background-color: rgb(255, 193, 7); /* Semi-transparent black background */
+            padding: 15px; /* Reduce padding */
+            border-radius: 8px; /* Add border radius */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for depth */
+        }
 
-.table {
-    background-color: #fff; /* White background for table */
-    border-radius: 10px; /* Add border radius */
-    margin-top: 10px; /* Reduce margin to top */
-}
+        .table {
+            background-color: #fff; /* White background for table */
+            border-radius: 10px; /* Add border radius */
+            margin-top: 10px; /* Reduce margin to top */
+        }
 
-.table th,
-.table td {
-    border: none; /* Remove border */
-}
+        .table th,
+        .table td {
+            border: none; /* Remove border */
+        }
 
-.table th {
-    background-color: rgb(255, 193, 7); /* Header background color */
-    color: #fff; /* Header text color */
-}
+        .table th {
+            background-color: rgb(255, 193, 7); /* Header background color */
+            color: #fff; /* Header text color */
+        }
 
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background for odd rows */
-}
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background for odd rows */
+        }
 
-.table-striped tbody tr:nth-of-type(even) {
-    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background for even rows */
-}
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background for even rows */
+        }
 
-.btn {
-    color: #fff; /* Button text color */
-    border-radius: 5px; /* Add border radius */
-}
+        .btn {
+            color: #fff; /* Button text color */
+            border-radius: 5px; /* Add border radius */
+        }
 
-.btn-primary {
-    background-color: #ffc107; /* Primary button background color */
-}
+        .btn-primary {
+            background-color: #ffc107; /* Primary button background color */
+        }
 
-.btn-danger {
-    background-color: #ff0000; /* Danger button background color */
-}
+        .btn-danger {
+            background-color: #ff0000; /* Danger button background color */
+        }
 
-.btn-primary:hover, .btn-danger:hover {
-    background-color: #ffca28; /* Button background color on hover */
-}
+        .btn-primary:hover, .btn-danger:hover {
+            background-color: #ffca28; /* Button background color on hover */
+        }
 
-/* Adjusting input width for image URLs */
-.form-control-url {
-    width: calc(100% - 80px); /* Adjust width as needed */
-}
+        /* Adjusting input width for image URLs */
+        .form-control-url {
+            width: calc(100% - 80px); /* Adjust width as needed */
+        }
 
-/* Styling links */
-a {
-    color: blue; /* Link color */
-    text-decoration: underline; /* Underline link */
-}
+        /* Styling links */
+        a {
+            color: blue; /* Link color */
+            text-decoration: underline; /* Underline link */
+        }
 
-a:hover {
-    color: darkblue; /* Link color on hover */
-    text-decoration: none; /* Remove underline on hover */
-}
+        a:hover {
+            color: darkblue; /* Link color on hover */
+            text-decoration: none; /* Remove underline on hover */
+        }
 
-/* Tooltip styles */
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
 
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 200px;
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -100px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
 
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #000 transparent transparent transparent;
-}
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #000 transparent transparent transparent;
+        }
 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
 
-label {
-  color: black;
-  text-align: center;
-}
+        label {
+            color: black;
+            text-align: center;
+        }
 
-a {
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 16px;
-}
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
 
-a:hover {
-  background-color: #ddd;
-  color: black;
-}
+        a:hover {
+            background-color: #ddd;
+            color: black;
+        }
 
-.previous {
-  background-color: #f1f1f1;
-  color: black;
-}
+        .previous {
+            background-color: #f1f1f1;
+            color: black;
+        }
 
-.next {
-  background-color: #04AA6D;
-  color: white;
-}
+        .next {
+            background-color: #04AA6D;
+            color: white;
+        }
 
-.round {
-  border-radius: 50%;
-}
+        .round {
+            border-radius: 50%;
+        }
 
     </style>
 </head>
@@ -179,26 +180,25 @@ a:hover {
         <div class="col-md-12">
             <h2 class="headline text-center" >Products</h2>
             <%
-               
-                HttpSession sessionObj = request.getSession(); 
+
+                HttpSession sessionObj = request.getSession();
                 int pageValue = (int) sessionObj.getAttribute("page");
-                
+
             %>
             <h1 hidden class="headline text-center"><%= pageValue %></h1>
-            
+
 
             <%--  Add Button--%>
-            <button type="button" id="backBtn" class="btn btn-secondary mr-1" onclick="window.location.href='${pageContext.request.contextPath}/admin'">
+            <button type="button" id="backBtn"  class="btn btn-secondary mr-1" data-toggle="modal">
                 Back
             </button>
-
 
 
             <button type="button" id="addBtn" class="btn btn-primary text-center" data-toggle="modal" data-target="#addProductModal">
                 Add Product
             </button>
 
-           
+
 
             <table class="table table-striped">
                 <thead>
@@ -227,9 +227,9 @@ a:hover {
                     <td><%= product.getPrice() %></td>
                     <!-- <td><%= product.getDiscountPercentage() %></td> -->
                     <td><img src="<%= product.getMainImageUrl() %>" alt="_blank" class="img-fluid">  </td>
-                   <!-- <%= truncateUrl(product.getMainImageUrl()) %></a> -->
+                    <!-- <%= truncateUrl(product.getMainImageUrl()) %></a> -->
                     <td><%= product.getCategory().getName() %></td>
-                     <!-- <td>
+                    <!-- <td>
                        
                         <button class="btn btn-primary btn-edit" data-product-id="<%= product.getId() %>">Edit</button>
                       
@@ -256,7 +256,7 @@ a:hover {
                 </tbody>
             </table>
             <a href="#" class="previous" onclick="updatePage(-1)">&laquo; Previous</a>
-<a href="#" class="next" onclick="updatePage(1)">Next &raquo;</a>
+            <a href="#" class="next" onclick="updatePage(1)">Next &raquo;</a>
         </div>
     </div>
 </div>
@@ -272,7 +272,7 @@ a:hover {
                 </button>
             </div>
             <div class="modal-body">
-                
+
                 <form id="editProductForm">
                     <!-- Input fields for editing product details -->
                     <input type="hidden" id="editProductId">
@@ -292,7 +292,7 @@ a:hover {
                         <label for="editPrice">Price:</label>
                         <input type="number" class="form-control" id="editPrice">
                     </div>
-                 
+
                     <div class="form-group">
                         <label for="editMainImage">Main Image URL:</label>
                         <input type="text" class="form-control" id="editMainImage">
@@ -309,7 +309,7 @@ a:hover {
 
                     <div class="form-group">
                         <label for="editCategory">Category:</label>
-                         <input type="text" class="form-control" readonly id="editCategory"> 
+                        <input type="text" class="form-control" readonly id="editCategory">
                         <!-- <select class="form-control"  name="editCategory" id="editCategory">
                             <option value="1">Smart Phone</option>
                             <option value="2">Laptop</option>
@@ -356,20 +356,20 @@ a:hover {
                         <label for="addPrice">Price</label>
                         <input type="number" class="form-control" id="addPrice" name="price">
                     </div>
-                  
+
                     <div class="form-group">
                         <label for="addMainImage">Main Image URL</label>
                         <input type="text" class="form-control" id="addMainImage" name="mainImage">
                     </div>
 
                     <div class="form-group">
-                        <label for="addSecondUrlImage">Second Image URL</label>
-                        <input type="text" class="form-control" id="addSecondUrlImage" name="secondImage">
+                        <label for="secondUrlImage">Second Image URL:</label>
+                        <input type="text" class="form-control" id="addsecondUrlImage">
                     </div>
 
                     <div class="form-group">
-                        <label for="addThirdUrlImage">Third Image URL</label>
-                        <input type="text" class="form-control" id="addThirdUrlImage" name="thirdImage">
+                        <label for="thirdUrlImage">Third Image URL:</label>
+                        <input type="text" class="form-control" id="addthirdUrlImage">
                     </div>
 
 
@@ -403,27 +403,27 @@ a:hover {
 
 <script>
 
-function updatePage(change) {
-        
-    if(change===1){
-        <%
-               
-            // HttpSession sessionObj = request.getSession(); 
-            int Value = (int) sessionObj.getAttribute("page");
-            session.setAttribute("page", Value - 1);
-        %>
-       
-    }else{
-        <%
-                // Obtain the session
-            // HttpSession sessionObj = request.getSession();
-                
-            int num = (int) sessionObj.getAttribute("page");
-            session.setAttribute("page", num - 1);
-        %>
-       
-    }
-        
+    function updatePage(change) {
+
+        if(change===1){
+            <%
+
+                // HttpSession sessionObj = request.getSession();
+                int Value = (int) sessionObj.getAttribute("page");
+                session.setAttribute("page", Value - 1);
+            %>
+
+        }else{
+            <%
+                    // Obtain the session
+                // HttpSession sessionObj = request.getSession();
+
+                int num = (int) sessionObj.getAttribute("page");
+                session.setAttribute("page", num - 1);
+            %>
+
+        }
+
     }
     $(document).ready(function() {
 
@@ -460,11 +460,10 @@ function updatePage(change) {
                 secondImageUrl: $('#secondUrlImage').val(),
                 thirdImageUrl: $('#thirdUrlImage').val(),
             };
-            console.log(updatedProduct);
 
             // Send the updated product details to the server for processing
             $.ajax({
-                url: 'admin?page=productsPanel', // Servlet URL
+                url: 'front?page=productsPanel', // Servlet URL
                 type: 'POST', // Request type
                 contentType: 'application/json', // Data format
                 data: JSON.stringify(updatedProduct), // Data to be sent
@@ -495,7 +494,7 @@ function updatePage(change) {
 
             // Send the delete request to the server for processing
             $.ajax({
-                url: 'admin?page=deleteProductsPanel', // Servlet URL with action parameter
+                url: 'front?page=deleteProductsPanel', // Servlet URL with action parameter
                 type: 'POST', // Request type
                 contentType: 'application/json', // Data format
                 data: JSON.stringify({ id: productId }), // Data to be sent
@@ -526,35 +525,35 @@ function updatePage(change) {
             $('#addProductModal').modal('show');
         });
 
-        
 
-        <%--$('#backBtn').on('click', function() {--%>
-        <%--    console.log('Back button in console');--%>
 
-        <%--    $.ajax({--%>
-        <%--        url: '${pageContext.request.contextPath}/admin', // Servlet URL with action parameter--%>
-        <%--        type: 'POST', // Request type--%>
-        <%--        contentType: 'application/json', // Data format--%>
-        <%--        data: null, // Data to be sent--%>
-        <%--        success: function (response) {--%>
-        <%--            // Handle the success response--%>
-        <%--            console.log('Product deleted successfully:', response);--%>
-        <%--            // Optionally, you can reload the page or update the product list--%>
-        <%--            location.reload();--%>
-        <%--        },--%>
-        <%--        error: function (xhr, status, error) {--%>
-        <%--            // Handle the error response--%>
-        <%--            console.error('Error deleting product:', error);--%>
-        <%--            if (xhr.status === 500) {--%>
-        <%--                // Display an error message to the user--%>
-        <%--                alert('Internal Server Error. Please try again later.');--%>
-        <%--            } else {--%>
-        <%--                // Display a generic error message--%>
-        <%--                alert('An error occurred while deleting the product.');--%>
-        <%--            }--%>
-        <%--        }--%>
-        <%--    });--%>
-            
+        $('#backBtn').on('click', function() {
+            console.log('Back button in console');
+
+            $.ajax({
+                url: '${pageContext.request.contextPath}/admin', // Servlet URL with action parameter
+                type: 'POST', // Request type
+                contentType: 'application/json', // Data format
+                data: null, // Data to be sent
+                success: function (response) {
+                    // Handle the success response
+                    console.log('Product deleted successfully:', response);
+                    // Optionally, you can reload the page or update the product list
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error response
+                    console.error('Error deleting product:', error);
+                    if (xhr.status === 500) {
+                        // Display an error message to the user
+                        alert('Internal Server Error. Please try again later.');
+                    } else {
+                        // Display a generic error message
+                        alert('An error occurred while deleting the product.');
+                    }
+                }
+            });
+
         });
 
         // Event listener for the "Submit" button inside the modal form
@@ -568,15 +567,15 @@ function updatePage(change) {
                 price: $('#addPrice').val(),
                 // discountPercentage: $('#addDiscount').val(),
                 mainImageUrl: $('#addMainImage').val(),
-                secondImageUrl: $('#addSecondUrlImage').val(),
-                thirdImageUrl: $('#addThirdUrlImage').val(),
+                secondImageUrl: $('addsecondUrlImage').val,
+                thirdImageUrl: $('addthirdUrlImage').val,
                 categoryId: $('#addCategory').val()
+
             };
-            console.log(newProduct);
 
             // Send the new product data to the server for processing
             $.ajax({
-                url: 'admin?page=addProducts', // Server endpoint
+                url: 'front?page=addProducts', // Server endpoint
                 type: 'POST', // Request type
                 contentType: 'application/json', // Data format
                 data: JSON.stringify(newProduct), // Data to be sent
@@ -604,8 +603,6 @@ function updatePage(change) {
 
         //-----------------------------------------------------------------------------------
 
-
-
     });
 
 
@@ -623,7 +620,6 @@ function updatePage(change) {
                 return products[i];
             }
         }
-
         return null;
     }
 

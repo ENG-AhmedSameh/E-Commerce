@@ -51,7 +51,7 @@ public class DeleteProductsPanelController implements ServletResolverInt {
         System.out.println(updatedProduct.getName());
 
         new ProductServices().deleteProduct(updatedProduct);
-        
+
         ViewResolver viewResolver = new ViewResolver();
         viewResolver.forward(PAGES.PRODUCTSPANEL.getValue());
         return viewResolver;
