@@ -1,9 +1,6 @@
 package com.example.ecommerce.presentation.controller;
 
-import com.example.ecommerce.presentation.controller.util.PAGES;
-import com.example.ecommerce.presentation.controller.util.ServletFactory;
-import com.example.ecommerce.presentation.controller.util.ServletResolverInt;
-import com.example.ecommerce.presentation.controller.util.ViewResolver;
+import com.example.ecommerce.presentation.controller.util.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -36,7 +33,7 @@ public class AdminFrontController extends HttpServlet {
             dispatch(request, response, resolver);
         }else{
 
-            ServletResolverInt servletResolverInt = ServletFactory.getController(controllerName);
+            ServletResolverInt servletResolverInt = AdminServletFactory.getController(controllerName);
             ViewResolver resolver = servletResolverInt.resolve(request, response);
             System.out.println("View is: " + resolver.getView());
             dispatch(request, response, resolver);

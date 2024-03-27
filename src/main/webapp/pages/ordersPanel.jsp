@@ -49,7 +49,7 @@ a:hover {
         <div class="col-md-12">
             <h2 class="headline">Orders</h2>
 
-            <button type="button" id="backBtn"  class="btn btn-secondary mr-1" data-toggle="modal">
+            <button type="button" id="backBtn"  class="btn btn-secondary mr-1" data-toggle="modal" onclick="window.location.href='${pageContext.request.contextPath}/admin'">
                 Back
             </button>
 

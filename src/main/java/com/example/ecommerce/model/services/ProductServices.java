@@ -71,11 +71,11 @@ public class ProductServices {
     public void updateProduct(Product product) {
         try {
             // Ensure the referenced Category is managed or saved
-            Category category = product.getCategory();
-            if (category.getId() == null) {
-                // Category is transient, save it first
-                saveCategory(category);
-            }
+//            Category category = product.getCategory();
+//            if (category.getId() == null) {
+//                // Category is transient, save it first
+//                saveCategory(category);
+//            }
 
             // Now update the product
             Database.doInTransactionWithoutResult(em -> {

@@ -84,7 +84,7 @@ public class ProductDAO  implements ProductDAOInt {
     public void editProduct(EntityManager em, Product product) {
         em.createQuery("UPDATE Product p SET p.name = :newName, p.description = :newDescription, " +
                         "p.availableQuantity = :newQuantity, p.price = :newPrice, p.discountPercentage = :newDiscount, " +
-                        "p.mainImageUrl = :newMainImage, p.category = :newCategory " +
+                        "p.mainImageUrl = :newMainImage " +
                         "WHERE p.id = :productId")
                 .setParameter("newName", product.getName())
                 .setParameter("newDescription", product.getDescription())
@@ -92,7 +92,6 @@ public class ProductDAO  implements ProductDAOInt {
                 .setParameter("newPrice", product.getPrice())
                 .setParameter("newDiscount", product.getDiscountPercentage())
                 .setParameter("newMainImage", product.getMainImageUrl())
-                .setParameter("newCategory", product.getCategory())
                 .setParameter("productId", product.getId())
                 .executeUpdate();
     }

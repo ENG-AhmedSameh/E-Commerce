@@ -51,24 +51,6 @@ public class AddProducts implements ServletResolverInt {
     private ViewResolver doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 
-//        StringBuilder sb = new StringBuilder();
-//        BufferedReader reader = request.getReader();
-//        try {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                sb.append(line).append('\n');
-//            }
-//        } finally {
-//            reader.close();
-//        }
-
-//        String jsonData = sb.toString();
-//
-//        System.out.println(jsonData);
-//
-//        Gson gson = new Gson();
-//        ProductDto dataObject = gson.fromJson(jsonData, ProductDto.class);
-        //****************************************************************
         String jsonData = null;
         try {
             jsonData = request.getReader().lines().collect(Collectors.joining());

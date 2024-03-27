@@ -188,10 +188,11 @@ a:hover {
             
 
             <%--  Add Button--%>
-            <button type="button" id="backBtn"  class="btn btn-secondary mr-1" data-toggle="modal">
+            <button type="button" id="backBtn" class="btn btn-secondary mr-1" onclick="window.location.href='${pageContext.request.contextPath}/admin'">
                 Back
             </button>
-           
+
+
 
             <button type="button" id="addBtn" class="btn btn-primary text-center" data-toggle="modal" data-target="#addProductModal">
                 Add Product
@@ -459,10 +460,11 @@ function updatePage(change) {
                 secondImageUrl: $('#secondUrlImage').val(),
                 thirdImageUrl: $('#thirdUrlImage').val(),
             };
+            console.log(updatedProduct);
 
             // Send the updated product details to the server for processing
             $.ajax({
-                url: 'front?page=productsPanel', // Servlet URL
+                url: 'admin?page=productsPanel', // Servlet URL
                 type: 'POST', // Request type
                 contentType: 'application/json', // Data format
                 data: JSON.stringify(updatedProduct), // Data to be sent
@@ -493,7 +495,7 @@ function updatePage(change) {
 
             // Send the delete request to the server for processing
             $.ajax({
-                url: 'front?page=deleteProductsPanel', // Servlet URL with action parameter
+                url: 'admin?page=deleteProductsPanel', // Servlet URL with action parameter
                 type: 'POST', // Request type
                 contentType: 'application/json', // Data format
                 data: JSON.stringify({ id: productId }), // Data to be sent
@@ -526,32 +528,32 @@ function updatePage(change) {
 
         
 
-        $('#backBtn').on('click', function() {
-            console.log('Back button in console');
+        <%--$('#backBtn').on('click', function() {--%>
+        <%--    console.log('Back button in console');--%>
 
-            $.ajax({
-                url: '${pageContext.request.contextPath}/admin', // Servlet URL with action parameter
-                type: 'POST', // Request type
-                contentType: 'application/json', // Data format
-                data: null, // Data to be sent
-                success: function (response) {
-                    // Handle the success response
-                    console.log('Product deleted successfully:', response);
-                    // Optionally, you can reload the page or update the product list
-                    location.reload();
-                },
-                error: function (xhr, status, error) {
-                    // Handle the error response
-                    console.error('Error deleting product:', error);
-                    if (xhr.status === 500) {
-                        // Display an error message to the user
-                        alert('Internal Server Error. Please try again later.');
-                    } else {
-                        // Display a generic error message
-                        alert('An error occurred while deleting the product.');
-                    }
-                }
-            });
+        <%--    $.ajax({--%>
+        <%--        url: '${pageContext.request.contextPath}/admin', // Servlet URL with action parameter--%>
+        <%--        type: 'POST', // Request type--%>
+        <%--        contentType: 'application/json', // Data format--%>
+        <%--        data: null, // Data to be sent--%>
+        <%--        success: function (response) {--%>
+        <%--            // Handle the success response--%>
+        <%--            console.log('Product deleted successfully:', response);--%>
+        <%--            // Optionally, you can reload the page or update the product list--%>
+        <%--            location.reload();--%>
+        <%--        },--%>
+        <%--        error: function (xhr, status, error) {--%>
+        <%--            // Handle the error response--%>
+        <%--            console.error('Error deleting product:', error);--%>
+        <%--            if (xhr.status === 500) {--%>
+        <%--                // Display an error message to the user--%>
+        <%--                alert('Internal Server Error. Please try again later.');--%>
+        <%--            } else {--%>
+        <%--                // Display a generic error message--%>
+        <%--                alert('An error occurred while deleting the product.');--%>
+        <%--            }--%>
+        <%--        }--%>
+        <%--    });--%>
             
         });
 
@@ -574,7 +576,7 @@ function updatePage(change) {
 
             // Send the new product data to the server for processing
             $.ajax({
-                url: 'front?page=addProducts', // Server endpoint
+                url: 'admin?page=addProducts', // Server endpoint
                 type: 'POST', // Request type
                 contentType: 'application/json', // Data format
                 data: JSON.stringify(newProduct), // Data to be sent
