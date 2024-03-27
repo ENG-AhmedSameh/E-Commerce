@@ -176,12 +176,12 @@
 
                     <div class="form-group">
                         <label for="secondUrlImage">Second Image URL:</label>
-                        <input type="text" class="form-control" id="secondUrlImage">
+                        <input type="text" class="form-control" id="addsecondUrlImage">
                     </div>
 
                     <div class="form-group">
                         <label for="thirdUrlImage">Third Image URL:</label>
-                        <input type="text" class="form-control" id="thirdUrlImage">
+                        <input type="text" class="form-control" id="addthirdUrlImage">
                     </div>
 
 
@@ -325,11 +325,10 @@
                 price: $('#addPrice').val(),
                 // discountPercentage: $('#addDiscount').val(),
                 mainImageUrl: $('#addMainImage').val(),
-                secondImageUrl: $('secondUrlImage').val,
-                thirdImageUrl: $('thirdUrlImage').val,
-                category: {
-                    name: $('#addCategory').val()
-                }
+                secondImageUrl: $('addsecondUrlImage').val,
+                thirdImageUrl: $('addthirdUrlImage').val,
+                categoryId: $('#addCategory').val()
+                
             };
 
             // Send the new product data to the server for processing
