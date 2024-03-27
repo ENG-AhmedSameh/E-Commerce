@@ -85,7 +85,7 @@
 	<div class="wrap-header-mobile">
 		<!-- Logo moblie -->
 		<div class="logo-mobile">
-			<a href="../index.jsp"><img src="../assets/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+			<a href="../index.jsp"><img src="assets/images/icons/logo-02.png" alt="IMG-LOGO"></a>
 		</div>
 
 		<!-- Icon header -->
@@ -138,9 +138,9 @@
 			<li>
 				<a href="${pageContext.request.contextPath}/pages/contact.jsp">Contact</a> -->
 			</li>
-			<li>
-				<a href="${pageContext.request.contextPath}/front?page=login">Login/register</a>
-			</li>
+<%--			<li>--%>
+<%--				<a href="${pageContext.request.contextPath}/front?page=login">Login/register</a>--%>
+<%--			</li>--%>
 
 			<%@ page import="jakarta.servlet.http.HttpSession" %>
 
@@ -162,6 +162,10 @@
                              <a href="${pageContext.request.contextPath}/front?page=logout">LogOut</a>
                         </li>
 						<% } %>
+
+			<li>
+				<a href="${pageContext.request.contextPath}/front?page=ShoppingCart">Shopping Cart</a>
+			</li>
 		</ul>
 	</div>
 

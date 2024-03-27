@@ -29,7 +29,16 @@ public class ProductServices {
         return Database.doInTransaction(em -> {
             ProductDAO productDAO = new ProductDAO();
 
-            List<Product> products = productDAO.getProductsAll(em);
+            List<Product> products = productDAO.getFirstTenProducts(em);
+            return ProductMapper.INSTANCE.toListDto(products);
+        });
+    }
+
+    public static List<ProductDto> getNextTenProducts(int first, int pageSize) {
+        return Database.doInTransaction(em -> {
+            ProductDAO productDAO = new ProductDAO();
+
+            List<Product> products = productDAO.getTheNextTenProducts(em,first,pageSize);
             return ProductMapper.INSTANCE.toListDto(products);
         });
     }

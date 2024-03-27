@@ -32,13 +32,11 @@
 </head>
 <body>
 <!-- Header -->
-    <jsp:include page="header.jsp" />
 
     <h1>404 Error</h1>
     <p>This Page doesn't exist</p>
     <p>Please try again later.</p>
 
 <!-- Header -->
-    <jsp:include page="footer.jsp" />
 </body>
 </html>

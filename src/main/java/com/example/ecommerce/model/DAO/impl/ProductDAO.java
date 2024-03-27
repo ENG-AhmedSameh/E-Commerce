@@ -70,9 +70,19 @@ public class ProductDAO  implements ProductDAOInt {
                 .getResultList();
     }
 
-    public  List<Product> getProductsAll(EntityManager em){
-        return em.createQuery("SELECT p FROM Product p", Product.class).getResultList();
+    public List<Product> getFirstTenProducts(EntityManager em) {
+        return em.createQuery("SELECT p FROM Product p", Product.class)
+                .setMaxResults(10)
+                .getResultList();
     }
+
+    public List<Product> getTheNextTenProducts(EntityManager em,int firstResult,int pageSize) {
+        return em.createQuery("SELECT p FROM Product p", Product.class)
+            .setFirstResult(firstResult)
+            .setMaxResults(pageSize)
+            .getResultList();
+    }
+
 
     //***************************************************
     public List<Product> getProductsAllExist(EntityManager em) {

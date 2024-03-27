@@ -185,7 +185,7 @@
                         <username>admin</username>
                         <password>admin</password>
                         <url>http://localhost:9090/manager/text</url>
-                        <path>/E-Commerce</path>
+                        <path>/GazawyTech</path>
                     </configuration>
                 </plugin>
             </plugins>

@@ -122,52 +122,6 @@ function initializePopUpComponents(product) {
 
     console.log($('.slick3'));
 
-    // Initialize Slick slider
-    // $('.slick3').slick({
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     arrows: true,
-    //     fade: true,
-    //     prevArrow: '<button class="arrow-slick2 prev-slick2"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-    //     nextArrow: '<button class="arrow-slick2 next-slick2"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
-    //     asNavFor: '.wrap-slick3-dots'
-    // });
-    //
-    // // Initialize Slick slider dots
-    // $('.wrap-slick3-dots').slick({
-    //     slidesToShow: 3,
-    //     slidesToScroll: 1,
-    //     asNavFor: '.slick3',
-    //     centerMode: true,
-    //     focusOnSelect: true,
-    //     centerPadding: '40px',
-    //     responsive: [
-    //         {
-    //             breakpoint: 992,
-    //             settings: {
-    //                 slidesToShow: 3,
-    //                 slidesToScroll: 1,
-    //                 centerPadding: '30px',
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 768,
-    //             settings: {
-    //                 slidesToShow: 3,
-    //                 slidesToScroll: 1,
-    //                 centerPadding: '20px',
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 576,
-    //             settings: {
-    //                 slidesToShow: 2,
-    //                 slidesToScroll: 1,
-    //                 centerPadding: '20px',
-    //             }
-    //         }
-    //     ]
-    // });
 }
 
 function initializeSlickSliders() {
@@ -230,3 +184,5 @@ $(".js-addcart-detail").on("click", function () {
 
     return false;
 });
+
+

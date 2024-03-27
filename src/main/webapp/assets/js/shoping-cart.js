@@ -250,7 +250,11 @@ function checkOutOrder(event) {
 			if (xmlhttp.status === 200) {
 				if (!xmlhttp.responseText.startsWith("Error")) {
 					sessionStorage.removeItem('cartItems');
-					swal("Order placed successfully!", "your order will be shipped in two days", "success");
+					swal("Order placed successfully!", "Your order will be shipped in two days", "success")
+						.then(() => {
+							window.location.reload();
+						});
+
 				} else {
 					let errorMessage = xmlhttp.responseText.substring("Error: ".length);
 					swal("Error", errorMessage, "error");
