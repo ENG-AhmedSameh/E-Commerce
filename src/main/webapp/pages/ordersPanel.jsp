@@ -147,6 +147,37 @@ a:hover {
             $('#editOrderModal').modal('show');
         });
     });
+
+    
+    $('#backBtn').on('click', function() {
+            console.log('Back button in console');
+
+            $.ajax({
+                url: '${pageContext.request.contextPath}/admin', // Servlet URL with action parameter
+                type: 'POST', // Request type
+                contentType: 'application/json', // Data format
+                data: null, // Data to be sent
+                success: function (response) {
+                    // Handle the success response
+                    console.log('Product deleted successfully:', response);
+                    // Optionally, you can reload the page or update the product list
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error response
+                    console.error('Error deleting product:', error);
+                    if (xhr.status === 500) {
+                        // Display an error message to the user
+                        alert('Internal Server Error. Please try again later.');
+                    } else {
+                        // Display a generic error message
+                        alert('An error occurred while deleting the product.');
+                    }
+                }
+            });
+            
+        });
+
 </script>
 
 </body>
