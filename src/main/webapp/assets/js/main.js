@@ -333,11 +333,8 @@
                 $('#items').append(html);
                 num++;
             }
-            var formattedAmount = total.toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD'
-            });
-            $(".header-cart-total").text("Total: " + formattedAmount);
+          
+            $(".header-cart-total").text("Total: " + total +" EGP");
             $('.js-show-cart').attr('data-notify',num );
         }
     });
