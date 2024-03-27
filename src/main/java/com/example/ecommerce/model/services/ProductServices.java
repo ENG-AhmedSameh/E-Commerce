@@ -126,6 +126,17 @@ public class ProductServices {
         });
     }
 
+    public List<ProductDto> getTenProducts(int startId) {
+        return Database.doInTransaction(em -> {
+            ProductDAO productDAO = new ProductDAO();
+
+            List<Product> products = productDAO.getTenProducts(em, startId); // Pass the startId to your DAO method
+
+            return ProductMapper.INSTANCE.toListDto(products);
+        });
+    }
+
+
 
 }
 

@@ -9,6 +9,38 @@
     <title>Customers Panel</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/pro.css">
+    <style>
+        
+label {
+  color: black;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+    </style>
 </head>
 <body>
 
@@ -17,6 +49,10 @@
     <div class="row">
         <div class="col-md-12">
             <h2 class="headline">Customers</h2>
+
+            <button type="button" id="backBtn"  class="btn btn-secondary mr-1" data-toggle="modal">
+                Back
+            </button>
 
             <table class="table table-striped">
                 <thead>
@@ -63,6 +99,8 @@
                 <% } %>
                 </tbody>
             </table>
+            <a href="#" class="previous" >&laquo; Previous</a>
+            <a href="#" class="next" >Next &raquo;</a>
         </div>
     </div>
 </div>
@@ -72,7 +110,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                <h5 class="modal-title" style="color: black;" id="editUserModalLabel">Edit User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -82,43 +120,43 @@
                     <input type="hidden" id="editUserId">
                     <div class="form-group">
                         <label for="editFirstName">First Name:</label>
-                        <input type="text" class="form-control" id="editFirstName">
+                        <input  readonly ="text" class="form-control" id="editFirstName">
                     </div>
                     <div class="form-group">
                         <label for="editLastName">Last Name:</label>
-                        <input type="text" class="form-control" id="editLastName">
+                        <input readonly type="text" class="form-control" id="editLastName">
                     </div>
                     <div class="form-group">
                         <label for="editUserName">Username:</label>
-                        <input type="text" class="form-control" id="editUserName">
+                        <input readonly  type="text" class="form-control" id="editUserName">
                     </div>
                     <div class="form-group">
                         <label for="editEmail">Email:</label>
-                        <input type="email" class="form-control" id="editEmail">
+                        <input readonly  type="email" class="form-control" id="editEmail">
                     </div>
                     <div class="form-group">
                         <label for="editPhone">Phone:</label>
-                        <input type="tel" class="form-control" id="editPhone">
+                        <input  readonly ="tel" class="form-control" id="editPhone">
                     </div>
                     <div class="form-group">
                         <label for="editJob">Job:</label>
-                        <input type="text" class="form-control" id="editJob">
+                        <input readonly ="text" class="form-control" id="editJob">
                     </div>
                     <div class="form-group">
                         <label for="editCreditLimit">Credit Limit:</label>
-                        <input type="number" class="form-control" id="editCreditLimit">
+                        <input readonly  type="number" class="form-control" id="editCreditLimit">
                     </div>
                     <div class="form-group">
                         <label for="editCity">City:</label>
-                        <input type="text" class="form-control" id="editCity">
+                        <input readonly type="text" class="form-control" id="editCity">
                     </div>
                     <div class="form-group">
                         <label for="editStreet">Street:</label>
-                        <input type="text" class="form-control" id="editStreet">
+                        <input readonly  type="text" class="form-control" id="editStreet">
                     </div>
                     <div class="form-group">
                         <label for="editGender">Gender:</label>
-                        <input type="text" class="form-control" id="editGender">
+                        <input readonly  type="text" class="form-control" id="editGender">
                     </div>
                 </form>
             </div>

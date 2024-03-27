@@ -9,6 +9,38 @@
     <title>Orders Panel</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/pro.css">
+
+    <style>
+        label {
+  color: black;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+    </style>
 </head>
 <body>
 
@@ -16,6 +48,10 @@
     <div class="row">
         <div class="col-md-12">
             <h2 class="headline">Orders</h2>
+
+            <button type="button" id="backBtn"  class="btn btn-secondary mr-1" data-toggle="modal">
+                Back
+            </button>
 
             <table class="table table-striped">
                 <thead>
@@ -47,6 +83,8 @@
                 <% } %>
                 </tbody>
             </table>
+            <a href="#" class="previous" >&laquo; Previous</a>
+            <a href="#" class="next" >Next &raquo;</a>
         </div>
     </div>
 </div>
@@ -56,7 +94,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editOrderModalLabel">Edit Order</h5>
+                <h5 class="modal-title" style="color: black;" id="editOrderModalLabel">Edit Order</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

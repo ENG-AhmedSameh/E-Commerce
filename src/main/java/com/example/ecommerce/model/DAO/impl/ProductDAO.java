@@ -53,6 +53,17 @@ public class ProductDAO  implements ProductDAOInt {
         return list;
     }
 
+    public List<Product> getTenProducts(EntityManager em, int start) {
+        System.out.println("ProductDAO getTenProducts() called");
+        String queryStr = "SELECT p FROM Product p WHERE p.id >= :startId";
+        List<Product> list = em.createQuery(queryStr, Product.class)
+                .setParameter("startId", start)
+                .setMaxResults(10)
+                .getResultList();
+
+        System.out.println("ProductDAO getTenProducts() end");
+        return list;
+    }
     public List<String> getProductImagesByProductId(int productId, EntityManager em) {
         return em.createQuery("SELECT p.id.imageUrl FROM ProductImage p WHERE p.id.productId = :productId", String.class)
                 .setParameter("productId", productId)

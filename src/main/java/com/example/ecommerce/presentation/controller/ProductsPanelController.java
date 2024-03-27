@@ -33,9 +33,25 @@ public class ProductsPanelController implements ServletResolverInt {
     }
 
     private ViewResolver doGet(HttpServletRequest request, HttpServletResponse response) {
-        List<ProductDto> productDtos = new ProductServices().getProductsAllExist();
-        request.getSession().setAttribute("productsPanel", productDtos);
+        int pash =10;
 
+        String pageParam = request.getParameter("page");
+        int start;
+        if (pageParam == null) {
+            start = 0;
+        } else {
+            try {
+                start = Integer.parseInt(pageParam);
+            } catch (NumberFormatException e) {
+                start = 0;
+            }
+        }
+        if(start<0) {start=0;}
+
+        List<ProductDto> productDtos = new ProductServices().getTenProducts(start*pash);
+        request.getSession().setAttribute("productsPanel", productDtos);
+        request.getSession().setAttribute("page", start);
+        System.out.println("page = " + start+1);
         ViewResolver viewResolver = new ViewResolver();
         viewResolver.forward(PAGES.PRODUCTSPANEL.getValue());
         return viewResolver;

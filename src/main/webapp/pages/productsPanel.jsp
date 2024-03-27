@@ -9,7 +9,166 @@
     <title>Products Panel</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/pro.css">
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #ede0c8, #f6f0ea); /* Beige gradient background */
+    color: #ffffff; /* Set text color to white */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Set full viewport height */
+    background-size: 150% 150%; /* Increase background size for a more pronounced gradient */
+}
+
+.container {
+    text-align: center;
+    background-color: rgb(243, 235, 235); /* Semi-transparent white background */
+    padding: 20px; /* Add some padding for spacing */
+    border-radius: 10px; /* Add border radius */
+    margin-top: 50px; /* Add margin to top */
+    max-width: 1300px; /* Set maximum width */
+    margin-left: auto; /* Center the container horizontally */
+    margin-right: auto; /* Center the container horizontally */
+}
+
+.headline {
+    font-size: 36px; /* Reduce font size */
+    font-weight: bold;
+    margin-bottom: 20px; /* Reduce margin */
+    color: #f6f6f6; /* Set headline color to dark gray */
+    background-color: rgb(255, 193, 7); /* Semi-transparent black background */
+    padding: 15px; /* Reduce padding */
+    border-radius: 8px; /* Add border radius */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for depth */
+}
+
+.table {
+    background-color: #fff; /* White background for table */
+    border-radius: 10px; /* Add border radius */
+    margin-top: 10px; /* Reduce margin to top */
+}
+
+.table th,
+.table td {
+    border: none; /* Remove border */
+}
+
+.table th {
+    background-color: rgb(255, 193, 7); /* Header background color */
+    color: #fff; /* Header text color */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background for odd rows */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background for even rows */
+}
+
+.btn {
+    color: #fff; /* Button text color */
+    border-radius: 5px; /* Add border radius */
+}
+
+.btn-primary {
+    background-color: #ffc107; /* Primary button background color */
+}
+
+.btn-danger {
+    background-color: #ff0000; /* Danger button background color */
+}
+
+.btn-primary:hover, .btn-danger:hover {
+    background-color: #ffca28; /* Button background color on hover */
+}
+
+/* Adjusting input width for image URLs */
+.form-control-url {
+    width: calc(100% - 80px); /* Adjust width as needed */
+}
+
+/* Styling links */
+a {
+    color: blue; /* Link color */
+    text-decoration: underline; /* Underline link */
+}
+
+a:hover {
+    color: darkblue; /* Link color on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+/* Tooltip styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #000 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+label {
+  color: black;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+    </style>
 </head>
 <body>
 
@@ -18,13 +177,27 @@
     <!-- Products Section -->
     <div class="row">
         <div class="col-md-12">
-            <h2 class="headline">Products</h2>
-
+            <h2 class="headline text-center" >Products</h2>
+            <%
+               
+                HttpSession sessionObj = request.getSession(); 
+                int pageValue = (int) sessionObj.getAttribute("page");
+                
+            %>
+            <h1 hidden class="headline text-center"><%= pageValue %></h1>
+            
 
             <%--  Add Button--%>
-            <button type="button" id="addBtn" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
+            <button type="button" id="backBtn"  class="btn btn-secondary mr-1" data-toggle="modal">
+                Back
+            </button>
+           
+
+            <button type="button" id="addBtn" class="btn btn-primary text-center" data-toggle="modal" data-target="#addProductModal">
                 Add Product
             </button>
+
+           
 
             <table class="table table-striped">
                 <thead>
@@ -52,15 +225,26 @@
                     <td><%= product.getAvailableQuantity() %></td>
                     <td><%= product.getPrice() %></td>
                     <!-- <td><%= product.getDiscountPercentage() %></td> -->
-                    <td><img src="<%= product.getMainImageUrl() %>" alt="_blank">  </td>
+                    <td><img src="<%= product.getMainImageUrl() %>" alt="_blank" class="img-fluid">  </td>
                    <!-- <%= truncateUrl(product.getMainImageUrl()) %></a> -->
                     <td><%= product.getCategory().getName() %></td>
-                    <td>
-                        <!-- Edit button -->
+                     <!-- <td>
+                       
                         <button class="btn btn-primary btn-edit" data-product-id="<%= product.getId() %>">Edit</button>
-                        <!-- Delete button -->
+                      
                         <button class="btn btn-danger btn-delete" data-product-id="<%= product.getId() %>">Delete</button>
+                    </td>  -->
+
+                    <td class="text-center">
+                        <div class="d-inline-block">
+                            <!-- Edit button -->
+                            <button class="btn btn-primary btn-edit mr-2" data-product-id="<%= product.getId() %>">Edit</button>
+                            <!-- Delete button -->
+                            <button class="btn btn-danger btn-delete" data-product-id="<%= product.getId() %>">Delete</button>
+                        </div>
                     </td>
+
+
                 </tr>
                 <% }
                 } else { %>
@@ -70,6 +254,8 @@
                 <% } %>
                 </tbody>
             </table>
+            <a href="#" class="previous" onclick="updatePage(-1)">&laquo; Previous</a>
+<a href="#" class="next" onclick="updatePage(1)">Next &raquo;</a>
         </div>
     </div>
 </div>
@@ -79,12 +265,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                <h5 class="modal-title" style="color: #000;" id="editProductModalLabel">Edit Product</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                
                 <form id="editProductForm">
                     <!-- Input fields for editing product details -->
                     <input type="hidden" id="editProductId">
@@ -94,7 +281,7 @@
                     </div>
                     <div class="form-group">
                         <label for="editDescription">Description:</label>
-                        <textarea class="form-control" id="editDescription"></textarea>
+                        <textarea class="form-control" id="editDescription" resize="none" rows="5"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="editQuantity">Quantity:</label>
@@ -121,12 +308,12 @@
 
                     <div class="form-group">
                         <label for="editCategory">Category:</label>
-                        <!-- <input type="text" class="form-control" id="editCategory"> -->
-                        <select class="form-control"  name="editCategory" id="editCategory">
+                         <input type="text" class="form-control" readonly id="editCategory"> 
+                        <!-- <select class="form-control"  name="editCategory" id="editCategory">
                             <option value="1">Smart Phone</option>
                             <option value="2">Laptop</option>
                             <option value="3">Accessory</option>
-                        </select>
+                        </select> -->
                     </div>
                 </form>
             </div>
@@ -143,7 +330,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                <h5 class="modal-title" style="color: #000;" id="addProductModalLabel">Add Product</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -158,7 +345,7 @@
                     </div>
                     <div class="form-group">
                         <label for="addDescription">Description</label>
-                        <textarea class="form-control" id="addDescription" name="description"></textarea>
+                        <textarea class="form-control" id="addDescription" name="description" resize="none" rows="5"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="addQuantity">Quantity</label>
@@ -189,7 +376,7 @@
                         <label for="addCategory">Category</label>
                         <!-- <input type="text" class="form-control" id="addCategory" name="category"> -->
                         <select class="form-control"  name="category" id="addCategory">
-                            <option value="1">Smart Phone</option>
+                            <option  selected ="1">Smart Phone</option>
                             <option value="2">Laptop</option>
                             <option value="3">Accessory</option>
                         </select>
@@ -214,6 +401,29 @@
 
 
 <script>
+
+function updatePage(change) {
+        
+    if(change===1){
+        <%
+               
+            // HttpSession sessionObj = request.getSession(); 
+            int Value = (int) sessionObj.getAttribute("page");
+            session.setAttribute("page", Value - 1);
+        %>
+       
+    }else{
+        <%
+                // Obtain the session
+            // HttpSession sessionObj = request.getSession();
+                
+            int num = (int) sessionObj.getAttribute("page");
+            session.setAttribute("page", num - 1);
+        %>
+       
+    }
+        
+    }
     $(document).ready(function() {
 
         $('.btn-edit').click(function () {
@@ -312,6 +522,37 @@
         $('#addBtn').on('click', function() {
             console.log('add button in console');
             $('#addProductModal').modal('show');
+        });
+
+        
+
+        $('#backBtn').on('click', function() {
+            console.log('Back button in console');
+
+            $.ajax({
+                url: '${pageContext.request.contextPath}/admin', // Servlet URL with action parameter
+                type: 'POST', // Request type
+                contentType: 'application/json', // Data format
+                data: null, // Data to be sent
+                success: function (response) {
+                    // Handle the success response
+                    console.log('Product deleted successfully:', response);
+                    // Optionally, you can reload the page or update the product list
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    // Handle the error response
+                    console.error('Error deleting product:', error);
+                    if (xhr.status === 500) {
+                        // Display an error message to the user
+                        alert('Internal Server Error. Please try again later.');
+                    } else {
+                        // Display a generic error message
+                        alert('An error occurred while deleting the product.');
+                    }
+                }
+            });
+            
         });
 
         // Event listener for the "Submit" button inside the modal form
