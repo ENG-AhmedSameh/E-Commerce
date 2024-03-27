@@ -89,7 +89,10 @@
 <%--                                                            <a href="#">Forgot Password?</a>--%>
 <%--                                                        </label>--%>
 <%--                                                    </div>--%>
-                                                    <button type="submit"><span>Login</span></button>
+                                                    <div class="button-box text-center">
+                                                        <button type="submit"><span>Login</span></button>
+
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>

@@ -26,13 +26,13 @@
 <%--							<a href="${pageContext.request.contextPath}/pages/shopping-cart.jsp">Features</a>--%>
 <%--						</li>--%>
 
-						<li>
+						<!-- <li>
 							<a href="${pageContext.request.contextPath}/pages/about.jsp">About</a>
-						</li>
+						</li> -->
 
-						<li>
+						<!-- <li>
 							<a href="${pageContext.request.contextPath}/pages/contact.jsp">Contact</a>
-						</li>
+						</li> -->
 						<%@ page import="jakarta.servlet.http.HttpSession" %>
 
 						<%
@@ -46,7 +46,7 @@
 
 						<% } else { %>
 						<li>
-							<a href="${pageContext.request.contextPath}/front?page=updateProfile">Update Profile</a>
+							<a href="${pageContext.request.contextPath}/front?page=updateProfile">Profile</a>
 						</li>
 
 						<li>
@@ -59,11 +59,11 @@
 
 				<!-- Icon header -->
 				<div class="wrap-icon-header flex-w flex-r-m h-full">
-					<div class="flex-c-m h-full p-r-24">
+					<!-- <div class="flex-c-m h-full p-r-24">
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
 							<i class="zmdi zmdi-search"></i>
 						</div>
-					</div>
+					</div> -->
 
 					<div class="flex-c-m h-full p-l-18 p-r-25 bor5">
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="0">
@@ -127,25 +127,46 @@
 				<a href="${pageContext.request.contextPath}/front?page=shop">Shop</a>
 			</li>
 
-			<li>
+			<!-- <li>
 				<a href="${pageContext.request.contextPath}/pages/shopping-cart.jsp" class="label1 rs1" data-label1="hot">Features</a>
-			</li>
-
+			</li> -->
+<!-- 
 			<li>
 				<a href="${pageContext.request.contextPath}/pages/blog.jsp">Blog</a>
 			</li>
 
 			<li>
-				<a href="${pageContext.request.contextPath}/pages/contact.jsp">Contact</a>
+				<a href="${pageContext.request.contextPath}/pages/contact.jsp">Contact</a> -->
 			</li>
 			<li>
 				<a href="${pageContext.request.contextPath}/front?page=login">Login/register</a>
 			</li>
+
+			<%@ page import="jakarta.servlet.http.HttpSession" %>
+
+						<%
+//							HttpSession session = request.getSession(false);
+							if (request.getSession().getAttribute("currentUser") == null) {
+						%>
+						<li>
+							<a href="${pageContext.request.contextPath}/front?page=login">Login /Register</a>
+						</li>
+
+
+						<% } else { %>
+						<li>
+							<a href="${pageContext.request.contextPath}/front?page=updateProfile">Profile</a>
+						</li>
+
+						<li>
+                             <a href="${pageContext.request.contextPath}/front?page=logout">LogOut</a>
+                        </li>
+						<% } %>
 		</ul>
 	</div>
 
 	<!-- Modal Search -->
-	<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+	<!-- <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 		<div class="container-search-header">
 			<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
 				<img src="../assets/images/icons/icon-close2.png" alt="CLOSE">
@@ -158,7 +179,7 @@
 				<input class="plh3" type="text" name="search" placeholder="Search...">
 			</form>
 		</div>
-	</div>
+	</div> -->
 
 	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
 		<div class="overlay-modal1 js-hide-modal1"></div>

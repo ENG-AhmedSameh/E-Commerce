@@ -24,7 +24,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-    background-color: #f7eeee;
+    background-color: #b2b2b2;
 }
 
 .form-container input[type="text"],
@@ -44,7 +44,7 @@ body {
 
 
 .button-box button {
-    background-color: #ff5722;
+    background-color: #6774d5;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -53,7 +53,7 @@ body {
 }
 
 .button-box button:hover {
-    background-color: #e64a19;
+    background-color: #6774d5;
 }
 
 .button-box a {
@@ -63,7 +63,7 @@ body {
 }
 
 .button-box a:hover {
-    color: #ff5722;
+    color: #5360bb;
 }
 
 .separator {
@@ -147,7 +147,7 @@ body {
 }
 
 .login-toggle-btn>a:hover {
-    color: #b11bc8;
+    color: #6774d5;
 }
 
 .login-register-tab-list {
@@ -187,5 +187,5 @@ body {
 
 .login-register-tab-list.nav a.active h4,
 .login-register-tab-list.nav a h4:hover {
-    color: #a272c4;
+    color: #6c7ae0;
 }
