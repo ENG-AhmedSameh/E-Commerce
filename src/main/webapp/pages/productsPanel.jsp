@@ -243,11 +243,11 @@
                 description: $('#editDescription').val(),
                 availableQuantity: $('#editQuantity').val(),
                 price: $('#editPrice').val(),
-                discountPercentage: $('#editDiscount').val(),
+                // discountPercentage: $('#editDiscount').val(),
                 mainImageUrl: $('#editMainImage').val(),
-                category: {
-                    name: $('#editCategory').val()
-                }
+                categoryId: $('#editCategory').val(),
+                secondImageUrl: $('#secondUrlImage').val(),
+                thirdImageUrl: $('#thirdUrlImage').val(),
             };
 
             // Send the updated product details to the server for processing
