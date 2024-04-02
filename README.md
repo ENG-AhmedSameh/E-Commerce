@@ -2,10 +2,11 @@
 
 This is a simple E-Commerce web application developed as part of the evaluation for Client-Side Technologies Courses (HTML5, CSS3, JavaScript), Servlets & JSP Course, Asynchronous Development Course, and ORM.
 
-# Contributers
-- @EslaM-AhMed14
-- @tatashii
+## Contributors
 
+- [Ahmed Sameh](https://github.com/ENG-AhmedSameh)
+- [Eslam Ahmed](https://github.com/EslaM-AhMed14)
+- [Hajar Ramadan](https://github.com/tatashii)
 ## DataBase Schema
 ![erd](https://github.com/ENG-AhmedSameh/E-Commerce/assets/101069344/c3b280e3-aaf7-487f-85ec-ad2461249601)
 ## Main Functionalities
