@@ -1,7 +1,6 @@
-# E-Commerce Web Application
+# GazawyTech
 
-This is a simple E-Commerce web application developed as part of the evaluation for Client-Side Technologies Courses (HTML5, CSS3, JavaScript), Servlets & JSP Course, Asynchronous Development Course, and ORM.
-
+A cutting-edge e-commerce platform engineered to streamline the buying and selling process for electronic devices.
 ## Contributors
 
 - [Ahmed Sameh](https://github.com/ENG-AhmedSameh)
