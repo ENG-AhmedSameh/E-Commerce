@@ -320,7 +320,7 @@
 <%--							</span>--%>
 
 <%--							<span class="block1-info stext-102 trans-04">--%>
-<%--								Models --%>
+<%--								Models--%>
 <%--							</span>--%>
 <%--						</div>--%>
 

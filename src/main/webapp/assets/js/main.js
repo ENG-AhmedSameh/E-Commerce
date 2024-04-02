@@ -358,12 +358,16 @@
    
     });
 
+    window.onload = function() {
+        var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
+        $('.js-show-cart').attr('data-notify',cartItems.length );
+    }
     $(document).ready(function() {
 
         var cartItems = JSON.parse(sessionStorage.getItem("cartItems"));
         $('.js-show-cart').attr('data-notify',cartItems.length );
     });
-    
+
 
     $('.js-hide-cart').on('click', function () {
 

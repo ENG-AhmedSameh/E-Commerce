@@ -91,9 +91,9 @@
                                 <div id="lg1" class="tab-pane active">
                                     <div class="form-container">
                                         <form id="loginForm" action="front?page=login" method="post">
-                                            <input id="username1" type="text" name="username" placeholder="Username">
+                                            <input id="username1" type="text" name="username" placeholder="Username" required>
                                             <input id="password1" type="password" name="password"
-                                                placeholder="Password">
+                                                placeholder="Password" required>
                                             <div id="login-error-message" style="color: red;">
                                                 <!-- This area is for displaying error messages -->
                                                 <!-- It will be empty and not displayed if there are no errors -->
